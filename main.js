@@ -90,4 +90,4 @@ const midoriyaPath = [
     [300, 800]  // 第三個目標
 ];
 const speed = 100; // 每秒移動 100 像素
-//moveAlongPathLoop('Midoriya', midoriyaPath, speed);
+moveAlongPathLoop('Midoriya', midoriyaPath, speed);
