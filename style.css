@@ -13,7 +13,7 @@ body {
     
     width: 100vw;
     height: 100vh;
-    perspective: 1000px;  /*設定 3D 視角 */
+    /*perspective: 1000px;  設定 3D 視角 */
     background-color: rgba(0, 0, 0, 1);
 }
 
@@ -26,8 +26,8 @@ body {
     align-items: center;
     background-image: url(TEST.jpg);
 
-    /* 這裡進行主要的等角旋轉 */
-    transform: rotateX(60deg) rotateZ(50deg);
+    /* 這裡進行主要的等角旋轉 
+    transform: rotateX(60deg) rotateZ(50deg);*/
 
     /* 關鍵：讓子元素處於同一 3D 空間 */
     transform-style: preserve-3d;
@@ -44,8 +44,8 @@ body {
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     
-    /* 這裡進行逆等角旋轉 */
-    transform: rotateZ(-50deg) rotateX(-60deg) ;
+    /* 這裡進行逆等角旋轉 
+    transform: rotateZ(-50deg) rotateX(-60deg) ;*/
     
     transform-origin: 0 100%;
 }
