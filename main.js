@@ -1,5 +1,19 @@
 
 
+
+
+
+
+const mapContainer = document.getElementById('map-container');
+const mapElement = document.getElementsByClassName('venue-element');
+mapContainer.style.transform = `rotateX(60deg) rotateZ(50deg)`;
+// 反向旋轉
+Array.from(mapElement).forEach(element => {
+    element.style.transform = `rotateZ(-50deg) rotateX(-60deg)`;
+});
+
+
+
 function animateMove(element, startCoords, endCoords, duration) {
     return new Promise(resolve => {
         const [startX, startY] = startCoords;
@@ -76,4 +90,4 @@ const midoriyaPath = [
     [300, 800]  // 第三個目標
 ];
 const speed = 100; // 每秒移動 100 像素
-moveAlongPathLoop('Midoriya', midoriyaPath, speed);
+//moveAlongPathLoop('Midoriya', midoriyaPath, speed);
