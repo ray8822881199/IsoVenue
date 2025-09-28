@@ -3,15 +3,17 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* 隱藏滾動條 */
-    background-color: #f0f0f0;
+    background-color: #000;
     font-family: sans-serif;
+    height: 100vh;
 }
 
 /* 建立一個 3D 空間，並設置視角 */
 .scene {
+    
     width: 100vw;
     height: 100vh;
-    perspective: 1000px; /* 設定 3D 視角 */
+    /*perspective: 1000px;  設定 3D 視角 */
     background-color: rgba(0, 0, 0, 1);
 }
 
@@ -22,29 +24,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(TEST.jpg);
 
-    /* 這裡進行主要的等角旋轉 
-    transform: rotateX(60deg) rotateZ(-45deg);*/
+    /* 這裡進行主要的等角旋轉 */
+    transform: rotateX(60deg) rotateZ(50deg);
 
     /* 關鍵：讓子元素處於同一 3D 空間 */
     transform-style: preserve-3d;
+    
+    transform-origin: 50% 50%;
 }
 
-/* 子元素，負責將其自身旋轉回 2D 平面 */
-#map-content {
-    /* 讓它填滿父容器並處於 3D 空間中心 */
-    width: 100%;
-    height: 100%;
-
-
-    background-color: rgba(255, 255, 255, 0.3);
-    
-    /* 關鍵：應用反向旋轉 
-    transform: rotateX(-60deg) rotateZ(45deg);*/
-    
-    /* 讓地圖內容維持在原點，方便定位 */
-    position: relative;
-}
 
 /* 你的地圖上的場地元素，它們的位置是相對於 #map-content 的 2D 平面 */
 .venue-element {
@@ -53,6 +43,10 @@ body {
     border: 1px solid #ccc;
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    
+    /* 這裡進行逆等角旋轉 */
+    transform: rotateZ(-50deg) rotateX(-60deg) ;
+    
     transform-origin: 0 100%;
 }
 
