@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IsoVenue</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div class="scene">
@@ -14,10 +15,15 @@
             <div class="axis z-axis"></div>
             
 
-            <div class="venue-element" style="left: 50%; top: 20%;">會議室 A</div>
-            <div class="venue-element" style="left: 70%; top: 70%;">大廳</div>
+            <div class="venue-element sign" style="left: 50%; top: 20%;">會議室 A</div>
+            <div class="venue-element sign" style="left: 70%; top: 70%;">大廳</div>
             
-            <div class="venue-element player" id="Midoriya">Midoriya</div>
+            <div class="venue-element player" id="Midoriya">Midoriya
+                <div class="playerbackground" width="50px" height="50px"></div>
+            </div>
+            <div class="venue-element player" id="Bakugo">Bakugo
+                <div class="playerbackground" width="50px" height="50px"></div>
+            </div>
         </div>
     </div>
 

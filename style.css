@@ -2,19 +2,17 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* 隱藏滾動條 */
+    overflow: hidden;
     background-color: #000;
     font-family: sans-serif;
+    width: 100vw;
     height: 100vh;
 }
 
-/* 建立一個 3D 空間，並設置視角 */
+/* 建立一個 3D 空間 */
 .scene {
-    
-    width: 100vw;
-    height: 100vh;
-    /*perspective: 1000px;  設定 3D 視角 */
-    background-color: rgba(0, 0, 0, 1);
+    width: 1000px;
+    height: 1000px;
 }
 
 /* 負責 3D 旋轉的容器 */
@@ -24,31 +22,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(TEST.jpg);
+    background-image: url(BGMAP.jpg);
 
-    /* 這裡進行主要的等角旋轉 
-    transform: rotateX(60deg) rotateZ(50deg);*/
-
-    /* 關鍵：讓子元素處於同一 3D 空間 */
+    /* 讓子元素處於同一 3D 空間 */
     transform-style: preserve-3d;
-    
     transform-origin: 50% 50%;
 }
 
 
-/* 你的地圖上的場地元素，它們的位置是相對於 #map-content 的 2D 平面 */
+/* 地圖上的場地元素 */
 .venue-element {
-    position: absolute; /* 相對定位，不受 3D 影響 */
+    position: absolute;
+    pointer-events: none;
+    transform-origin: 50% 100%;
+}
+
+.sign {
     background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     border: 1px solid #ccc;
     padding: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    
-    /* 這裡進行逆等角旋轉 
-    transform: rotateZ(-50deg) rotateX(-60deg) ;*/
-    
-    transform-origin: 0 100%;
 }
+
+.playerbackground {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+}
+
+#Midoriya > .playerbackground {
+    background-image: url(P1.gif);
+}
+
+#Bakugo > .playerbackground {
+    background-image: url(P1.gif);
+}
+
+
 
 /* XYZ 軸的通用樣式 */
 .axis {
@@ -79,36 +89,28 @@ body {
     transform: translateX(0) translateY(0) translateZ(-1.5px) rotateY(-90deg);
 }
 
-/* 控制項的樣式設定 */
-.controls {
-    position: fixed; /* 固定在畫面上 */
-    top: 20px;
-    left: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
 
 
 
 
+
+/* 往返路徑
 @keyframes MidoriyaPath {
-    0% {left: 60%;top: 30%;}
-    25% {left: 60%;top: 10%;}
-    50% {left: 30%;top: 10%;}
-    75% {left: 30%;top: 50%;}
-    100% {left: 40%;top: 50%;}
+    0%    {left: 60%;top: 30%;}
+    25%   {left: 60%;top: 10%;}
+    50%   {left: 30%;top: 10%;}
+    75%   {left: 30%;top: 50%;}
+    100%  {left: 40%;top: 50%;}
 }
 
 #Midoriya {
     animation-name: MidoriyaPath;
-    animation-duration: 10s;       /* 總動畫時間，你可以調整 */
-    animation-timing-function: linear; /* 讓速度均勻 */
-    animation-iteration-count: infinite; /* 無限次重複 */
-    animation-direction: alternate;      /* 來回往返 */
+    animation-duration: 10s;       
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite; 
+    animation-direction: alternate;    
+    
 }
+
+ */
