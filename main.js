@@ -70,8 +70,9 @@ window.missionGo = async function(){
     // 檢查有沒有閒置角色
     if(missionPoints.length > 0 && idlePlayers.length > 0){
         
-        // 取得任務座標
-        const missionCoords = missionPoints.shift();
+        // 取得隨機任務座標
+        const randomMissionIndex = Math.floor(Math.random() * missionPoints.length);
+        const missionCoords = missionPoints.splice(randomMissionIndex, 1)[0];
         
         // 隨機一個閒置角色執行任務
         const randomIndex = Math.floor(Math.random() * idlePlayers.length);
@@ -124,11 +125,15 @@ $(document).ready(function() {
     }
     
     // 監聽 #mapContainer 的點擊事件
-    $('#map-container').on('touchend click', function(event) {
+    $('#map-container').on('touchstart click', function(event) {
         
         // 取得任務座標
         const x = event.offsetX;
         const y = event.offsetY;
+        
+        if(!x || !y){
+            return;
+        }
         
         // 可視化任務座標
         const newAxis = $('<div>')
@@ -142,7 +147,7 @@ $(document).ready(function() {
 
         // 將新任務添加到清單中
         missionPoints.push([x,y]);
-        console.log(`在座標 (${x}, ${y}) 處新增了一個元素`);
+        console.log(`在座標 (${x}, ${y}) 處新增了一個任務`);
         
         //執行任務
         missionGo();
