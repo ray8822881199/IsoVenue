@@ -124,7 +124,7 @@ $(document).ready(function() {
     }
     
     // 監聽 #mapContainer 的點擊事件
-    $('#map-container').on('click', function(event) {
+    $('#map-container').on('touchend click', function(event) {
         
         // 取得任務座標
         const x = event.offsetX;
