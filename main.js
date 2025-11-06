@@ -1,17 +1,22 @@
-
+// 角色清單
+window.players = {};
+// 物件清單
+window.areaItem = {};
+// 任務清單
+window.missionPoints = [];
 
 // 地圖旋轉
-const mapContainer = $('#map-container');
-const mapElement = $('.venue-element');
-// 旋轉角度
-const rotate = {x:60, z:50};
-// 地圖正向旋轉到期望角度
-mapContainer.css('transform', `rotateX(${rotate.x}deg) rotateZ(${rotate.z}deg)`);
-// 反向旋轉地圖物件讓他們正面向螢幕
-mapElement.each(function() {
-    $(this).css('transform', `rotateZ(-${rotate.z}deg) rotateX(-${rotate.x}deg)`);
-});
-
+function containerRotate(rotate) {
+    const mapContainer = $('#map-container');
+    const mapElement = $('.venue-element');
+    
+    // 地圖正向旋轉到期望角度
+    mapContainer.css('transform', `rotateX(${rotate.x}deg) rotateZ(${rotate.z}deg)`);
+    // 反向旋轉地圖物件讓他們正面向螢幕
+    mapElement.each(function() {
+        $(this).css('transform', `rotateZ(${-rotate.z}deg) rotateX(${-rotate.x}deg)`);
+    });
+}
 
 // 移動角色前往任務地
 function animateMove(element, missionCoords, duration) {
@@ -58,11 +63,10 @@ function animateMove(element, missionCoords, duration) {
 }
 
 
-// 角色清單
-window.players = {};
+
 
 // 觸發執行任務
-window.missionGo = async function(){
+async function missionGo(){
     
     const idlePlayers = Object.keys(window.players).filter(id => window.players[id].status === 0);
 
@@ -107,9 +111,42 @@ window.missionGo = async function(){
 }; 
 
 
-window.missionPoints = []; // 任務清單
+
 
 $(document).ready(function() {
+    
+    const rotate = {x:60, z:25};
+    containerRotate(rotate);
+    
+    // --- 【地圖旋轉控制邏輯】 ---
+    
+    const rotateXInput = $('#rotateX');
+    const rotateZInput = $('#rotateZ');
+    const rotateXValue = $('#rotateX-value');
+    const rotateZValue = $('#rotateZ-value');
+    
+    // 旋轉更新函數
+    function updateRotation() {
+        const rotate = {
+            // 取得滑桿的當前值，並轉換為數字
+            x: parseFloat(rotateXInput.val()),
+            z: parseFloat(rotateZInput.val())
+        };
+        
+        // 呼叫地圖旋轉函數
+        containerRotate(rotate);
+        
+        // 更新顯示的數值
+        rotateXValue.text(`${rotate.x} deg`);
+        rotateZValue.text(`${rotate.z} deg`);
+    }
+    
+    // 1. 設置初始旋轉角度 (根據滑桿的 value 屬性)
+    updateRotation(); 
+    
+    // 2. 監聽滑桿的 input 事件 (拖曳時即時觸發)
+    rotateXInput.on('input', updateRotation);
+    rotateZInput.on('input', updateRotation);
     
     // 取得所有角色清單
     const player = $('.player');

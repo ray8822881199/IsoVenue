@@ -7,26 +7,64 @@ body {
     font-family: sans-serif;
     width: 100vw;
     height: 100vh;
+    background-image: url(base.jpg);
+    
+    /* 定義子容器置中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 建立一個 3D 空間 */
 .scene {
-    width: 1000px;
-    height: 1000px;
+    position:relative; 
+
+    width: 100vw;
+    height: 100vh;
+    
+    /* 定義子容器置中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 地圖上放置的桌椅等物件 */
+.area-item {
+    /* 讓圖片縮放以完全覆蓋容器，同時保持長寬比 */
+    background-size: cover; 
+    /* 確保圖片從容器的中央開始對齊 */
+    background-position: center;
+    
+    text-align: center ;
+}
+#table-01 { background-image: url(item_desk.png); }
+
+/* 負責 3D 旋轉的介面 */
+#controls {
+    background-color:#fff5; 
+    position:absolute; 
+    left:10px; 
+    top:50px; 
+    padding: 20px; 
+    border: 1px solid #ccc;
+    z-index: 999;
 }
 
 /* 負責 3D 旋轉的容器 */
 #map-container {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url(BGMAP.jpg);
+    background-image: url(map_work_area.png);
+    transform-origin: 50% 50%;
 
     /* 讓子元素處於同一 3D 空間 */
     transform-style: preserve-3d;
-    transform-origin: 50% 50%;
+    
+    /* 讓圖片縮放以完全覆蓋容器，同時保持長寬比 */
+    background-size: cover; 
+    
+    /* 確保圖片從容器的中央開始對齊 */
+    background-position: center;
 }
 
 
@@ -37,6 +75,7 @@ body {
     transform-origin: 50% 100%;
 }
 
+/* 文字告示牌 */
 .sign {
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -44,16 +83,15 @@ body {
     padding: 10px;
 }
 
+/* 角色圖大小 */
 .playerbackground {
-    width: 70px;
-    height: 70px;
+    width: 85px;
+    height: 85px;
     background-size: contain;
 }
-
 #Midoriya > .playerbackground {
     background-image: url(Midoriya.gif);
 }
-
 #Bakugo > .playerbackground {
     background-image: url(Bakugo.gif);
 }
