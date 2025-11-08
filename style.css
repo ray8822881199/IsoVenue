@@ -18,9 +18,10 @@ body {
 /* 建立一個 3D 空間 */
 .scene {
     position:relative; 
+    overflow: clip;
 
-    width: 100vw;
-    height: 100vh;
+    width: 2000px;
+    height: 2000px;
     
     /* 定義子容器置中 */
     display: flex;
@@ -37,7 +38,11 @@ body {
     
     text-align: center ;
 }
-#table-01 { background-image: url(item_desk.png); }
+
+/* 角度控制面板 */
+#controls {
+    display: none;
+}
 
 /* 負責 3D 旋轉的介面 */
 #controls {
@@ -52,10 +57,11 @@ body {
 
 /* 負責 3D 旋轉的容器 */
 #map-container {
-    width: 100%;
-    height: 100%;
+    width: 1600px;
+    height: 1250px;
     background-image: url(map_work_area.png);
     transform-origin: 50% 50%;
+    position: relative;
 
     /* 讓子元素處於同一 3D 空間 */
     transform-style: preserve-3d;
@@ -71,8 +77,9 @@ body {
 /* 地圖上的場地元素 */
 .venue-element {
     position: absolute;
-    pointer-events: none;
+    text-align: center;
     transform-origin: 50% 100%;
+    z-index: 10;
 }
 
 /* 文字告示牌 */
@@ -85,8 +92,8 @@ body {
 
 /* 角色圖大小 */
 .playerbackground {
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
     background-size: contain;
 }
 #Midoriya > .playerbackground {
@@ -152,3 +159,5 @@ body {
 }
 
  */
+ 
+ 
