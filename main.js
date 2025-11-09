@@ -86,6 +86,33 @@ function calculateEuclideanDistance(p1, p2) {
     return Math.sqrt(sumOfSquares);
 }
 
+
+// 計算並設定地圖容器使其在視窗中居中
+function centerMapOnLoad() {
+    const $mapContainer = $('#map-container');
+    
+    const windowWidth = $(window).width();
+    const windowHeight = $(window).height();
+    const mapWidth = $mapContainer.width();  
+    const mapHeight = $mapContainer.height(); 
+    
+    const newLeft = (windowWidth / 2) - (mapWidth / 2);
+    const newTop = (windowHeight / 4) - (mapHeight / 2);
+    
+    // 更新用於拖動的全局平移變數
+    window.currentLeft = newLeft;
+    window.currentTop = newTop;
+    
+    // 應用新的 left/top
+    $mapContainer.css({
+        'left': `${newLeft}px`,
+        'top': `${newTop}px`
+    });
+
+}
+
+
+// 桌面跳動
 function animateTransform($el, transformValue, duration) {
     return new Promise(resolve => {
         // 設定過渡時間
@@ -121,12 +148,14 @@ function containerRotate(rotate) {
 }
 
 
-function distanceEffect(playerId_1, playerId_2) {
+function distanceEffect(playerId_1, playerId_2, is_support) {
     
     const p1 = window.players[playerId_1].locate || [0, 0];
     const p2 = window.players[playerId_2].locate || [0, 0];
     
-    if(calculateEuclideanDistance(p1,p2) < 200){
+    const ori_display = $(heart).css('display');
+    
+    if(calculateEuclideanDistance(p1,p2) < 90){
         // 取得元素的當前計算樣式
         const dom_heart = $('#heart').get(0);
         const heart_height = dom_heart.offsetHeight;
@@ -149,7 +178,7 @@ function distanceEffect(playerId_1, playerId_2) {
         const centerY = (pc1[1] + pc2[1]) / 2;
         
         const finalLeft = centerX - heart_width / 2;
-        const finalTop = centerY - heart_height / 2;
+        const finalTop = centerY - heart_height / 2 - (p1_height + p2_height) / 4 + 0 ; // 愛心高度提升需修改此處
 
         // 特效定位 顯示特效
         $(heart).css({
@@ -157,6 +186,25 @@ function distanceEffect(playerId_1, playerId_2) {
             'top': `${finalTop}px`,
             'display': `block`
         });
+        
+        if(ori_display == 'none' && is_support) {
+            
+            // 爆豪支援出久
+            if(playerId_1 == 'Bakugo' && playerId_2 == 'Midoriya'){
+                console.log(`爆豪勝己 ：「小心一點，Deku。」`);
+                console.log(`綠谷出久：「嗯！小勝也是。」`);
+                console.log(`爆豪勝己：「叫我大爆殺神Dynamight！」`);
+            }
+            // 出久支援爆豪
+            if(playerId_1 == 'Midoriya' && playerId_2 == 'Bakugo'){
+                
+                console.log(`綠谷出久：「小勝！我來支援了！」`);
+                console.log(`爆豪勝己：「給我叫英雄名啦臭書呆子！」`);
+                console.log(`綠谷出久：「好、好的！大爆殺神Dynamight！」`);
+                
+            }
+        }
+        
     }else{
         $(heart).css({
             'display': `none`
@@ -166,7 +214,7 @@ function distanceEffect(playerId_1, playerId_2) {
 }
 
 // 移動角色前往任務地
-function animateMove(playerId, missionCoords, duration) {
+function animateMove(playerId, missionCoords, duration, toSupportId) {
     
     const domElement = $(`#${playerId}`).get(0);
 
@@ -196,7 +244,11 @@ function animateMove(playerId, missionCoords, duration) {
             window.players[playerId].locate = [currentX, currentY];
             
             // 特定兩人的距離特效計算
-            distanceEffect('Midoriya','Bakugo');
+            if(playerId && toSupportId){
+                distanceEffect(playerId,toSupportId,true);
+            } else {
+                distanceEffect('Bakugo','Midoriya',false);
+            }
 
             $(domElement).css({
                 'left': `${currentX}px`,
@@ -239,7 +291,7 @@ async function missionGo(thisPlayer){
         console.log(`英雄 ${playerToMoveId} 開始前往任務點 (${missionCoords[0] - mid_x}, ${missionCoords[1] - mid_y})`);
         
         // 執行任務
-        await animateMove(playerToMoveId,missionCoords,1000);
+        await animateMove(playerToMoveId,missionCoords,1000,null);
         
         // 任務完成，將角色狀態更新為「閒置」 任務座標改印為相對中心座標
         window.players[playerToMoveId].status = 0;
@@ -261,11 +313,11 @@ async function missionGo(thisPlayer){
                 // 前往任務地支援
                 //const missionPlayerElement = $(`#${thisPlayer}`);
                 const mission = window.players[missionPlayers[0]].mission;
-                if(Math.random() > 0.5) {
-                    console.log(`英雄 ${thisPlayer} 前往任務地 ${mission} 支援 ${missionPlayers[0]}`);
-                    await animateMove(thisPlayer,window.players[missionPlayers[0]].mission,700);
+                if(Math.random() > (1 - 0.57)) {
+                    console.log(`英雄 ${thisPlayer} 任務完成，前往新任務地 (${mission}) 支援 ${missionPlayers[0]}`);
+                    await animateMove(thisPlayer,window.players[missionPlayers[0]].mission,700,missionPlayers[0]);
                 } else {
-                    console.log(`英雄 ${thisPlayer} 的傷勢嚴重，無法行動 . . .`);
+                    console.log(`英雄 ${thisPlayer} 任務繁忙，無法支援 . . .`);
                 }
             } else {
                 console.log("所有任務已完成，敵人消失。");
@@ -351,11 +403,10 @@ for (let i = 0; i < window.areaItem.length; i++) {
 
 $(document).ready(function() {
     
-    const rotate = {x:60, z:25};
+    const rotate = {x:0, z:0};
     containerRotate(rotate);
     
     // --- 【地圖旋轉控制邏輯】 ---
-    
     const rotateXInput = $('#rotateX');
     const rotateZInput = $('#rotateZ');
     const rotateXValue = $('#rotateX-value');
@@ -386,6 +437,48 @@ $(document).ready(function() {
     // 2. 監聽滑桿的 input 事件 (拖曳時即時觸發)
     rotateXInput.on('input', updateRotation);
     rotateZInput.on('input', updateRotation);
+    
+    // 縮放
+    const WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
+    
+    function isWideScreen() {
+        return $(window).width() >= WIDE_SCREEN_THRESHOLD;
+    }
+    
+    function applyInitialTransform() {
+        let initialScale;
+        
+        if (isWideScreen()) {
+            // 寬螢幕 (電腦) 初始縮放 0.8
+            initialScale = 0.8;
+        } else {
+            // 窄螢幕 (手機) 初始縮放 0.5
+            initialScale = 0.5;
+        }
+        
+        // 更新全域 currentScale 變數，作為滾輪/捏合縮放的起始值
+        window.currentScale = initialScale;
+
+        // 應用 3D 變換
+        $mapContainer.css('transform', 
+            `rotateX(${window.rotate_x}deg) rotateZ(${window.rotate_z}deg) scale3d(${initialScale}, ${initialScale}, ${initialScale})`
+        );
+    }
+    
+    // A. 頁面載入時執行一次
+    applyInitialTransform();
+
+    // B. 監聽視窗大小改變 (使用防抖/節流優化性能)
+    let resizeTimeout;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            // 在尺寸改變時，重新檢查並應用適當的初始縮放
+            applyInitialTransform();
+            centerMapOnLoad();
+        }, 200); // 200ms 延遲以優化性能
+    });
+
     
     // 取得所有角色清單
     const player = $('.player');
@@ -442,14 +535,11 @@ $(document).ready(function() {
     let startDragY = 0;
     
     // 儲存地圖當前的左上角座標（作為累積的平移量）
-    // 由於我們使用 left/top，我們需要在初始化時設置它們
-    let currentLeft = 0;
-    let currentTop = 0;
+    // 由於使用 left/top，需在初始化時設置
+    window.currentLeft = 0;
+    window.currentTop = 0;
+    centerMapOnLoad();
     
-    $mapContainer.css({
-        'left': `${currentLeft}px`,
-        'top': `${currentTop}px`
-    });
     
     const $scene = $('.scene'); // 在更大的容器上監聽拖拉事件
     
@@ -472,8 +562,8 @@ $(document).ready(function() {
         
         // 獲取並儲存當前累積的 left/top 值
         // 使用 parseFloat 確保讀取的是數字，而不是字串
-        currentLeft = parseFloat($mapContainer.css('left')) || 0;
-        currentTop = parseFloat($mapContainer.css('top')) || 0;
+        window.currentLeft = parseFloat($mapContainer.css('left')) || 0;
+        window.currentTop = parseFloat($mapContainer.css('top')) || 0;
         
         $mapContainer.css('cursor', 'grabbing'); 
     });
@@ -494,8 +584,8 @@ $(document).ready(function() {
         const deltaY = clientY - startDragY;
         
         // 計算未經限制的潛在新位置
-        const desiredLeft = currentLeft + deltaX; 
-        const desiredTop = currentTop + deltaY;
+        const desiredLeft = window.currentLeft + deltaX; 
+        const desiredTop = window.currentTop + deltaY;
         
         // 獲取視窗和地圖尺寸 (每次移動都獲取，以應對視窗大小改變)
         const windowWidth = $(window).width();
@@ -504,11 +594,24 @@ $(document).ready(function() {
         const mapHeight = $mapContainer.height();
         
         // 設定拖動極限
-        const padding = 1000;
-        const maxLeft = windowWidth - mapWidth + padding;
-        const minLeft = -padding;
-        const maxTop = windowHeight - mapHeight + padding;
-        const minTop = -padding;
+        let padding_left = 800;
+        let padding_right = 800;
+        let padding_top = 600;
+        let padding_btn = 200;
+        
+        if(windowWidth < 720){
+            padding_left = 800;
+            padding_right = 800;
+            padding_top = 600;
+            padding_btn = 200;
+        }
+        
+        console.log(windowWidth);
+        
+        const maxLeft = windowWidth - mapWidth + padding_left;
+        const minLeft = -padding_right;
+        const maxTop = windowHeight - mapHeight + padding_btn;
+        const minTop = -padding_top;
         
         // 計算新的 left/top
         const newLeft = Math.max(Math.min(desiredLeft, maxLeft), minLeft);
@@ -530,8 +633,8 @@ $(document).ready(function() {
             isDragging = false;
             
             // 在拖動結束時，更新 currentLeft/currentTop 以確保下一次拖動從正確的位置開始
-            currentLeft = parseFloat($mapContainer.css('left')) || 0;
-            currentTop = parseFloat($mapContainer.css('top')) || 0;
+            window.currentLeft = parseFloat($mapContainer.css('left')) || 0;
+            window.currentTop = parseFloat($mapContainer.css('top')) || 0;
             
             $mapContainer.css('cursor', 'grab');
         }

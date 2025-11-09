@@ -9,10 +9,27 @@ body {
     height: 100vh;
     background-image: url(img/base.jpg);
     
+    
+    
     /* 定義子容器置中 */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* 愛心特效 */
+#heart {
+    display: none; 
+    transform-origin: 50% calc(50% + 90px);
+    background-image: url(img/player/map_heart.gif);
+    
+    width: 25px;
+    height: 25px;
+    
+    /* 讓圖片縮放以完全覆蓋容器，同時保持長寬比 */
+    background-size: cover; 
+    /* 確保圖片從容器的中央開始對齊 */
+    background-position: center;
 }
 
 /* 建立一個 3D 空間 */
@@ -26,8 +43,6 @@ body {
     
     /* 定義子容器置中 */
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* 地圖上放置的桌椅等物件 */
@@ -42,6 +57,8 @@ body {
 
 /* 角度控制面板 */
 #controls {
+    /*
+    */
     display: none;
 
     background-color:#fff5; 
@@ -132,8 +149,21 @@ body {
     transform: translateX(0) translateY(0) translateZ(-1.5px) rotateY(-90deg);
 }
 
+.main-contain {
+    overflow: hidden;
+}
+.scene-container {
+    width: 100vw;
+    height: 50vh;
+}
 
-
+.information {
+    position: relative;
+    width: 100vw;
+    height: 50vh;
+    z-index: 20;
+    background-color: #0008;
+}
 
 
 
@@ -155,8 +185,8 @@ body {
     animation-direction: alternate;    
     
 }
-
 #Bakugo, #Midoriya, #heart {
     border: solid black 1px;
 }
+
  */
