@@ -74,7 +74,7 @@ body {
 #map-container {
     width: 1600px;
     height: 1250px;
-    background-image: url(img/map_work_area.png);
+    background-image: url(img/map_work_area_mini.png);
     transform-origin: 50% 50%;
     position: relative;
 
