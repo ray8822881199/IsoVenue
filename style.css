@@ -37,12 +37,17 @@ body {
     
     position:relative; 
     overflow: clip;
-
+    
     width: 2000px;
     height: 2000px;
     
+    left: calc(50% - 1000px);
+    top: calc(50% - 1000px);
+    
     /* 定義子容器置中 */
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 地圖上放置的桌椅等物件 */
@@ -151,19 +156,14 @@ body {
 
 .main-contain {
     overflow: hidden;
+    
 }
 .scene-container {
     width: 100vw;
     height: 50vh;
 }
 
-.information {
-    position: relative;
-    width: 100vw;
-    height: 50vh;
-    z-index: 20;
-    background-color: #0008;
-}
+
 
 
 
@@ -190,3 +190,331 @@ body {
 }
 
  */
+ 
+ .map_warning {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #f0f0f0;
+    z-index: 20;
+    position: relative;
+     height: 8vh;
+ }
+  .map_warning_text {
+    width: fit-content;
+    height: fit-content;
+    margin: auto 16px auto auto;
+ }
+ 
+.mission_map_info {/*卡片資訊區塊 含攤位卡片 攤位列表*/
+    position: relative;
+    width: 100vw;
+    height: 42vh;
+    z-index: 20;
+    background-color: #f0f0f0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 子元素垂直方向不拉伸，並垂直置中 */
+    gap: 32px;
+  }
+  div.mission_map_info_stall_card { /*攤位卡片*/
+    display: flex;
+    flex-wrap: wrap;  /*可換行*/
+    width: 500px;
+    /*padding: 16px 32px;*/
+    gap: 8px;
+    /*background-color: #ffffff;*/
+  }
+  div.stall_card_class { /**/
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    width: 100%;
+  }
+  div.mission_map_info > div{ /**/
+    padding:16px 32px;
+    
+  }
+  div.stall_card_class div { /*CP類型 攤位編號*/
+    padding: 4px 16px;
+    border: 1.5px solid rgba(239, 141, 91);
+    border-radius: 8px;
+    color: #404040;
+    font-size: 16px;
+  }
+  div.stall_card_name { /*攤位名稱*/
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #404040;
+  }
+  div.mission_map_info_stall_card .divider { /*分隔線*/
+    width: 100%;
+    height: 0px;
+    border: 1px solid #ef8d5b;
+  }
+  
+  table.stall_info { /* 攤位資訊表格 */
+    width: 100%;
+    color: #404040;
+    border-collapse: collapse;
+    table-layout: auto;
+  }
+  
+  table.stall_info td {
+    padding: 8px 0;
+  }
+  .stall_goods_title , .stall_sns_title {
+    font-weight: bold; 
+    white-space: nowrap; /*確保文字不換行，寬度貼合內容 */
+    width: 1px; /*告訴瀏覽器這個欄位只需要最小寬度 */
+  }
+  
+  .stall_good_info , .stall_sns_link { /*小說/連結網址*/
+    width: auto; /* 移除任何寬度限制，確保它會填滿剩餘的 100% 寬度 */
+  }
+  
+  
+  
+  
+  
+  /*------------以下攤位列表------------*/
+  
+  div.mission_map_stall_list { /*攤位列表*/
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column; /*垂直*/
+  }
+  
+  div.list_title{ /*官方任務 攤位資訊*/
+    display: flex;
+    width: 100%;
+  }
+  div.list_title > div { /*官方資訊 攤位資訊*/  /*這裡做切換*/
+    padding:4px 16px;
+    border-top: 1.5px solid #B6AB99;
+    border-left: 1.5px solid #B6AB99;
+    border-right: 1.5px solid #B6AB99;
+    border-bottom: 3px solid #B6AB99;
+    border-radius:8px 8px 0px 0px;
+    color: #404040;
+    font-weight: bold;
+    width: 50%;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  div.list_title > div:hover{ /*懸停狀態 官方資訊 攤位資訊*/
+    padding:4px 16px;
+    border-top: 1.5px solid #B6AB99;
+    border-left: 1.5px solid #B6AB99;
+    border-right: 1.5px solid #B6AB99;
+    border-bottom: 3px solid #B6AB99;
+    border-radius:8px 8px 0px 0px;
+    color: #ffffff;
+    background-color: #B6AB99;
+    font-weight: bold;
+    width: 50%;
+    text-align: center; 
+  }
+  
+  
+  div.list_content{ /*列表內容*/
+    display: flex;
+    flex-direction: column;
+    padding:8px 16px;
+    border:1.5px solid #b6ab99;
+    border-radius:0px 0px 8px 8px;
+    color: #404040;
+    
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 32vh;
+    /*background-color :#E0E0E0;*/
+  }
+    /* 捲軸軌道（整體）的寬度/高度 */
+    div.list_content::-webkit-scrollbar {
+        /* 捲軸收窄一點，設定為 6px 寬 */
+        width: 4px; 
+    }
+
+    /* 捲軸軌道（背景）的樣式 */
+    div.list_content::-webkit-scrollbar-track {
+        /* 捲軸軌道的顏色設定為 #fbfbfb (與背景色一致) */
+        background: #f7f7f700;
+    }
+
+    /* 捲軸的滑動條（Bar）的樣式 */
+    div.list_content::-webkit-scrollbar-thumb {
+        /* 設定滑動條的顏色為您要求的 #b6ab99 */
+        background-color: #b6ab99;
+        
+        /* 讓滑動條邊緣圓潤一點，增加視覺質感 */
+        border-radius: 10px; 
+    }
+
+    /* 移除上下的三角形/按鈕 */
+    div.list_content::-webkit-scrollbar-button {
+        /* 將上下按鈕的尺寸設為 0，實現隱藏 */
+        height: 0;
+        width: 0;
+        background-color: #0000;
+    }
+  
+  /*------------以下官方任務列表------------*/
+  
+  div.stall_official { /*官方任務區塊*/
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items:flex-start;
+  }
+  div.list_content .divider{ /*分隔線*/
+    width: 100%;
+    height: 1.5px;
+    background-color: #b6ab99;
+  }
+  div.stall_official_type{ 
+    padding:2px 4px;
+    border-radius:8px;
+    font-size:14px;
+    background-color: #b6ab99;
+    color: #ffffff;
+  }
+  div.stall_official_evnet{
+    padding-left: 4px;
+  }
+  div.stall_official_evnet .evnet_name:hover{ /*懸停狀態*/
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+
+  /*------------以下攤位資訊列表------------*/
+  div.stall_creator{
+    display:flex;
+    flex-direction: column; /*垂直*/
+    gap:16px;
+  }
+  
+  /*------------共同攤位table設定------------*/
+  div.stall_creator table td {
+    padding: 4px 8px;
+  }
+  /*------------幼馴染攤位設定------------*/
+  div.stall_creator .cp_type_osanana .cp_type_name{  /*分類顏色*/
+    display: flex;
+    width:100%;
+    color: #eabb6a;
+    align-items: center;
+    gap: 8px;
+  }
+  div.stall_creator .cp_type_osanana .divider{
+    flex-grow: 1; /* 關鍵：佔據所有剩餘空間，兩者平均分配 */
+    flex-basis: 0; /* 從 0 寬度開始計算 */
+    height: 1.5px;
+    background-color: #eabb6a;
+  }
+  div.cp_type_osanana table {
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    
+  }
+  div.stall_creator .cp_type_osanana td.number{
+    white-space: nowrap; /*確保文字不換行，寬度貼合內容 */
+    width: 1px; /*告訴瀏覽器這個欄位只需要最小寬度 */
+    padding-top: 4px; 
+    padding-bottom: 4px; 
+  }
+  div.stall_creator .cp_type_osanana td.stall_name{
+    width: 100%;
+  }
+  div.stall_creator .cp_type_osanana tr{ /*預設狀態*/
+    background-color: rgba(234, 187, 106, 0.3);
+    transition: background-color 0.2s ease-in-out;
+  }
+  div.cp_type_osanana table tr:hover{ /*懸停狀態*/
+    background-color: rgba(234, 187, 106, 0.7);
+    cursor: pointer;
+  }
+  
+  
+  /*------------勝出攤位設定------------*/
+  div.stall_creator .cp_type_bkdk .cp_type_name{  /*分類顏色*/
+    display: flex;
+    width:100%;
+    color: #EF8D5B;
+    align-items: center;
+    gap: 8px;
+  }
+  div.stall_creator .cp_type_bkdk .divider{
+    flex-grow: 1; /* 關鍵：佔據所有剩餘空間，兩者平均分配 */
+    flex-basis: 0; /* 從 0 寬度開始計算 */
+    height: 1.5px;
+    background-color: #EF8D5B;
+  }
+  div.cp_type_bkdk table {
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    
+  }
+  div.stall_creator .cp_type_bkdk td.number{
+    white-space: nowrap; /*確保文字不換行，寬度貼合內容 */
+    width: 1px; /*告訴瀏覽器這個欄位只需要最小寬度 */
+    padding-top: 4px; 
+    padding-bottom: 4px; 
+  }
+  div.stall_creator .cp_type_bkdk td.stall_name{
+    width: 100%;
+  }
+  div.stall_creator .cp_type_bkdk tr{ /*預設狀態*/
+    background-color: rgba(239, 141, 91, 0.3);
+    transition: background-color 0.2s ease-in-out;
+  }
+  div.cp_type_bkdk table tr:hover{ /*懸停狀態*/
+    background-color: rgba(239, 141, 91, 0.7);
+    cursor: pointer;
+  }
+  
+  /*------------出勝攤位設定------------*/
+  div.stall_creator .cp_type_dkbk .cp_type_name{  /*分類顏色*/
+    display: flex;
+    width:100%;
+    color: #9EC98D;
+    align-items: center;
+    gap: 8px;
+  }
+  div.stall_creator .cp_type_dkbk .divider{
+    flex-grow: 1; /* 關鍵：佔據所有剩餘空間，兩者平均分配 */
+    flex-basis: 0; /* 從 0 寬度開始計算 */
+    height: 1.5px;
+    background-color: #9EC98D;
+  }
+  div.cp_type_dkbk table {
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    
+  }
+  div.stall_creator .cp_type_dkbk td.number{
+    white-space: nowrap; /*確保文字不換行，寬度貼合內容 */
+    width: 1px; /*告訴瀏覽器這個欄位只需要最小寬度 */
+    padding-top: 4px; 
+    padding-bottom: 4px; 
+  }
+  div.stall_creator .cp_type_dkbk td.stall_name{
+    width: 100%;
+  }
+  div.stall_creator .cp_type_dkbk tr{  /*預設狀態*/
+    background-color: rgba(158, 201, 141, 0.3);
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  div.cp_type_dkbk table tr:hover{ /*懸停狀態*/
+    background-color: rgba(158, 201, 141, 0.7);
+    cursor: pointer;
+  }
+ 
+ 
+ 
+ 

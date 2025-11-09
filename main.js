@@ -8,26 +8,32 @@ window.missionPoints = [];
 window.rotate_x = 0;
 window.rotate_z = 0;
 
+window.border_color = {
+    'table-o': '#EF8D5B',
+    'table-g': '#9EC98D',
+    'table-y': '#EABB6A'
+};
+
 // 定義地圖物件
 window.areaItem = [
     // 橘區
-    {id: 'table-o-01', bg: 'img/mapitem/item_desk.png', x: 274, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-02', bg: 'img/mapitem/item_desk.png', x: 233, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-03', bg: 'img/mapitem/item_desk.png', x: 192, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-04', bg: 'img/mapitem/item_desk.png', x: 151, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-05', bg: 'img/mapitem/item_desk.png', x: 110, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-06', bg: 'img/mapitem/item_desk.png', x: 69,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-07', bg: 'img/mapitem/item_desk.png', x: 28, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-08', bg: 'img/mapitem/item_desk.png', x: -13, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-09', bg: 'img/mapitem/item_desk.png', x: -54, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-10', bg: 'img/mapitem/item_desk.png', x: -95, y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-01', bg: 'img/mapitem/item_desk.png', x: 274,  y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-02', bg: 'img/mapitem/item_desk.png', x: 233,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-03', bg: 'img/mapitem/item_desk.png', x: 192,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-04', bg: 'img/mapitem/item_desk.png', x: 151,  y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-05', bg: 'img/mapitem/item_desk.png', x: 110,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-06', bg: 'img/mapitem/item_desk.png', x: 69,   y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-07', bg: 'img/mapitem/item_desk.png', x: 28,   y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-08', bg: 'img/mapitem/item_desk.png', x: -13,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-09', bg: 'img/mapitem/item_desk.png', x: -54,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-10', bg: 'img/mapitem/item_desk.png', x: -95,  y: 22, w: 51, h: 55, btn_s: 0},
     {id: 'table-o-11', bg: 'img/mapitem/item_desk.png', x: -136, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-12', bg: 'img/mapitem/item_desk.png', x: -177,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-12', bg: 'img/mapitem/item_desk.png', x: -177, y: 22, w: 51, h: 55, btn_s: 0}, 
     {id: 'table-o-13', bg: 'img/mapitem/item_desk.png', x: -218, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-14', bg: 'img/mapitem/item_desk.png', x: -259,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-14', bg: 'img/mapitem/item_desk.png', x: -259, y: 22, w: 51, h: 55, btn_s: 0}, 
 
     // 綠區
-    {id: 'table-g-01', bg: 'img/mapitem/item_desk.png', x: 154 , y: 195, w: 51, h: 55, btn_s: 0},
+    {id: 'table-g-01', bg: 'img/mapitem/item_desk.png', x: 154,  y: 195, w: 51, h: 55, btn_s: 0},
     {id: 'table-g-02', bg: 'img/mapitem/item_desk.png', x: 113,  y: 195, w: 51, h: 55, btn_s: 0}, 
     {id: 'table-g-03', bg: 'img/mapitem/item_desk.png', x: 72,   y: 195, w: 51, h: 55, btn_s: 0}, 
     {id: 'table-g-04', bg: 'img/mapitem/item_desk.png', x: 31,   y: 195, w: 51, h: 55, btn_s: 0},
@@ -43,23 +49,71 @@ window.areaItem = [
     {id: 'table-g-14', bg: 'img/mapitem/item_desk.png', x: -379, y: 195, w: 51, h: 55, btn_s: 0}, 
 
     // 黃區
-    {id: 'table-y-01', bg: 'img/mapitem/item_desk.png', x: 642, y: 30, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-02', bg: 'img/mapitem/item_desk.png', x: 642, y: 71, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-01', bg: 'img/mapitem/item_desk.png', x: 642, y: 30,  w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-02', bg: 'img/mapitem/item_desk.png', x: 642, y: 71,  w: 51, h: 55, btn_s: 0}, 
     {id: 'table-y-03', bg: 'img/mapitem/item_desk.png', x: 642, y: 112, w: 51, h: 55, btn_s: 0}, 
     {id: 'table-y-04', bg: 'img/mapitem/item_desk.png', x: 642, y: 153, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-05', bg: 'img/mapitem/item_desk.png', x: 597 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-06', bg: 'img/mapitem/item_desk.png', x: 556 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-07', bg: 'img/mapitem/item_desk.png', x: 515 , y: 190, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-08', bg: 'img/mapitem/item_desk.png', x: 474 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-09', bg: 'img/mapitem/item_desk.png', x: 433 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-10', bg: 'img/mapitem/item_desk.png', x: 392 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-11', bg: 'img/mapitem/item_desk.png', x: 351 , y: 190, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-12', bg: 'img/mapitem/item_desk.png', x: 310 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-05', bg: 'img/mapitem/item_desk.png', x: 597, y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-06', bg: 'img/mapitem/item_desk.png', x: 556, y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-07', bg: 'img/mapitem/item_desk.png', x: 515, y: 190, w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-08', bg: 'img/mapitem/item_desk.png', x: 474, y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-09', bg: 'img/mapitem/item_desk.png', x: 433, y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-10', bg: 'img/mapitem/item_desk.png', x: 392, y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-11', bg: 'img/mapitem/item_desk.png', x: 351, y: 190, w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-12', bg: 'img/mapitem/item_desk.png', x: 310, y: 190, w: 51, h: 55, btn_s: 0}, 
 
     // 地圖娃
     {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55, btn_s: 0},
     {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56, btn_s: 0}
 ];
+
+window.areaInfo = {
+    // 橘區
+    'table-o-01': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘01 ', stall_card_name:' 橘01攤位名稱 '},
+    'table-o-02': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘02 ', stall_card_name:' 橘02攤位名稱 '}, 
+    'table-o-03': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘03 ', stall_card_name:' 橘03攤位名稱 '}, 
+    'table-o-04': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘04 ', stall_card_name:' 橘04攤位名稱 '},
+    'table-o-05': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘05 ', stall_card_name:' 橘05攤位名稱 '}, 
+    'table-o-06': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘06 ', stall_card_name:' 橘06攤位名稱 '}, 
+    'table-o-07': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘07 ', stall_card_name:' 橘07攤位名稱 '},
+    'table-o-08': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘08 ', stall_card_name:' 橘08攤位名稱 '}, 
+    'table-o-09': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘09 ', stall_card_name:' 橘09攤位名稱 '}, 
+    'table-o-10': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘10 ', stall_card_name:' 橘10攤位名稱 '},
+    'table-o-11': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘11 ', stall_card_name:' 橘11攤位名稱 '}, 
+    'table-o-12': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘12 ', stall_card_name:' 橘12攤位名稱 '}, 
+    'table-o-13': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘13 ', stall_card_name:' 橘13攤位名稱 '}, 
+    'table-o-14': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘14 ', stall_card_name:' 橘14攤位名稱 '}, 
+
+    // 綠區
+    'table-g-01': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠01 ', stall_card_name:' 綠01攤位名稱 '},
+    'table-g-02': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠02 ', stall_card_name:' 綠02攤位名稱 '}, 
+    'table-g-03': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠03 ', stall_card_name:' 綠03攤位名稱 '}, 
+    'table-g-04': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠04 ', stall_card_name:' 綠04攤位名稱 '},
+    'table-g-05': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠05 ', stall_card_name:' 綠05攤位名稱 '}, 
+    'table-g-06': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠06 ', stall_card_name:' 綠06攤位名稱 '}, 
+    'table-g-07': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠07 ', stall_card_name:' 綠07攤位名稱 '},
+    'table-g-08': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠08 ', stall_card_name:' 綠08攤位名稱 '}, 
+    'table-g-09': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠09 ', stall_card_name:' 綠09攤位名稱 '}, 
+    'table-g-10': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠10 ', stall_card_name:' 綠10攤位名稱 '},
+    'table-g-11': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠11 ', stall_card_name:' 綠11攤位名稱 '}, 
+    'table-g-12': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠12 ', stall_card_name:' 綠12攤位名稱 '}, 
+    'table-g-13': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠13 ', stall_card_name:' 綠13攤位名稱 '}, 
+    'table-g-14': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠14 ', stall_card_name:' 綠14攤位名稱 '}, 
+
+    // 黃區    
+    'table-y-01': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃01 ', stall_card_name:' 黃01攤位名稱 '},
+    'table-y-02': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃02 ', stall_card_name:' 黃02攤位名稱 '}, 
+    'table-y-03': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃03 ', stall_card_name:' 黃03攤位名稱 '}, 
+    'table-y-04': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃04 ', stall_card_name:' 黃04攤位名稱 '},
+    'table-y-05': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃05 ', stall_card_name:' 黃05攤位名稱 '}, 
+    'table-y-06': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃06 ', stall_card_name:' 黃06攤位名稱 '}, 
+    'table-y-07': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃07 ', stall_card_name:' 黃07攤位名稱 '},
+    'table-y-08': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃08 ', stall_card_name:' 黃08攤位名稱 '}, 
+    'table-y-09': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃09 ', stall_card_name:' 黃09攤位名稱 '}, 
+    'table-y-10': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃10 ', stall_card_name:' 黃10攤位名稱 '},
+    'table-y-11': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃11 ', stall_card_name:' 黃11攤位名稱 '}, 
+    'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 黃12攤位名稱 '}, 
+};
 
 // 取得地圖元素
 const $mapContainer = $('#map-container');
@@ -84,31 +138,6 @@ function calculateEuclideanDistance(p1, p2) {
 
     // 開平方根
     return Math.sqrt(sumOfSquares);
-}
-
-
-// 計算並設定地圖容器使其在視窗中居中
-function centerMapOnLoad() {
-    const $mapContainer = $('#map-container');
-    
-    const windowWidth = $(window).width();
-    const windowHeight = $(window).height();
-    const mapWidth = $mapContainer.width();  
-    const mapHeight = $mapContainer.height(); 
-    
-    const newLeft = (windowWidth / 2) - (mapWidth / 2);
-    const newTop = (windowHeight / 4) - (mapHeight / 2);
-    
-    // 更新用於拖動的全局平移變數
-    window.currentLeft = newLeft;
-    window.currentTop = newTop;
-    
-    // 應用新的 left/top
-    $mapContainer.css({
-        'left': `${newLeft}px`,
-        'top': `${newTop}px`
-    });
-
 }
 
 
@@ -393,6 +422,25 @@ for (let i = 0; i < window.areaItem.length; i++) {
                 // 清理鎖定狀態
                 $element.data('isAnimating', false);
             });
+            
+            // 載入資訊卡
+            // 查找資訊物件
+            const infoObjId = $(this).attr('id');
+            const infoObj = areaInfo[$(this).attr('id')];
+            if(infoObj?.type=='STORE'){                
+                // 調整內容文字
+                $('.cp_type').text(infoObj.cp_type);
+                $('.stall_color').text(infoObj.stall_color);
+                $('.stall_card_name').text(infoObj.stall_card_name);
+                
+                // 更改色彩
+                if(infoObjId.startsWith('table-o')){$('.border_color_a').css({borderColor:window.border_color['table-o']});}
+                if(infoObjId.startsWith('table-g')){$('.border_color_a').css({borderColor:window.border_color['table-g']});}
+                if(infoObjId.startsWith('table-y')){$('.border_color_a').css({borderColor:window.border_color['table-y']});}
+                
+                // 更改詳細內容及連結物件
+                // 此處我要使用獨立 JS 檔案內的定義
+            }
         }
     );
     
@@ -442,18 +490,24 @@ $(document).ready(function() {
     const WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
     
     function isWideScreen() {
-        return $(window).width() >= WIDE_SCREEN_THRESHOLD;
+        const isWide = $(window).width() >= WIDE_SCREEN_THRESHOLD;
+        if(!isWide){
+            $('.mission_map_stall_list').css({display:'none'});
+        }else{
+            $('.mission_map_stall_list').css({display:'inline-flex'});
+        }
+        return isWide;
     }
     
     function applyInitialTransform() {
         let initialScale;
         
         if (isWideScreen()) {
-            // 寬螢幕 (電腦) 初始縮放 0.8
-            initialScale = 0.8;
+            // 寬螢幕 (電腦)
+            initialScale = 0.9;
         } else {
-            // 窄螢幕 (手機) 初始縮放 0.5
-            initialScale = 0.5;
+            // 窄螢幕 (手機)
+            initialScale = 0.6;
         }
         
         // 更新全域 currentScale 變數，作為滾輪/捏合縮放的起始值
@@ -475,7 +529,6 @@ $(document).ready(function() {
         resizeTimeout = setTimeout(function() {
             // 在尺寸改變時，重新檢查並應用適當的初始縮放
             applyInitialTransform();
-            centerMapOnLoad();
         }, 200); // 200ms 延遲以優化性能
     });
 
@@ -495,7 +548,6 @@ $(document).ready(function() {
     
     // 監聽 #mapContainer 的點擊事件
     $('#map-container').on('touchend click', function(event) {
-        
         
         // 目標不是 #map-container 不執行任務
         if (event.target !== this) {
@@ -538,7 +590,6 @@ $(document).ready(function() {
     // 由於使用 left/top，需在初始化時設置
     window.currentLeft = 0;
     window.currentTop = 0;
-    centerMapOnLoad();
     
     
     const $scene = $('.scene'); // 在更大的容器上監聽拖拉事件
@@ -593,25 +644,12 @@ $(document).ready(function() {
         const mapWidth = $mapContainer.width();
         const mapHeight = $mapContainer.height();
         
-        // 設定拖動極限
-        let padding_left = 800;
-        let padding_right = 800;
-        let padding_top = 600;
-        let padding_btn = 200;
+        // 設定拖動極限      
+        let maxLeft = Math.max(windowWidth * 0.5 - mapWidth * 0.5, mapWidth * 0.5 - windowWidth * 0.5);
+        let minLeft = Math.min(windowWidth * 0.5 - mapWidth * 0.5, mapWidth * 0.5 - windowWidth * 0.5);
+        let maxTop =  Math.max(windowHeight * 0.5 - mapHeight * 0.5, mapHeight * 0.5 - windowHeight * 0.5);
+        let minTop = Math.min(windowHeight * 0.5 - mapHeight * 0.5, mapHeight * 0.5 - windowHeight * 0.5);
         
-        if(windowWidth < 720){
-            padding_left = 800;
-            padding_right = 800;
-            padding_top = 600;
-            padding_btn = 200;
-        }
-        
-        //console.log(windowWidth);
-        
-        const maxLeft = windowWidth - mapWidth + padding_left;
-        const minLeft = -padding_right;
-        const maxTop = windowHeight - mapHeight + padding_btn;
-        const minTop = -padding_top;
         
         // 計算新的 left/top
         const newLeft = Math.max(Math.min(desiredLeft, maxLeft), minLeft);
