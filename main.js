@@ -10,54 +10,55 @@ window.rotate_z = 0;
 
 // 定義地圖物件
 window.areaItem = [
-    {id: 'table-o-01', bg: 'item_desk.png', x: 274, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-02', bg: 'item_desk.png', x: 233, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-03', bg: 'item_desk.png', x: 192, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-04', bg: 'item_desk.png', x: 151, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-05', bg: 'item_desk.png', x: 110, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-06', bg: 'item_desk.png', x: 69,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-07', bg: 'item_desk.png', x: 28, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-08', bg: 'item_desk.png', x: -13, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-09', bg: 'item_desk.png', x: -54, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-10', bg: 'item_desk.png', x: -95, y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-11', bg: 'item_desk.png', x: -136, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-12', bg: 'item_desk.png', x: -177,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-13', bg: 'item_desk.png', x: -218, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-14', bg: 'item_desk.png', x: -259,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    
-    
-    {id: 'table-g-01', bg: 'item_desk.png', x: 154 , y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-02', bg: 'item_desk.png', x: 113,  y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-03', bg: 'item_desk.png', x: 72,   y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-04', bg: 'item_desk.png', x: 31,   y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-05', bg: 'item_desk.png', x: -10,  y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-06', bg: 'item_desk.png', x: -51,  y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-07', bg: 'item_desk.png', x: -92,  y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-08', bg: 'item_desk.png', x: -133, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-09', bg: 'item_desk.png', x: -174, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-10', bg: 'item_desk.png', x: -215, y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-11', bg: 'item_desk.png', x: -256, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-12', bg: 'item_desk.png', x: -297, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-13', bg: 'item_desk.png', x: -338, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-14', bg: 'item_desk.png', x: -379, y: 195, w: 51, h: 55, btn_s: 0}, 
-    
-    {id: 'table-y-01', bg: 'item_desk.png', x: 642, y: 30, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-02', bg: 'item_desk.png', x: 642, y: 71, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-03', bg: 'item_desk.png', x: 642, y: 112, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-04', bg: 'item_desk.png', x: 642, y: 153, w: 51, h: 55, btn_s: 0},
-    
-    {id: 'table-y-05', bg: 'item_desk.png', x: 597 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-06', bg: 'item_desk.png', x: 556 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-07', bg: 'item_desk.png', x: 515 , y: 190, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-08', bg: 'item_desk.png', x: 474 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-09', bg: 'item_desk.png', x: 433 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-10', bg: 'item_desk.png', x: 392 , y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-11', bg: 'item_desk.png', x: 351 , y: 190, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-12', bg: 'item_desk.png', x: 310 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    // 橘區
+    {id: 'table-o-01', bg: 'img/mapitem/item_desk.png', x: 274, y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-02', bg: 'img/mapitem/item_desk.png', x: 233, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-03', bg: 'img/mapitem/item_desk.png', x: 192, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-04', bg: 'img/mapitem/item_desk.png', x: 151, y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-05', bg: 'img/mapitem/item_desk.png', x: 110, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-06', bg: 'img/mapitem/item_desk.png', x: 69,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-07', bg: 'img/mapitem/item_desk.png', x: 28, y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-08', bg: 'img/mapitem/item_desk.png', x: -13, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-09', bg: 'img/mapitem/item_desk.png', x: -54, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-10', bg: 'img/mapitem/item_desk.png', x: -95, y: 22, w: 51, h: 55, btn_s: 0},
+    {id: 'table-o-11', bg: 'img/mapitem/item_desk.png', x: -136, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-12', bg: 'img/mapitem/item_desk.png', x: -177,  y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-13', bg: 'img/mapitem/item_desk.png', x: -218, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-14', bg: 'img/mapitem/item_desk.png', x: -259,  y: 22, w: 51, h: 55, btn_s: 0}, 
 
+    // 綠區
+    {id: 'table-g-01', bg: 'img/mapitem/item_desk.png', x: 154 , y: 195, w: 51, h: 55, btn_s: 0},
+    {id: 'table-g-02', bg: 'img/mapitem/item_desk.png', x: 113,  y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-03', bg: 'img/mapitem/item_desk.png', x: 72,   y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-04', bg: 'img/mapitem/item_desk.png', x: 31,   y: 195, w: 51, h: 55, btn_s: 0},
+    {id: 'table-g-05', bg: 'img/mapitem/item_desk.png', x: -10,  y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-06', bg: 'img/mapitem/item_desk.png', x: -51,  y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-07', bg: 'img/mapitem/item_desk.png', x: -92,  y: 195, w: 51, h: 55, btn_s: 0},
+    {id: 'table-g-08', bg: 'img/mapitem/item_desk.png', x: -133, y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-09', bg: 'img/mapitem/item_desk.png', x: -174, y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-10', bg: 'img/mapitem/item_desk.png', x: -215, y: 195, w: 51, h: 55, btn_s: 0},
+    {id: 'table-g-11', bg: 'img/mapitem/item_desk.png', x: -256, y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-12', bg: 'img/mapitem/item_desk.png', x: -297, y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-13', bg: 'img/mapitem/item_desk.png', x: -338, y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-14', bg: 'img/mapitem/item_desk.png', x: -379, y: 195, w: 51, h: 55, btn_s: 0}, 
 
-    {id: 'item_small_dyna_1', bg: 'item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55, btn_s: 0},
-    {id: 'item_small_dyna_2', bg: 'item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56, btn_s: 0}
+    // 黃區
+    {id: 'table-y-01', bg: 'img/mapitem/item_desk.png', x: 642, y: 30, w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-02', bg: 'img/mapitem/item_desk.png', x: 642, y: 71, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-03', bg: 'img/mapitem/item_desk.png', x: 642, y: 112, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-04', bg: 'img/mapitem/item_desk.png', x: 642, y: 153, w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-05', bg: 'img/mapitem/item_desk.png', x: 597 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-06', bg: 'img/mapitem/item_desk.png', x: 556 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-07', bg: 'img/mapitem/item_desk.png', x: 515 , y: 190, w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-08', bg: 'img/mapitem/item_desk.png', x: 474 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-09', bg: 'img/mapitem/item_desk.png', x: 433 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-10', bg: 'img/mapitem/item_desk.png', x: 392 , y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-11', bg: 'img/mapitem/item_desk.png', x: 351 , y: 190, w: 51, h: 55, btn_s: 0},
+    {id: 'table-y-12', bg: 'img/mapitem/item_desk.png', x: 310 , y: 190, w: 51, h: 55, btn_s: 0}, 
+
+    // 地圖娃
+    {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55, btn_s: 0},
+    {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56, btn_s: 0}
 ];
 
 // 取得地圖元素
@@ -98,7 +99,7 @@ function animateTransform($el, transformValue, duration) {
         // 觸發 transform 變更 (開始動畫)
         $el.css('transform', transformValue);
         
-        // 增加備用機制 (推薦 50ms)
+        // 增加備用機制
         setTimeout(() => {
             resolve();
         }, duration + 50); 
@@ -125,34 +126,39 @@ function distanceEffect(playerId_1, playerId_2) {
     const p1 = window.players[playerId_1].locate || [0, 0];
     const p2 = window.players[playerId_2].locate || [0, 0];
     
-    const p1_width = $(`#${playerId_1}`).width();
-    const p2_width = $(`#${playerId_2}`).width();    
-    const p1_height = $(`#${playerId_1}`).height();
-    const p2_height = $(`#${playerId_2}`).height();
-    
-    const pc1 = [p1[0]+p1_width/2,p1[1]+p1_height];
-    const pc2 = [p2[0]+p2_width/2,p2[1]+p2_height];
-    
-    const is_show = calculateEuclideanDistance(pc1,pc2) < 200;
-    const $heart = $('#heart');
-    
-    
-    if(is_show){
-        const heart_status = $heart.css('display');
+    if(calculateEuclideanDistance(p1,p2) < 200){
+        // 取得元素的當前計算樣式
+        const dom_heart = $('#heart').get(0);
+        const heart_height = dom_heart.offsetHeight;
+        const heart_width = dom_heart.offsetWidth;
+        
+        const dom_p1 = $(`#${playerId_1}`).get(0);
+        const p1_height = dom_p1.offsetHeight;
+        const p1_width = dom_p1.offsetWidth;
+        
+        const dom_p2 = $(`#${playerId_2}`).get(0);
+        const p2_height = dom_p2.offsetHeight;
+        const p2_width = dom_p2.offsetWidth;
+        
+        
+        // 將計算點還原到角色中間
+        const pc1 = [p1[0] + p1_width / 2, p1[1] + p1_height / 2];
+        const pc2 = [p2[0] + p2_width / 2, p2[1] + p2_height / 2];
+        
         const centerX = (pc1[0] + pc2[0]) / 2;
         const centerY = (pc1[1] + pc2[1]) / 2;
         
-        const finalLeft = centerX - $heart.outerWidth() / 2;
-        const finalTop = centerY - $heart.outerHeight();
+        const finalLeft = centerX - heart_width / 2;
+        const finalTop = centerY - heart_height / 2;
 
         // 特效定位 顯示特效
-        $heart.css({
+        $(heart).css({
             'left': `${finalLeft}px`,
             'top': `${finalTop}px`,
             'display': `block`
         });
     }else{
-        $heart.css({
+        $(heart).css({
             'display': `none`
         });
     }
@@ -283,7 +289,6 @@ for (let i = 0; i < window.areaItem.length; i++) {
     const $newItem = $('<div></div>')
         .attr('id', item.id) 
         .addClass('venue-element area-item')
-        //.text('某張桌子 ' + item.id)
         .css({
             'width': `${item.w}px`,
             'height': `${item.h}px`,

@@ -7,7 +7,7 @@ body {
     font-family: sans-serif;
     width: 100vw;
     height: 100vh;
-    background-image: url(base.jpg);
+    background-image: url(img/base.jpg);
     
     /* 定義子容器置中 */
     display: flex;
@@ -17,6 +17,7 @@ body {
 
 /* 建立一個 3D 空間 */
 .scene {
+    
     position:relative; 
     overflow: clip;
 
@@ -42,10 +43,7 @@ body {
 /* 角度控制面板 */
 #controls {
     display: none;
-}
 
-/* 負責 3D 旋轉的介面 */
-#controls {
     background-color:#fff5; 
     position:absolute; 
     left:10px; 
@@ -59,7 +57,7 @@ body {
 #map-container {
     width: 1600px;
     height: 1250px;
-    background-image: url(map_work_area.png);
+    background-image: url(img/map_work_area.png);
     transform-origin: 50% 50%;
     position: relative;
 
@@ -97,10 +95,10 @@ body {
     background-size: contain;
 }
 #Midoriya > .playerbackground {
-    background-image: url(Midoriya.gif);
+    background-image: url(img/player/Midoriya.gif);
 }
 #Bakugo > .playerbackground {
-    background-image: url(Bakugo.gif);
+    background-image: url(img/player/Bakugo.gif);
 }
 
 
@@ -158,6 +156,7 @@ body {
     
 }
 
+#Bakugo, #Midoriya, #heart {
+    border: solid black 1px;
+}
  */
- 
- 
