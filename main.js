@@ -606,7 +606,7 @@ $(document).ready(function() {
             padding_btn = 200;
         }
         
-        console.log(windowWidth);
+        //console.log(windowWidth);
         
         const maxLeft = windowWidth - mapWidth + padding_left;
         const minLeft = -padding_right;
