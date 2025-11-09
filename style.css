@@ -203,6 +203,7 @@ body {
     width: fit-content;
     height: fit-content;
     margin: auto 16px auto auto;
+    color: #404040;
  }
  
 .mission_map_info {/*卡片資訊區塊 含攤位卡片 攤位列表*/

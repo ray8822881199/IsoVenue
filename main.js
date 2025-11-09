@@ -68,51 +68,56 @@ window.areaItem = [
 ];
 
 window.areaInfo = {
+
+    
     // 橘區
-    'table-o-01': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘01 ', stall_card_name:' 橘01攤位名稱 '},
-    'table-o-02': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘02 ', stall_card_name:' 橘02攤位名稱 '}, 
-    'table-o-03': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘03 ', stall_card_name:' 橘03攤位名稱 '}, 
-    'table-o-04': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘04 ', stall_card_name:' 橘04攤位名稱 '},
-    'table-o-05': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘05 ', stall_card_name:' 橘05攤位名稱 '}, 
-    'table-o-06': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘06 ', stall_card_name:' 橘06攤位名稱 '}, 
-    'table-o-07': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘07 ', stall_card_name:' 橘07攤位名稱 '},
-    'table-o-08': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘08 ', stall_card_name:' 橘08攤位名稱 '}, 
-    'table-o-09': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘09 ', stall_card_name:' 橘09攤位名稱 '}, 
-    'table-o-10': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘10 ', stall_card_name:' 橘10攤位名稱 '},
-    'table-o-11': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘11 ', stall_card_name:' 橘11攤位名稱 '}, 
-    'table-o-12': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘12 ', stall_card_name:' 橘12攤位名稱 '}, 
-    'table-o-13': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘13 ', stall_card_name:' 橘13攤位名稱 '}, 
-    'table-o-14': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘14 ', stall_card_name:' 橘14攤位名稱 '}, 
+    'table-o-01': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘01 ', stall_card_name:' 蒸氣龐克已同居 '},
+    'table-o-02': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘02 ', stall_card_name:' 狼羊邁入第N胎 '}, 
+    'table-o-03': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘03 ', stall_card_name:' 龍與藥師都訂婚了 '}, 
+    'table-o-04': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘04 ', stall_card_name:' 就你折寺在死不承認 '},
+    'table-o-05': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘05 ', stall_card_name:' 終於等到出久分可麗餅 '}, 
+    'table-o-06': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘06 ', stall_card_name:' 都職英了別只邀事務所 '}, 
+    'table-o-07': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘07 ', stall_card_name:' 橙綠是信仰 '},
+    'table-o-08': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘08 ', stall_card_name:' 郎騎竹馬不亦樂乎 '}, 
+    'table-o-09': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘09 ', stall_card_name:' 24小時都不夠幼馴染 '}, 
+    'table-o-10': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘10 ', stall_card_name:' 幼馴染不ㄍㄟˋ婚我英怎麼收場 '},
+    'table-o-11': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘11 ', stall_card_name:' 輟學賣本養幼馴染 '}, 
+    'table-o-12': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘12 ', stall_card_name:' 豬排飯加大辣椒分開裝 '}, 
+    'table-o-13': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘13 ', stall_card_name:' 菠蘿麵包和蜂蜜檸檬 '}, 
+    'table-o-14': {type:'STORE', cp_type:' 勝出 ', stall_color:' 橘14 ', stall_card_name:' 幼遜染萬歲 '}, 
+
 
     // 綠區
-    'table-g-01': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠01 ', stall_card_name:' 綠01攤位名稱 '},
-    'table-g-02': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠02 ', stall_card_name:' 綠02攤位名稱 '}, 
-    'table-g-03': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠03 ', stall_card_name:' 綠03攤位名稱 '}, 
-    'table-g-04': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠04 ', stall_card_name:' 綠04攤位名稱 '},
-    'table-g-05': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠05 ', stall_card_name:' 綠05攤位名稱 '}, 
-    'table-g-06': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠06 ', stall_card_name:' 綠06攤位名稱 '}, 
-    'table-g-07': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠07 ', stall_card_name:' 綠07攤位名稱 '},
-    'table-g-08': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠08 ', stall_card_name:' 綠08攤位名稱 '}, 
-    'table-g-09': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠09 ', stall_card_name:' 綠09攤位名稱 '}, 
-    'table-g-10': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠10 ', stall_card_name:' 綠10攤位名稱 '},
-    'table-g-11': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠11 ', stall_card_name:' 綠11攤位名稱 '}, 
-    'table-g-12': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠12 ', stall_card_name:' 綠12攤位名稱 '}, 
-    'table-g-13': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠13 ', stall_card_name:' 綠13攤位名稱 '}, 
-    'table-g-14': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠14 ', stall_card_name:' 綠14攤位名稱 '}, 
+    'table-g-01': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠01 ', stall_card_name:' 出勝大學愛到卡慘系 '},
+    'table-g-02': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠02 ', stall_card_name:' 勝己的秘密花園 '}, 
+    'table-g-03': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠03 ', stall_card_name:' 有貓有狗幸福長久 '}, 
+    'table-g-04': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠04 ', stall_card_name:' 出久戀上勝裝娃娃 '},
+    'table-g-05': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠05 ', stall_card_name:' 出し勝ち! '}, 
+    'table-g-06': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠06 ', stall_card_name:' 出し勝ち! '}, 
+    'table-g-07': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠07 ', stall_card_name:' 綠橘送作堆 '},
+    'table-g-08': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠08 ', stall_card_name:' 出勝灣摸凸摸 '}, 
+    'table-g-09': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠09 ', stall_card_name:' 出勝大觀園 '}, 
+    'table-g-10': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠10 ', stall_card_name:' 出ㄐ愛勝ㄐ '},
+    'table-g-11': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠11 ', stall_card_name:' 神木開竅倒數計時 '}, 
+    'table-g-12': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠12 ', stall_card_name:' 今日有人 '}, 
+    'table-g-13': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠13 ', stall_card_name:' 綠谷出久！！！ '}, 
+    'table-g-14': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠14 ', stall_card_name:' 你好像格外在意綠谷同學嘛 '}, 
 
     // 黃區    
-    'table-y-01': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃01 ', stall_card_name:' 黃01攤位名稱 '},
-    'table-y-02': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃02 ', stall_card_name:' 黃02攤位名稱 '}, 
-    'table-y-03': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃03 ', stall_card_name:' 黃03攤位名稱 '}, 
-    'table-y-04': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃04 ', stall_card_name:' 黃04攤位名稱 '},
-    'table-y-05': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃05 ', stall_card_name:' 黃05攤位名稱 '}, 
-    'table-y-06': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃06 ', stall_card_name:' 黃06攤位名稱 '}, 
-    'table-y-07': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃07 ', stall_card_name:' 黃07攤位名稱 '},
-    'table-y-08': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃08 ', stall_card_name:' 黃08攤位名稱 '}, 
-    'table-y-09': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃09 ', stall_card_name:' 黃09攤位名稱 '}, 
-    'table-y-10': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃10 ', stall_card_name:' 黃10攤位名稱 '},
-    'table-y-11': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃11 ', stall_card_name:' 黃11攤位名稱 '}, 
-    'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 黃12攤位名稱 '}, 
+
+
+    'table-y-01': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃01 ', stall_card_name:' 哭著報名的塔塔 '},
+    'table-y-02': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃02 ', stall_card_name:' 季予草 '}, 
+    'table-y-03': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃03 ', stall_card_name:' 森川日和 '}, 
+    'table-y-04': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃04 ', stall_card_name:' 暴躁竹馬俏老師 '},
+    'table-y-05': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃05 ', stall_card_name:' 幼馴染兩府聯姻 '}, 
+    'table-y-06': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃06 ', stall_card_name:' 100pasento '}, 
+    'table-y-07': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃07 ', stall_card_name:' 消失的貓座在長蛇座旁 '},
+    'table-y-08': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃08 ', stall_card_name:' 幼馴染純潔騙殺全國 '}, 
+    'table-y-09': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃09 ', stall_card_name:' 勝不由己 '}, 
+    'table-y-10': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃10 ', stall_card_name:' 綠谷小久可愛協會 '},
+    'table-y-11': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃11 ', stall_card_name:' ERQ '}, 
+    'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 出爆言論duck不必 '}, 
 };
 
 // 取得地圖元素
@@ -492,9 +497,14 @@ $(document).ready(function() {
     function isWideScreen() {
         const isWide = $(window).width() >= WIDE_SCREEN_THRESHOLD;
         if(!isWide){
+            //手機
             $('.mission_map_stall_list').css({display:'none'});
+            $('.map_warning_text').css({fontSize:'14px',margin:'auto 16px auto auto'});
+            
         }else{
+            //電腦
             $('.mission_map_stall_list').css({display:'inline-flex'});
+            $('.map_warning_text').css({fontSize:'14px',margin:'auto 80px auto auto'});
         }
         return isWide;
     }
