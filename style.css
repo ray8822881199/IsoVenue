@@ -3,11 +3,11 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     font-family: sans-serif;
     width: 100vw;
     height: 100vh;
-    /*background-image: url(img/base.jpg);*/
+    background-image: url(img/background_3.jpg); /*調整底圖*/
     
     
     
@@ -194,7 +194,7 @@ body {
  .map_warning {
     display: flex;
     flex-direction: row-reverse;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     z-index: 20;
     position: relative;
      height: 8vh;
@@ -211,7 +211,7 @@ body {
     width: 100vw;
     height: 42vh;
     z-index: 20;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 
     display: flex;
     justify-content: center;
