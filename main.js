@@ -64,7 +64,21 @@ window.areaItem = [
 
     // 地圖娃
     {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55, btn_s: 0},
-    {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56, btn_s: 0}
+    {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56, btn_s: 0},
+    
+    // 區域氣泡
+    {id: 'area-coser', icon: 'img/icon/map_icon_icon_coser_0.png', x: -460, y: -85, w: 170, h: 225, btn_s: 0},
+    {id: 'area-stamp-01', icon: 'img/icon/map_icon_icon_stamp.png', x: 190, y: -315, w: 55, h: 42, btn_s: 0},
+    {id: 'area-stamp-02', icon: 'img/icon/map_icon_icon_stamp.png', x: -430, y: -40, w: 55, h: 42, btn_s: 0},
+    {id: 'area-stamp-03', icon: 'img/icon/map_icon_icon_stamp.png', x: -747, y: -16, w: 55, h: 42, btn_s: 0},
+    {id: 'area-stamp-04', icon: 'img/icon/map_icon_icon_stamp.png', x: 130, y: 321, w: 55, h: 42, btn_s: 0},
+    
+    {id: 'area-camera-01', icon: 'img/icon/map_icon_icon_camera.png', x: 244, y: -303, w: 55, h: 42, btn_s: 0}, 
+    {id: 'area-camera-02', icon: 'img/icon/map_icon_icon_camera.png', x: -363, y: -32, w: 55, h: 42, btn_s: 0}, 
+    {id: 'area-camera-03', icon: 'img/icon/map_icon_icon_camera.png', x: -744, y: 45, w: 55, h: 42, btn_s: 0}, 
+    {id: 'area-camera-04', icon: 'img/icon/map_icon_icon_camera.png', x: 130, y: 393, w: 55, h: 42, btn_s: 0}, 
+
+
 ];
 
 window.areaInfo = {
@@ -176,7 +190,12 @@ function containerRotate(rotate) {
     mapContainer.css('transform', `rotateX(${rotate.x}deg) rotateZ(${rotate.z}deg)`);
     // 反向旋轉地圖物件讓他們正面向螢幕
     mapElement.each(function() {
-        $(this).css('transform', `rotateZ(${-rotate.z}deg) rotateX(${-rotate.x}deg)`);
+        if(!$(this).data('is-area')){
+            // 不是地區物件則轉向
+            $(this).css('transform', `rotateZ(${-rotate.z}deg) rotateX(${-rotate.x}deg)`);
+        }else{
+            $(this).css('transform', `translateZ(3px)`);
+        }
     });
 }
 
@@ -362,151 +381,189 @@ async function missionGo(thisPlayer){
 }; 
 
 
+// 動畫時間常數 (毫秒)
+const LIFT_DURATION = 200; 
+const PAUSE_DURATION = 300;
+const FALL_DURATION = 100;
+const LIFT_HEIGHT = -20;
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function handleItemEnter($element, $element_icon) {
+    
+    const hasIcon = $element_icon.length > 0;
+    const is_area = $element.data('is-area');
+    
+    $element.css('transition','transform 0.3s ease-out, opacity 0.3s ease-out');
+    hasIcon && $element_icon.css('transition','transform 0.3s ease-out');
+
+    let originalTransform = $element.data('oriTrans');
+    if (!originalTransform) {
+        originalTransform = $element.css('transform');
+        $element.data('oriTrans', originalTransform);
+    }
+    
+    let originalIconTransform = hasIcon ? $element_icon.data('oriTrans') : 'none';
+    if (hasIcon && !originalIconTransform) {
+        originalIconTransform = $element_icon.css('transform');
+        $element_icon.data('oriTrans', originalIconTransform);
+    }
+    
+    // 載入資訊卡
+    //loadStoreData($element, $element_icon);
+
+    if (hasIcon) {
+        $('.table-bubbles').css('opacity', '0.5'); 
+        // 選中者維持高亮
+        $('.loadStoreData').css('opacity', '1');
+        // 當下者維持高亮
+        $element_icon.css('opacity', '1');
+    }
+    // 地區不移動
+    if(!is_area){
+        $element.css('transform', `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`);
+    }
+    // 地區不彈跳
+    if (hasIcon) {
+        $element_icon.css('transform', `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.5}px, 0px)`);
+    }
+    
+    $element.data('isAnimating', true);
+    
+
+}
+
+function handleItemLeave($element, $element_icon) {
+    // 恢復 transform (CSS Transition 會處理恢復過程)
+    $element.css('transform', $element.data('oriTrans')); 
+    if ($element_icon.length > 0) {
+        $element_icon.css('transform', $element_icon.data('oriTrans'));
+    }
+    // 清除未選中者高亮
+    $('.table-bubbles').css('opacity', '0.5'); 
+    // 選中者維持高亮
+    $('.loadStoreData').css('opacity', '1');
+    $element.data('isAnimating', false);
+}
+
+// 載入資訊卡
+function loadStoreData($element, $element_icon) {
+    const hasIcon = $element_icon.length > 0;
+    
+    if($element.data('is-store')){
+        // 切換選中者
+        $('.loadStoreData').removeClass('loadStoreData');
+        $element_icon.addClass('loadStoreData');
+        // 清除未選中者高亮
+        $('.table-bubbles').css('opacity', '0.5'); 
+        // 選中者維持高亮
+        $('.loadStoreData').css('opacity', '1');
+    }
+    
+    const infoObjId = $element.attr('id');
+    const infoObj = areaInfo[infoObjId];
+    if (infoObj?.type == 'STORE') {
+        // 更新資訊卡內容
+        $('.cp_type').text(infoObj.cp_type);
+        $('.stall_color').text(infoObj.stall_color);
+        $('.stall_card_name').text(infoObj.stall_card_name);
+        
+        // 更改資訊卡色彩
+        if (infoObjId.startsWith('table-o')) { $('.border_color_a').css({ borderColor: window.border_color['table-o'] }); }
+        if (infoObjId.startsWith('table-g')) { $('.border_color_a').css({ borderColor: window.border_color['table-g'] }); }
+        if (infoObjId.startsWith('table-y')) { $('.border_color_a').css({ borderColor: window.border_color['table-y'] }); }
+        
+    }
+}
+
+
+function handleItemClick($element, $element_icon) {
+    const hasIcon = $element_icon.length > 0;
+    
+    // 載入資訊卡
+    loadStoreData($element, $element_icon);
+    
+    if(!$element.data('is-store')){
+        setTimeout(() => {
+            handleItemLeave($element, $element_icon);
+        }, PAUSE_DURATION);
+    }
+
+}
+
 // 遍歷 areaItem 陣列並創建元素
 for (let i = 0; i < window.areaItem.length; i++) {
     const item = window.areaItem[i]; // 當前物件
     
-    // 1. 計算實際位置 (從中心點偏移)
+    // 1. 計算實際位置
     const final_left = mid_x + item.x - item.w / 2;
     const final_top = mid_y + item.y - item.h + item.btn_s;
     
-    // 2. 創建新的 DOM 元素 (使用 jQuery)
+    // 2. 創建新的 DOM 元素 ($newItem)
     const $newItem = $('<div></div>')
-        .attr('id', item.id) 
+        .attr('id', item.id)
         .addClass('venue-element area-item')
+        .data('item-index', i) 
         .css({
             'width': `${item.w}px`,
             'height': `${item.h}px`,
-            'background-image': `url(${item.bg})`,
-            'position': 'absolute', 
+            'background-image': `url(${item.bg || ''})`,
+            'position': 'absolute',
             'left': `${final_left}px`,
             'top': `${final_top}px`,
             'z-index': 11,
-            'transform-origin': ` 50% calc(100% - ${item.btn_s}px)`,
-            'transition': 'transform 0.3s ease-out'
+            'transform-origin': ` 50% calc(100% - ${item.btn_s}px)`
+            //'transition': 'transform 0.3s ease-out' 
         });
     
-    // 3. 元素專屬泡泡
+    $newItem.data('is-area', !item.bg);
+    $newItem.data('is-store', (item.bg && item.icon));
+    
+    // 3. 元素專屬泡泡 ($newIcon)
+    
     let $newIcon = null;
-    if(item.icon){
-        const pathParts = item.icon.split('/');
-        const iconId = pathParts[pathParts.length - 1].replace('.','_');
+    if (item.icon) {
+        const iconId = item.id + '_icon';
         
-        $newItem.attr('data-icon', iconId);
+        const icon_left = mid_x + item.x - 35 / 2;
+        const icon_top = mid_y + item.y - item.h + item.btn_s - 50;
+    
+        $newItem.attr('data-icon-id', iconId); 
         $newIcon = $('<div></div>')
-            .attr('id', iconId) 
+            .attr('id', iconId)
             .addClass('venue-element area-item table-bubbles')
             .css({
-                'pointer-events': 'none',
+                'pointer-events': 'none', // 確保滑鼠穿透
                 'opacity': `0.5`,
                 'width': `35px`,
                 'height': `50px`,
                 'background-image': `url(${item.icon})`,
-                'position': 'absolute', 
-                'left': `${final_left}px`,
-                'top': `${final_top - item.h * 0.6}px`,
+                'position': 'absolute',
+                'left': `${icon_left}px`,
+                'top': `${icon_top}px`,
                 'z-index': 12,
-                'transform-origin': ` 50% calc(100% + ${item.h * 0.95}px)`,
-                'transition': 'transform 0.3s ease-out'
+                'transform-origin': ` 50% calc(100% - ${item.btn_s - 50}px)`
+                //'transition': 'transform 0.3s ease-out, opacity 0.3s ease-out' // 確保 Icon 透明度也能過渡
             });
     }
-    
-    function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    
-    const LIFT_DURATION = 200; // 提升動畫時間 (毫秒)
-    const PAUSE_DURATION = 300; // 停頓時間 (毫秒)
-    const FALL_DURATION = 100; // 恢復動畫時間 (毫秒)
 
-    $newItem.on('click',
-        function() { 
-            const $element = $(this);
-            const this_id = $element.attr('id');
-            const this_icon_id = $element.attr('data-icon');
-            
-            const $element_icon = $(`#${this_icon_id}`);
-            const LIFT_HEIGHT = -20;
-            
-            const originalTransform = $element.css('transform'); 
-            const originalIconTransform = $element_icon.css('transform');
-            
-            // 氣泡高亮
-            $('.table-bubbles').css('opacity','0.5');
-            $element_icon.css('opacity','1');
-            
-            // 避免快速點擊造成動畫混亂
-            if ($element.data('isAnimating')) return;
-            $element.data('isAnimating', true);
-            
-            // 步驟 A: 同時啟動抬升動畫 (使用 Promise.all)
-            const liftAnimation = Promise.all([
-                // 元素本身的抬升
-                animateTransform(
-                    $element,
-                    `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`,
-                    LIFT_DURATION
-                ),
-                // Icon 的抬升 (同步移動相同的距離)
-                animateTransform(
-                    $element_icon,
-                    `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.5}px, 0px)`,
-                    LIFT_DURATION
-                )
-            ]);
-
-            // 啟動動畫序列
-            liftAnimation
-                .then(() => {
-                    // 動作 2: 停頓 (兩個動畫都完成後才停頓)
-                    return delay(PAUSE_DURATION);
-                })
-                .then(() => {
-                    // 步驟 B: 同時啟動恢復動畫 (使用 Promise.all)
-                    return Promise.all([
-                        // 元素本身的恢復
-                        animateTransform(
-                            $element,
-                            originalTransform,
-                            FALL_DURATION
-                        ),
-                        // Icon 的恢復
-                        animateTransform(
-                            $element_icon,
-                            originalIconTransform,
-                            FALL_DURATION
-                        )
-                    ]);
-                })
-                .finally(() => {
-                    // 清理鎖定狀態
-                    $element.data('isAnimating', false);
-                });
-            
-            // 載入資訊卡
-            // 查找資訊物件
-            const infoObjId = $(this).attr('id');
-            const infoObj = areaInfo[$(this).attr('id')];
-            if(infoObj?.type=='STORE'){                
-                // 調整內容文字
-                $('.cp_type').text(infoObj.cp_type);
-                $('.stall_color').text(infoObj.stall_color);
-                $('.stall_card_name').text(infoObj.stall_card_name);
-                
-                // 更改色彩
-                if(infoObjId.startsWith('table-o')){$('.border_color_a').css({borderColor:window.border_color['table-o']});}
-                if(infoObjId.startsWith('table-g')){$('.border_color_a').css({borderColor:window.border_color['table-g']});}
-                if(infoObjId.startsWith('table-y')){$('.border_color_a').css({borderColor:window.border_color['table-y']});}
-                
-                // 更改詳細內容及連結物件
-                // 此處我要使用獨立 JS 檔案內的定義
-            }
-        }
-    );
+    const $iconToBind = $newIcon || $(); 
+    $newItem.on('click', function() {
+        handleItemClick($(this), $iconToBind);
+    });
+    $newItem.on('mouseenter', function() {
+        handleItemEnter($(this), $iconToBind);
+    });
+    $newItem.on('mouseleave', function() {
+        handleItemLeave($(this), $iconToBind);
+    });
     
-    // 3. 將元素添加到地圖容器中
     $mapContainer.append($newItem);
     $newIcon && $mapContainer.append($newIcon);
+    //$newItem.css('transition','transform 0.3s ease-out, opacity 0.3s ease-out');
+    //$newIcon && $newIcon.css('transition','transform 0.3s ease-out');
 }
 
 

@@ -116,6 +116,9 @@ body {
     height: 90px;
     background-size: contain;
 }
+.player {
+    pointer-events: none;
+}
 #Midoriya > .playerbackground {
     background-image: url(img/player/Midoriya.gif);
 }
@@ -167,7 +170,6 @@ body {
 
 
 
-
 /* 往返路徑
 @keyframes MidoriyaPath {
     0%    {left: 60%;top: 30%;}
@@ -189,6 +191,9 @@ body {
     border: solid black 1px;
 }
 
+.venue-element, .area-item {
+    border: solid black 1px;
+}
  */
  
  .map_warning {
