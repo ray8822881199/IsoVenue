@@ -14,7 +14,11 @@ window.IS_WIDE_SCREEN = false;
 window.border_color = {
     'table-o': '#EF8D5B',
     'table-g': '#9EC98D',
-    'table-y': '#EABB6A'
+    'table-y': '#EABB6A',
+    'area-stamp': '#CC4A75',
+    'area-camera': '#EE879D',
+    'area-coser': '#659B7F',
+    'area-bkginterview': '#E76845',
 };
 
 // 定義地圖物件
@@ -69,6 +73,7 @@ window.areaItem = [
     {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55},
     {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56},
     {id: 'item_small_dyna_3', bg: 'img/mapitem/item_small_dyna_3.png', x: 567,  y: -244,w: 53, h: 54},
+    {id: 'item_small_dyna_4', bg: 'img/mapitem/item_small_dyna_4.png', x: -511,  y: 356,w: 45, h: 56},
     
     // 區域氣泡
     {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
@@ -136,15 +141,15 @@ window.areaInfo = {
     
     // 任務區域
     'area-coser'         : {type:'OFFICIAL', cp_type:' 便民服務 ',   stall_color:' 整裝區 ',   stall_card_name:' 整裝區 '},
-    'area-stamp-01'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區01 ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-02'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區02 ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-03'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區03 ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-04'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區04 ', stall_card_name:' 他們的英雄之路 '},
-    'area-camera-01'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區01 ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-02'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區02 ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-03'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區03 ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-04'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區04 ', stall_card_name:' 旅行小戴拿 '},
-    'area-bkginterview'  : {type:'OFFICIAL', cp_type:' 限時任務③ ',   stall_color:' 面試區 ',   stall_card_name:' 大爆殺神事務所面試審核 '},
+    'area-stamp-01'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-02'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-03'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-04'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-camera-01'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-02'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-03'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-04'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-bkginterview'  : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務③ ',   stall_card_name:' 大爆殺神事務所面試審核 '},
     
 };
 
@@ -499,8 +504,16 @@ function loadStoreData($element) {
         if (infoObjId.startsWith('table-o')) { borderColor = window.border_color['table-o']; }
         if (infoObjId.startsWith('table-g')) { borderColor = window.border_color['table-g']; }
         if (infoObjId.startsWith('table-y')) { borderColor = window.border_color['table-y']; }
+        
+        if (infoObjId.startsWith('area-stamp')) { borderColor = window.border_color['area-stamp']; }
+        if (infoObjId.startsWith('area-camera')) { borderColor = window.border_color['area-camera']; }
+        if (infoObjId.startsWith('area-coser')) { borderColor = window.border_color['area-coser']; }
+        if (infoObjId.startsWith('area-bkginterview')) { borderColor = window.border_color['area-bkginterview']; }
+        
         borderColor && $('.border_color_a').css({
-            borderColor: borderColor
+            borderColor: borderColor,
+            backgroundColor: borderColor,
+            color: '#fff'
         });
         borderColor && $('.mission_map_info_stall_card > .divider').css({
             borderColor: borderColor,

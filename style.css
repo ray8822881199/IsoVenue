@@ -392,25 +392,23 @@ body {
     border-bottom: 3px solid #B6AB99;
     border-radius:8px 8px 0px 0px;*/
     background-color: #b6ab99;
-    color: #404040;
+    color: rgba(255, 255, 255, 0.7);
     width: 50%;
     font-weight: bold;
     text-align: center;
     transition: background-color 0.2s ease-in-out;
+
   }
   div.list_title > div:hover{ /*懸停狀態 官方資訊 攤位資訊*/
-    padding:4px 0px;
-    /*border-top: 1.5px solid #B6AB99;
-    border-left: 1.5px solid #B6AB99;
-    border-right: 1.5px solid #B6AB99;
-    border-bottom: 3px solid #B6AB99;
-    border-radius:8px 8px 0px 0px;*/
-    color: #ffffff;
-    background-color: #B6AB99;
-    font-weight: bold;
-    text-align: center; 
+
+    color: rgba(255, 255, 255, 1);
+    
   }
-  
+
+    div.list_title > div.tab-active { /*選中時的樣式*/
+    color: #404040;
+    background-color: #ffffff;
+  }
   
 
   
@@ -445,7 +443,7 @@ body {
 
   /*------------以下攤位資訊列表------------*/
   div.stall_creator{
-    display:flex;
+    display:none;
     flex-direction: column; /*垂直*/
     gap:16px;
   }
@@ -569,10 +567,7 @@ body {
   
   /*以下為JS新增樣式*/
   
-  div.list_title > div.tab-active { /*選中時的樣式*/
-    color: #404040;
-    background-color: #ffffff;
-  }
+
   
   /*以下調整滾輪樣式*/
   
