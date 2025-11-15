@@ -8,6 +8,9 @@ window.missionPoints = [];
 window.rotate_x = 0;
 window.rotate_z = 0;
 
+window.WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
+window.IS_WIDE_SCREEN = false;
+
 window.border_color = {
     'table-o': '#EF8D5B',
     'table-g': '#9EC98D',
@@ -17,66 +20,67 @@ window.border_color = {
 // 定義地圖物件
 window.areaItem = [
     // 橘區
-    {id: 'table-o-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_1.png',  x: 274,  y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_2.png',  x: 233,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_3.png',  x: 192,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_4.png',  x: 151,  y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_5.png',  x: 110,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_6.png',  x: 69,   y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_7.png',  x: 28,   y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_8.png',  x: -13,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_9.png',  x: -54,  y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_10.png', x: -95,  y: 22, w: 51, h: 55, btn_s: 0},
-    {id: 'table-o-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_11.png', x: -136, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_12.png', x: -177, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-13', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_13.png', x: -218, y: 22, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-o-14', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_14.png', x: -259, y: 22, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-o-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_1.png',  x: 274,  y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_2.png',  x: 233,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_3.png',  x: 192,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_4.png',  x: 151,  y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_5.png',  x: 110,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_6.png',  x: 69,   y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_7.png',  x: 28,   y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_8.png',  x: -13,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_9.png',  x: -54,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_10.png', x: -95,  y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_11.png', x: -136, y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_12.png', x: -177, y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-13', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_13.png', x: -218, y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-14', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_14.png', x: -259, y: 22, w: 51, h: 55, icon_shift: 50}, 
 
     // 綠區
-    {id: 'table-g-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_1.png',  x: 154,  y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_2.png',  x: 113,  y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_3.png',  x: 72,   y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_4.png',  x: 31,   y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_5.png',  x: -10,  y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_6.png',  x: -51,  y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_7.png',  x: -92,  y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_8.png',  x: -133, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_9.png',  x: -174, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_10.png', x: -215, y: 195, w: 51, h: 55, btn_s: 0},
-    {id: 'table-g-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_11.png', x: -256, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_12.png', x: -297, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-13', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_13.png', x: -338, y: 195, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-g-14', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_14.png', x: -379, y: 195, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-g-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_1.png',  x: 154,  y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_2.png',  x: 113,  y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_3.png',  x: 72,   y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_4.png',  x: 31,   y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_5.png',  x: -10,  y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_6.png',  x: -51,  y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_7.png',  x: -92,  y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_8.png',  x: -133, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_9.png',  x: -174, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_10.png', x: -215, y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_11.png', x: -256, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_12.png', x: -297, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-13', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_13.png', x: -338, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-14', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_14.png', x: -379, y: 195, w: 51, h: 55, icon_shift: 50}, 
 
     // 黃區
-    {id: 'table-y-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_1.png',  x: 642, y: 30,  w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_2.png',  x: 642, y: 71,  w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_3.png',  x: 642, y: 112, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_4.png',  x: 642, y: 153, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_5.png',  x: 597, y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_6.png',  x: 556, y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_7.png',  x: 515, y: 190, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_8.png',  x: 474, y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_9.png',  x: 433, y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_10.png', x: 392, y: 190, w: 51, h: 55, btn_s: 0}, 
-    {id: 'table-y-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_11.png', x: 351, y: 190, w: 51, h: 55, btn_s: 0},
-    {id: 'table-y-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_12.png', x: 310, y: 190, w: 51, h: 55, btn_s: 0}, 
+    {id: 'table-y-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_1.png',  x: 642, y: 30,  w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_2.png',  x: 642, y: 71,  w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_3.png',  x: 642, y: 112, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_4.png',  x: 642, y: 153, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_5.png',  x: 597, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_6.png',  x: 556, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_7.png',  x: 515, y: 190, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_8.png',  x: 474, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_9.png',  x: 433, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_10.png', x: 392, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_11.png', x: 351, y: 190, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_12.png', x: 310, y: 190, w: 51, h: 55, icon_shift: 50}, 
 
     // 地圖娃
-    {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55, btn_s: 0},
-    {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56, btn_s: 0},
+    {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55},
+    {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56},
     
     // 區域氣泡
-    {id: 'area-coser', icon: 'img/icon/map_icon_icon_coser_0.png', x: -460, y: -85, w: 170, h: 225, btn_s: 0},
-    {id: 'area-stamp-01', icon: 'img/icon/map_icon_icon_stamp.png', x: 190, y: -315, w: 55, h: 42, btn_s: 0},
-    {id: 'area-stamp-02', icon: 'img/icon/map_icon_icon_stamp.png', x: -430, y: -40, w: 55, h: 42, btn_s: 0},
-    {id: 'area-stamp-03', icon: 'img/icon/map_icon_icon_stamp.png', x: -747, y: -16, w: 55, h: 42, btn_s: 0},
-    {id: 'area-stamp-04', icon: 'img/icon/map_icon_icon_stamp.png', x: 130, y: 321, w: 55, h: 42, btn_s: 0},
+    {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
+    {id: 'area-bkginterview', icon: 'img/icon/map_icon_icon_bkginterview_0.png', x: -97,  y: 474,  w: 300, h: 200, icon_shift: 50},
     
-    {id: 'area-camera-01', icon: 'img/icon/map_icon_icon_camera.png', x: 244, y: -303, w: 55, h: 42, btn_s: 0}, 
-    {id: 'area-camera-02', icon: 'img/icon/map_icon_icon_camera.png', x: -363, y: -32, w: 55, h: 42, btn_s: 0}, 
-    {id: 'area-camera-03', icon: 'img/icon/map_icon_icon_camera.png', x: -744, y: 45, w: 55, h: 42, btn_s: 0}, 
-    {id: 'area-camera-04', icon: 'img/icon/map_icon_icon_camera.png', x: 130, y: 393, w: 55, h: 42, btn_s: 0}, 
+    {id: 'area-stamp-01',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 190,  y: -315, w: 55,  h: 42,  icon_shift: 45},
+    {id: 'area-stamp-02',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -430, y: -40,  w: 55,  h: 42,  icon_shift: 45},
+    {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -747, y: -16,  w: 55,  h: 62,  icon_shift: 45},
+    {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 130,  y: 321,  w: 55,  h: 62,  icon_shift: 45},
+    {id: 'area-camera-01',    icon: 'img/icon/map_icon_icon_camera.png',         x: 244,  y: -303, w: 55,  h: 42,  icon_shift: 45}, 
+    {id: 'area-camera-02',    icon: 'img/icon/map_icon_icon_camera.png',         x: -363, y: -32,  w: 55,  h: 42,  icon_shift: 45}, 
+    {id: 'area-camera-03',    icon: 'img/icon/map_icon_icon_camera.png',         x: -744, y: 45,   w: 55,  h: 62,  icon_shift: 45}, 
+    {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 130,  y: 393,  w: 55,  h: 62,  icon_shift: 45}, 
 
 
 ];
@@ -117,8 +121,6 @@ window.areaInfo = {
     'table-g-14': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠14 ', stall_card_name:' 你好像格外在意綠谷同學嘛 '}, 
 
     // 黃區    
-
-
     'table-y-01': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃01 ', stall_card_name:' 哭著報名的塔塔 '},
     'table-y-02': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃02 ', stall_card_name:' 季予草 '}, 
     'table-y-03': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃03 ', stall_card_name:' 森川日和 '}, 
@@ -131,6 +133,19 @@ window.areaInfo = {
     'table-y-10': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃10 ', stall_card_name:' 綠谷小久可愛協會 '},
     'table-y-11': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃11 ', stall_card_name:' ERQ '}, 
     'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 出爆言論duck不必 '}, 
+    
+    // 任務區域
+    'area-bkginterview'  : {type:'STORE', cp_type:' 面試區 ', stall_color:' 面試區 ', stall_card_name:' 面試區 '},
+    'area-coser'         : {type:'STORE', cp_type:' 整裝區 ', stall_color:' 整裝區 ', stall_card_name:' 整裝區 '},
+    'area-stamp-01'      : {type:'STORE', cp_type:' 集章區01 ', stall_color:' 集章區01 ', stall_card_name:' 集章區01 '},
+    'area-stamp-02'      : {type:'STORE', cp_type:' 集章區02 ', stall_color:' 集章區02 ', stall_card_name:' 集章區02 '},
+    'area-stamp-03'      : {type:'STORE', cp_type:' 集章區03 ', stall_color:' 集章區03 ', stall_card_name:' 集章區03 '},
+    'area-stamp-04'      : {type:'STORE', cp_type:' 集章區04 ', stall_color:' 集章區04 ', stall_card_name:' 集章區04 '},
+    'area-camera-01'     : {type:'STORE', cp_type:' 打卡區01 ', stall_color:' 打卡區01 ', stall_card_name:' 打卡區01 '},
+    'area-camera-02'     : {type:'STORE', cp_type:' 打卡區02 ', stall_color:' 打卡區02 ', stall_card_name:' 打卡區02 '},
+    'area-camera-03'     : {type:'STORE', cp_type:' 打卡區03 ', stall_color:' 打卡區03 ', stall_card_name:' 打卡區03 '},
+    'area-camera-04'     : {type:'STORE', cp_type:' 打卡區04 ', stall_color:' 打卡區04 ', stall_card_name:' 打卡區04 '},
+    
 };
 
 // 取得地圖元素
@@ -194,8 +209,11 @@ function containerRotate(rotate) {
             // 不是地區物件則轉向
             $(this).css('transform', `rotateZ(${-rotate.z}deg) rotateX(${-rotate.x}deg)`);
         }else{
+            // 提升一點點高度
             $(this).css('transform', `translateZ(3px)`);
         }
+        
+        $(this).data('oriTrans', $(this).css('transform'));
     });
 }
 
@@ -383,36 +401,34 @@ async function missionGo(thisPlayer){
 
 // 動畫時間常數 (毫秒)
 const LIFT_DURATION = 200; 
-const PAUSE_DURATION = 300;
-const FALL_DURATION = 100;
+const PAUSE_DURATION = 0;
+const FALL_DURATION = 200;
 const LIFT_HEIGHT = -20;
-
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 function handleItemEnter($element, $element_icon) {
     
     const hasIcon = $element_icon.length > 0;
     const is_area = $element.data('is-area');
+    const is_store = $element.data('is-store');
     
+    if(!is_area && !is_store){return;}
+
     $element.css('transition','transform 0.3s ease-out, opacity 0.3s ease-out');
     hasIcon && $element_icon.css('transition','transform 0.3s ease-out');
 
     let originalTransform = $element.data('oriTrans');
-    if (!originalTransform) {
-        originalTransform = $element.css('transform');
-        $element.data('oriTrans', originalTransform);
-    }
-    
     let originalIconTransform = hasIcon ? $element_icon.data('oriTrans') : 'none';
-    if (hasIcon && !originalIconTransform) {
-        originalIconTransform = $element_icon.css('transform');
-        $element_icon.data('oriTrans', originalIconTransform);
-    }
+
     
     // 載入資訊卡
     //loadStoreData($element, $element_icon);
+    if(window.IS_WIDE_SCREEN){
+        const $tooltip = $('#custom-tooltip');
+        const infoObjId = $element.attr('id');
+        const infoObj = areaInfo[infoObjId];
+        $tooltip.text(infoObj.stall_card_name).show();
+    }
+    
 
     if (hasIcon) {
         $('.table-bubbles').css('opacity', '0.5'); 
@@ -421,11 +437,11 @@ function handleItemEnter($element, $element_icon) {
         // 當下者維持高亮
         $element_icon.css('opacity', '1');
     }
-    // 地區不移動
-    if(!is_area){
+    // 僅店鋪彈跳
+    if(!is_area && is_store){
         $element.css('transform', `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`);
     }
-    // 地區不彈跳
+    // 氣泡彈跳高度更高
     if (hasIcon) {
         $element_icon.css('transform', `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.5}px, 0px)`);
     }
@@ -436,9 +452,18 @@ function handleItemEnter($element, $element_icon) {
 }
 
 function handleItemLeave($element, $element_icon) {
-    // 恢復 transform (CSS Transition 會處理恢復過程)
+    
+    const hasIcon = $element_icon.length > 0;
+    const is_area = $element.data('is-area');
+    const is_store = $element.data('is-store');
+    
+    if(!is_area && !is_store){return;}
+    
+    const $tooltip = $('#custom-tooltip');
+    $tooltip.hide();
+
     $element.css('transform', $element.data('oriTrans')); 
-    if ($element_icon.length > 0) {
+    if (hasIcon) {
         $element_icon.css('transform', $element_icon.data('oriTrans'));
     }
     // 清除未選中者高亮
@@ -452,18 +477,17 @@ function handleItemLeave($element, $element_icon) {
 function loadStoreData($element, $element_icon) {
     const hasIcon = $element_icon.length > 0;
     
-    if($element.data('is-store')){
-        // 切換選中者
-        $('.loadStoreData').removeClass('loadStoreData');
-        $element_icon.addClass('loadStoreData');
-        // 清除未選中者高亮
-        $('.table-bubbles').css('opacity', '0.5'); 
-        // 選中者維持高亮
-        $('.loadStoreData').css('opacity', '1');
-    }
-    
     const infoObjId = $element.attr('id');
     const infoObj = areaInfo[infoObjId];
+
+    // 切換選中者
+    $('.loadStoreData').removeClass('loadStoreData');
+    $element_icon.addClass('loadStoreData');
+    // 清除未選中者高亮
+    $('.table-bubbles').css('opacity', '0.5'); 
+    // 選中者維持高亮
+    $('.loadStoreData').css('opacity', '1');
+    
     if (infoObj?.type == 'STORE') {
         // 更新資訊卡內容
         $('.cp_type').text(infoObj.cp_type);
@@ -478,17 +502,49 @@ function loadStoreData($element, $element_icon) {
     }
 }
 
-
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+    
 function handleItemClick($element, $element_icon) {
     const hasIcon = $element_icon.length > 0;
     
+    const is_area = $element.data('is-area');
+    const is_store = $element.data('is-store');
+    
+    let originalTransform = $element.data('oriTrans');
+    let originalIconTransform = hasIcon ? $element_icon.data('oriTrans') : 'none';
+
     // 載入資訊卡
     loadStoreData($element, $element_icon);
     
-    if(!$element.data('is-store')){
-        setTimeout(() => {
-            handleItemLeave($element, $element_icon);
-        }, PAUSE_DURATION);
+    // 只有地圖娃要作動
+    if(!is_area && !is_store){
+        // 避免快速點擊造成動畫混亂
+        if ($element.data('isAnimating')) return;
+        $element.data('isAnimating', true);
+        
+        animateTransform(
+                $element,
+                `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`,
+                LIFT_DURATION
+            )
+            .then(() => {
+                return delay(PAUSE_DURATION);
+            })
+            .then(() => {
+                return Promise.all([
+                    animateTransform(
+                        $element,
+                        originalTransform,
+                        FALL_DURATION
+                    )
+                ]);
+            })
+            .finally(() => {
+                $element.data('isAnimating', false);
+            });
+
     }
 
 }
@@ -499,7 +555,7 @@ for (let i = 0; i < window.areaItem.length; i++) {
     
     // 1. 計算實際位置
     const final_left = mid_x + item.x - item.w / 2;
-    const final_top = mid_y + item.y - item.h + item.btn_s;
+    const final_top = mid_y + item.y - item.h;
     
     // 2. 創建新的 DOM 元素 ($newItem)
     const $newItem = $('<div></div>')
@@ -514,12 +570,13 @@ for (let i = 0; i < window.areaItem.length; i++) {
             'left': `${final_left}px`,
             'top': `${final_top}px`,
             'z-index': 11,
-            'transform-origin': ` 50% calc(100% - ${item.btn_s}px)`
+            'transform-origin': ` 50% 100%`
             //'transition': 'transform 0.3s ease-out' 
         });
     
     $newItem.data('is-area', !item.bg);
-    $newItem.data('is-store', (item.bg && item.icon));
+    $newItem.data('is-store', (!!item.bg && !!item.icon));
+    $newItem.data('isAnimating', false)
     
     // 3. 元素專屬泡泡 ($newIcon)
     
@@ -528,7 +585,7 @@ for (let i = 0; i < window.areaItem.length; i++) {
         const iconId = item.id + '_icon';
         
         const icon_left = mid_x + item.x - 35 / 2;
-        const icon_top = mid_y + item.y - item.h + item.btn_s - 50;
+        const icon_top = mid_y + item.y - item.h - (item.icon_shift);
     
         $newItem.attr('data-icon-id', iconId); 
         $newIcon = $('<div></div>')
@@ -544,7 +601,7 @@ for (let i = 0; i < window.areaItem.length; i++) {
                 'left': `${icon_left}px`,
                 'top': `${icon_top}px`,
                 'z-index': 12,
-                'transform-origin': ` 50% calc(100% - ${item.btn_s - 50}px)`
+                'transform-origin': ` 50% calc(100% + ${item.icon_shift}px)`
                 //'transition': 'transform 0.3s ease-out, opacity 0.3s ease-out' // 確保 Icon 透明度也能過渡
             });
     }
@@ -567,6 +624,7 @@ for (let i = 0; i < window.areaItem.length; i++) {
 }
 
 
+    
 $(document).ready(function() {
     
     const rotate = {x:0, z:0};
@@ -605,19 +663,20 @@ $(document).ready(function() {
     rotateZInput.on('input', updateRotation);
     
     // 縮放
-    const WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
+    
     
     function isWideScreen() {
-        const isWide = $(window).width() >= WIDE_SCREEN_THRESHOLD;
+        const isWide = $(window).width() >= window.WIDE_SCREEN_THRESHOLD;
         if(!isWide){
             //手機
             $('.mission_map_stall_list').css({display:'none'});
             $('.map_warning_text').css({fontSize:'14px',margin:'auto 16px auto auto'});
-            
+            window.IS_WIDE_SCREEN = false;
         }else{
             //電腦
             $('.mission_map_stall_list').css({display:'inline-flex'});
             $('.map_warning_text').css({fontSize:'14px',margin:'auto 80px auto auto'});
+            window.IS_WIDE_SCREEN = true;
         }
         return isWide;
     }
@@ -640,6 +699,15 @@ $(document).ready(function() {
         $mapContainer.css('transform', 
             `rotateX(${window.rotate_x}deg) rotateZ(${window.rotate_z}deg) scale3d(${initialScale}, ${initialScale}, ${initialScale})`
         );
+    }
+    
+    const $tooltip = $('#custom-tooltip');
+    const tooltipOffset = 15;
+    function updateTooltipPosition(x, y) {
+        $tooltip.css({
+            left: x + tooltipOffset + 'px',
+            top: y + tooltipOffset + 'px'
+        });
     }
     
     // A. 頁面載入時執行一次
@@ -686,14 +754,14 @@ $(document).ready(function() {
         }
         
         // 可視化任務座標
-        const newAxis = $('<div>')
+        /*const newAxis = $('<div>')
             .addClass('axis z-axis')
             .attr('id', `point-x-${x}-y-${y}`)
             .css({
                 'left': x + 'px',
                 'top': y + 'px'
             });
-        $(this).append(newAxis);
+        $(this).append(newAxis);*/
 
         // 將新任務添加到清單中
         missionPoints.push([x,y]);
@@ -784,6 +852,8 @@ $(document).ready(function() {
             'left': `${newLeft}px`,
             'top': `${newTop}px`
         });
+        
+        
     });
 
     // ----------------------------------------------------
@@ -799,6 +869,10 @@ $(document).ready(function() {
             
             $mapContainer.css('cursor', 'grab');
         }
+    });
+    
+    $(document).on('mousemove', function() {
+        updateTooltipPosition(event.pageX, event.pageY);
     });
 
 });

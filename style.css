@@ -17,6 +17,27 @@ body {
     align-items: center;
 }
 
+#custom-tooltip {
+    /* 必須是定位元素 */
+    position: absolute; 
+    /* 確保它在所有其他元素之上 */
+    z-index: 9999; 
+
+    display: none;
+    
+    opacity: 0.7;
+    
+    /* 設置基本樣式 */
+    padding: 6px 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap; /* 內容不換行 */
+    /* 避免滑鼠進入 Tooltip 本身時，mousemove 停止 */
+    pointer-events: none; 
+}
+
 /* 愛心特效 */
 #heart {
     display: none; 
@@ -119,8 +140,16 @@ body {
 .player {
     pointer-events: none;
 }
+#Midoriya {
+    left: 515px;
+    top: 795px;
+}
 #Midoriya > .playerbackground {
     background-image: url(img/player/Midoriya.gif);
+}
+#Bakugo {
+    left: 944px;
+    top: 404px;
 }
 #Bakugo > .playerbackground {
     background-image: url(img/player/Bakugo.gif);
