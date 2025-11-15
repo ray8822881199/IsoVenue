@@ -520,18 +520,20 @@ function handleItemClick($element, $element_icon) {
     
     // 重置未選回落
     const $selected = $('.loadStoreData');
-    $selected.each(function() {
-        const $item = $(`#${$(this).data('item-id')}`);
-        $(this).removeClass('loadStoreData');
-        handleItemLeave($item, $(this));
-    });
     
-    // 切換選中者
-    $element_icon.addClass('loadStoreData');
-    // 清除未選中者高亮
-    $('.table-bubbles').css('opacity', '0.5'); 
-    // 選中者維持高亮
-    $('.loadStoreData').css('opacity', '1');
+    if($selected.attr('id') != $element_icon.attr('id')){
+        $selected.each(function() {
+            const $item = $(`#${$(this).data('item-id')}`);
+            $(this).removeClass('loadStoreData');
+            handleItemLeave($item, $(this));
+        });
+        // 切換選中者
+        $element_icon.addClass('loadStoreData');
+        // 清除未選中者高亮
+        $('.table-bubbles').css('opacity', '0.5'); 
+        // 選中者維持高亮
+        $('.loadStoreData').css('opacity', '1');
+    }
     
     // 只有地圖娃要作動
     if(!is_area && !is_store){
