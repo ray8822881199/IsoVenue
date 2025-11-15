@@ -72,15 +72,14 @@ window.areaItem = [
     // 區域氣泡
     {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
     {id: 'area-bkginterview', icon: 'img/icon/map_icon_icon_bkginterview_0.png', x: -97,  y: 474,  w: 300, h: 200, icon_shift: 50},
-    
-    {id: 'area-stamp-01',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 190,  y: -315, w: 55,  h: 42,  icon_shift: 45},
-    {id: 'area-stamp-02',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -430, y: -40,  w: 55,  h: 42,  icon_shift: 45},
-    {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -747, y: -16,  w: 55,  h: 62,  icon_shift: 45},
-    {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 130,  y: 321,  w: 55,  h: 62,  icon_shift: 45},
-    {id: 'area-camera-01',    icon: 'img/icon/map_icon_icon_camera.png',         x: 244,  y: -303, w: 55,  h: 42,  icon_shift: 45}, 
-    {id: 'area-camera-02',    icon: 'img/icon/map_icon_icon_camera.png',         x: -363, y: -32,  w: 55,  h: 42,  icon_shift: 45}, 
-    {id: 'area-camera-03',    icon: 'img/icon/map_icon_icon_camera.png',         x: -744, y: 45,   w: 55,  h: 62,  icon_shift: 45}, 
-    {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 130,  y: 393,  w: 55,  h: 62,  icon_shift: 45}, 
+    {id: 'area-stamp-01',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 180,  y: -310, w: 50,  h: 40,  icon_shift: 40},
+    {id: 'area-camera-01',    icon: 'img/icon/map_icon_icon_camera.png',         x: 240,  y: -310, w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-stamp-02',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -440, y: -34,  w: 50,  h: 40,  icon_shift: 40},
+    {id: 'area-camera-02',    icon: 'img/icon/map_icon_icon_camera.png',         x: -370, y: -34,  w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -755, y: -20,  w: 40,  h: 55,  icon_shift: 40},
+    {id: 'area-camera-03',    icon: 'img/icon/map_icon_icon_camera.png',         x: -755, y: 40,   w: 40,  h: 55,  icon_shift: 40}, 
+    {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 120,  y: 320,  w: 40,  h: 55,  icon_shift: 40},
+    {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
 
 
 ];
@@ -443,7 +442,7 @@ function handleItemEnter($element, $element_icon) {
     }
     // 氣泡彈跳高度更高
     if (hasIcon) {
-        $element_icon.css('transform', `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.5}px, 0px)`);
+        $element_icon.css('transform', `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.3}px, 0px)`);
     }
     
     $element.data('isAnimating', true);
@@ -457,36 +456,36 @@ function handleItemLeave($element, $element_icon) {
     const is_area = $element.data('is-area');
     const is_store = $element.data('is-store');
     
+    // 吉祥物沒有滑鼠離開事件
     if(!is_area && !is_store){return;}
     
+    // 說明文字
     const $tooltip = $('#custom-tooltip');
     $tooltip.hide();
-
-    $element.css('transform', $element.data('oriTrans')); 
-    if (hasIcon) {
-        $element_icon.css('transform', $element_icon.data('oriTrans'));
+    
+    const is_selected = hasIcon && $element_icon.hasClass('loadStoreData');
+    if(!is_selected){
+        // 落回原始高度
+        $element.css('transform', $element.data('oriTrans')); 
+        if (hasIcon) {
+            $element_icon.css('transform', $element_icon.data('oriTrans'));
+        }
+        // 可再次觸發動畫
+        $element.data('isAnimating', false);
     }
+    
     // 清除未選中者高亮
     $('.table-bubbles').css('opacity', '0.5'); 
     // 選中者維持高亮
     $('.loadStoreData').css('opacity', '1');
-    $element.data('isAnimating', false);
 }
 
 // 載入資訊卡
-function loadStoreData($element, $element_icon) {
-    const hasIcon = $element_icon.length > 0;
+function loadStoreData($element) {
     
     const infoObjId = $element.attr('id');
     const infoObj = areaInfo[infoObjId];
-
-    // 切換選中者
-    $('.loadStoreData').removeClass('loadStoreData');
-    $element_icon.addClass('loadStoreData');
-    // 清除未選中者高亮
-    $('.table-bubbles').css('opacity', '0.5'); 
-    // 選中者維持高亮
-    $('.loadStoreData').css('opacity', '1');
+    
     
     if (infoObj?.type == 'STORE') {
         // 更新資訊卡內容
@@ -516,7 +515,23 @@ function handleItemClick($element, $element_icon) {
     let originalIconTransform = hasIcon ? $element_icon.data('oriTrans') : 'none';
 
     // 載入資訊卡
-    loadStoreData($element, $element_icon);
+    loadStoreData($element);
+    
+    
+    // 重置未選回落
+    const $selected = $('.loadStoreData');
+    $selected.each(function() {
+        const $item = $(`#${$(this).data('item-id')}`);
+        $(this).removeClass('loadStoreData');
+        handleItemLeave($item, $(this));
+    });
+    
+    // 切換選中者
+    $element_icon.addClass('loadStoreData');
+    // 清除未選中者高亮
+    $('.table-bubbles').css('opacity', '0.5'); 
+    // 選中者維持高亮
+    $('.loadStoreData').css('opacity', '1');
     
     // 只有地圖娃要作動
     if(!is_area && !is_store){
@@ -585,9 +600,8 @@ for (let i = 0; i < window.areaItem.length; i++) {
         const iconId = item.id + '_icon';
         
         const icon_left = mid_x + item.x - 35 / 2;
-        const icon_top = mid_y + item.y - item.h - (item.icon_shift);
+        const icon_top = mid_y + item.y - item.h - item.icon_shift;
     
-        $newItem.attr('data-icon-id', iconId); 
         $newIcon = $('<div></div>')
             .attr('id', iconId)
             .addClass('venue-element area-item table-bubbles')
@@ -604,6 +618,9 @@ for (let i = 0; i < window.areaItem.length; i++) {
                 'transform-origin': ` 50% calc(100% + ${item.icon_shift}px)`
                 //'transition': 'transform 0.3s ease-out, opacity 0.3s ease-out' // 確保 Icon 透明度也能過渡
             });
+        //建立雙向關聯
+        $newItem.data('icon-id', iconId); 
+        $newIcon.data('item-id', item.id); 
     }
 
     const $iconToBind = $newIcon || $(); 
