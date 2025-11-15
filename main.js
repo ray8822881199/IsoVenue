@@ -68,6 +68,7 @@ window.areaItem = [
     // 地圖娃
     {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55},
     {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56},
+    {id: 'item_small_dyna_3', bg: 'img/mapitem/item_small_dyna_3.png', x: 567,  y: -244,w: 53, h: 54},
     
     // 區域氣泡
     {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
@@ -134,16 +135,16 @@ window.areaInfo = {
     'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 出爆言論duck不必 '}, 
     
     // 任務區域
-    'area-bkginterview'  : {type:'STORE', cp_type:' 面試區 ', stall_color:' 面試區 ', stall_card_name:' 面試區 '},
-    'area-coser'         : {type:'STORE', cp_type:' 整裝區 ', stall_color:' 整裝區 ', stall_card_name:' 整裝區 '},
-    'area-stamp-01'      : {type:'STORE', cp_type:' 集章區01 ', stall_color:' 集章區01 ', stall_card_name:' 集章區01 '},
-    'area-stamp-02'      : {type:'STORE', cp_type:' 集章區02 ', stall_color:' 集章區02 ', stall_card_name:' 集章區02 '},
-    'area-stamp-03'      : {type:'STORE', cp_type:' 集章區03 ', stall_color:' 集章區03 ', stall_card_name:' 集章區03 '},
-    'area-stamp-04'      : {type:'STORE', cp_type:' 集章區04 ', stall_color:' 集章區04 ', stall_card_name:' 集章區04 '},
-    'area-camera-01'     : {type:'STORE', cp_type:' 打卡區01 ', stall_color:' 打卡區01 ', stall_card_name:' 打卡區01 '},
-    'area-camera-02'     : {type:'STORE', cp_type:' 打卡區02 ', stall_color:' 打卡區02 ', stall_card_name:' 打卡區02 '},
-    'area-camera-03'     : {type:'STORE', cp_type:' 打卡區03 ', stall_color:' 打卡區03 ', stall_card_name:' 打卡區03 '},
-    'area-camera-04'     : {type:'STORE', cp_type:' 打卡區04 ', stall_color:' 打卡區04 ', stall_card_name:' 打卡區04 '},
+    'area-coser'         : {type:'OFFICIAL', cp_type:' 便民服務 ',   stall_color:' 整裝區 ',   stall_card_name:' 整裝區 '},
+    'area-stamp-01'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區01 ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-02'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區02 ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-03'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區03 ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-04'      : {type:'OFFICIAL', cp_type:' 限時任務① ', stall_color:' 集章區04 ', stall_card_name:' 他們的英雄之路 '},
+    'area-camera-01'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區01 ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-02'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區02 ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-03'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區03 ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-04'     : {type:'OFFICIAL', cp_type:' 限時任務② ', stall_color:' 打卡區04 ', stall_card_name:' 旅行小戴拿 '},
+    'area-bkginterview'  : {type:'OFFICIAL', cp_type:' 限時任務③ ',   stall_color:' 面試區 ',   stall_card_name:' 大爆殺神事務所面試審核 '},
     
 };
 
@@ -487,19 +488,78 @@ function loadStoreData($element) {
     const infoObj = areaInfo[infoObjId];
     
     
-    if (infoObj?.type == 'STORE') {
+    if (infoObj) {
         // 更新資訊卡內容
         $('.cp_type').text(infoObj.cp_type);
         $('.stall_color').text(infoObj.stall_color);
         $('.stall_card_name').text(infoObj.stall_card_name);
         
         // 更改資訊卡色彩
-        if (infoObjId.startsWith('table-o')) { $('.border_color_a').css({ borderColor: window.border_color['table-o'] }); }
-        if (infoObjId.startsWith('table-g')) { $('.border_color_a').css({ borderColor: window.border_color['table-g'] }); }
-        if (infoObjId.startsWith('table-y')) { $('.border_color_a').css({ borderColor: window.border_color['table-y'] }); }
+        let borderColor = null;
+        if (infoObjId.startsWith('table-o')) { borderColor = window.border_color['table-o']; }
+        if (infoObjId.startsWith('table-g')) { borderColor = window.border_color['table-g']; }
+        if (infoObjId.startsWith('table-y')) { borderColor = window.border_color['table-y']; }
+        borderColor && $('.border_color_a').css({
+            borderColor: borderColor
+        });
+        borderColor && $('.mission_map_info_stall_card > .divider').css({
+            borderColor: borderColor,
+            backgroundColor: borderColor
+        });
         
     }
 }
+
+// 載入菜單
+function loadMenu() {
+
+    for (const key in window.areaInfo) {
+        if (areaInfo.hasOwnProperty(key)) {
+            const value = areaInfo[key];
+            //const infoType = value.type
+            //const cp_type = value.cp_type
+            const stall_color = value.stall_color
+            const stall_card_name = value.stall_card_name
+            
+            const $row = $(`<tr id="tr-info-${key}">
+                <td class="number">${stall_color}</td>
+                <td class="stall_name">${stall_card_name}</td>
+            </tr>`)
+            
+            
+            // 將資料列與攤位綁定
+            $row.data('ref-item',key);
+            
+            // 同步觸發
+            $row.on('click', function() {
+                const $item = $(`#${$(this).data('ref-item')}`);
+                const $icon = $(`#${$item.data('icon-id')}`);
+                handleItemClick($item, $icon);
+            });
+            $row.on('mouseenter', function() {
+                const $item = $(`#${$(this).data('ref-item')}`);
+                const $icon = $(`#${$item.data('icon-id')}`);
+                handleItemEnter($item, $icon);
+            });
+            $row.on('mouseleave', function() {
+                const $item = $(`#${$(this).data('ref-item')}`);
+                const $icon = $(`#${$item.data('icon-id')}`);
+                handleItemLeave($item, $icon);
+            });
+            
+            
+            // 添加入畫面
+            key.startsWith('table-y') && $('.cp_type_osanana table.stall_osanana').append($row);
+            key.startsWith('table-o') && $('.cp_type_bkdk table.stall_bkdk').append($row);
+            key.startsWith('table-g') && $('.cp_type_dkbk table.stall_dkbk').append($row);
+        }
+    }
+    
+
+}
+
+loadMenu();
+
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -681,8 +741,21 @@ $(document).ready(function() {
     rotateXInput.on('input', updateRotation);
     rotateZInput.on('input', updateRotation);
     
-    // 縮放
-    
+    // 設定「當點擊官方任務」時要做什麼
+    $('#tab-official').on('click', function() {
+        $(this).addClass('tab-active');
+        $('#tab-creator').removeClass('tab-active');
+        $('#content-official').show();
+        $('#content-creator').hide();
+    });
+
+    // 設定「當點擊攤位資訊」時要做什麼 (動作相反)
+    $('#tab-creator').on('click', function() {
+        $(this).addClass('tab-active');
+        $('#tab-official').removeClass('tab-active');
+        $('#content-official').hide();
+        $('#content-creator').show();
+    });
     
     function isWideScreen() {
         const isWide = $(window).width() >= window.WIDE_SCREEN_THRESHOLD;

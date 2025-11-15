@@ -225,6 +225,10 @@ body {
 
  */
  
+ .mission_map_info_stall_card .divider {
+     background-color: #f08e5c;
+ }
+ 
  .map_warning {
     display: flex;
     flex-direction: row-reverse;
@@ -242,16 +246,58 @@ body {
  
 .mission_map_info {/*卡片資訊區塊 含攤位卡片 攤位列表*/
     position: relative;
-    width: 100vw;
+    
     height: 42vh;
     z-index: 20;
     background-color: #ffffff;
 
+    align-items: flex-start; /* 子元素垂直方向不拉伸，並垂直置中 */
+    
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* 子元素垂直方向不拉伸，並垂直置中 */
-    gap: 32px;
+    flex-wrap: wrap;
+    gap: 120px;
+    width: auto;
+    padding: 0 16px;
   }
+  
+  div.list_content{ /*列表內容*/
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding:8px 16px;
+
+    color: #404040;
+    width: 100%;
+    height: 33vh;
+    overflow-y: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  div.mission_map{ /*地圖區塊*/
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  div.map { /*地圖*/
+    width: 100%;
+    height: 300px;
+    background-color: #9d9d9d;
+  }
+  div.map_warning{
+    width: 100%;
+    padding-right: 80px;
+    text-align: right;
+  }
+  div.map_warning p { /*地圖警語*/
+    color: #404040;
+    text-align: right;
+    line-height: 1;
+  }
+
+
+
   div.mission_map_info_stall_card { /*攤位卡片*/
     display: flex;
     flex-wrap: wrap;  /*可換行*/
@@ -260,16 +306,17 @@ body {
     gap: 8px;
     /*background-color: #ffffff;*/
   }
+  
   div.stall_card_class { /**/
+    height: 35px;
     display: flex;
     gap: 16px;
     justify-content: center;
     width: 100%;
   }
-  div.mission_map_info > div{ /**/
+  /*div.mission_map_info > div{ 
     padding:16px 32px;
-    
-  }
+  }*/
   div.stall_card_class div { /*CP類型 攤位編號*/
     padding: 4px 16px;
     border: 1.5px solid rgba(239, 141, 91);
@@ -279,6 +326,7 @@ body {
   }
   div.stall_card_name { /*攤位名稱*/
     width: 100%;
+    height: 40px;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -286,8 +334,8 @@ body {
   }
   div.mission_map_info_stall_card .divider { /*分隔線*/
     width: 100%;
-    height: 0px;
-    border: 1px solid #ef8d5b;
+    height: 1.5px;
+    border-width: 1px;
   }
   
   table.stall_info { /* 攤位資訊表格 */
@@ -317,10 +365,19 @@ body {
   /*------------以下攤位列表------------*/
   
   div.mission_map_stall_list { /*攤位列表*/
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column; /*垂直*/
+    width: 256px;
+    border: 1.5px solid #B6AB99;
+    border-radius: 8px;
+  }
+  div.list_title > div:first-child{
+    border-top-left-radius: 6.5px;
+  }
+  div.list_title > div:last-child{
+    border-top-right-radius: 6.5px;
   }
   
   div.list_title{ /*官方任務 攤位資訊*/
@@ -328,74 +385,34 @@ body {
     width: 100%;
   }
   div.list_title > div { /*官方資訊 攤位資訊*/  /*這裡做切換*/
-    padding:4px 16px;
-    border-top: 1.5px solid #B6AB99;
+    padding:4px 0px;
+    /*border-top: 1.5px solid #B6AB99;
     border-left: 1.5px solid #B6AB99;
     border-right: 1.5px solid #B6AB99;
     border-bottom: 3px solid #B6AB99;
-    border-radius:8px 8px 0px 0px;
+    border-radius:8px 8px 0px 0px;*/
+    background-color: #b6ab99;
     color: #404040;
-    font-weight: bold;
     width: 50%;
+    font-weight: bold;
     text-align: center;
     transition: background-color 0.2s ease-in-out;
   }
   div.list_title > div:hover{ /*懸停狀態 官方資訊 攤位資訊*/
-    padding:4px 16px;
-    border-top: 1.5px solid #B6AB99;
+    padding:4px 0px;
+    /*border-top: 1.5px solid #B6AB99;
     border-left: 1.5px solid #B6AB99;
     border-right: 1.5px solid #B6AB99;
     border-bottom: 3px solid #B6AB99;
-    border-radius:8px 8px 0px 0px;
+    border-radius:8px 8px 0px 0px;*/
     color: #ffffff;
     background-color: #B6AB99;
     font-weight: bold;
-    width: 50%;
     text-align: center; 
   }
   
   
-  div.list_content{ /*列表內容*/
-    display: flex;
-    flex-direction: column;
-    padding:8px 16px;
-    border:1.5px solid #b6ab99;
-    border-radius:0px 0px 8px 8px;
-    color: #404040;
-    
-    overflow-x: hidden;
-    overflow-y: scroll;
-    height: 32vh;
-    /*background-color :#E0E0E0;*/
-  }
-    /* 捲軸軌道（整體）的寬度/高度 */
-    div.list_content::-webkit-scrollbar {
-        /* 捲軸收窄一點，設定為 6px 寬 */
-        width: 4px; 
-    }
 
-    /* 捲軸軌道（背景）的樣式 */
-    div.list_content::-webkit-scrollbar-track {
-        /* 捲軸軌道的顏色設定為 #fbfbfb (與背景色一致) */
-        background: #f7f7f700;
-    }
-
-    /* 捲軸的滑動條（Bar）的樣式 */
-    div.list_content::-webkit-scrollbar-thumb {
-        /* 設定滑動條的顏色為您要求的 #b6ab99 */
-        background-color: #b6ab99;
-        
-        /* 讓滑動條邊緣圓潤一點，增加視覺質感 */
-        border-radius: 10px; 
-    }
-
-    /* 移除上下的三角形/按鈕 */
-    div.list_content::-webkit-scrollbar-button {
-        /* 將上下按鈕的尺寸設為 0，實現隱藏 */
-        height: 0;
-        width: 0;
-        background-color: #0000;
-    }
   
   /*------------以下官方任務列表------------*/
   
@@ -405,7 +422,7 @@ body {
     gap: 8px;
     align-items:flex-start;
   }
-  div.list_content .divider{ /*分隔線*/
+  div.stall_official .divider{
     width: 100%;
     height: 1.5px;
     background-color: #b6ab99;
@@ -445,7 +462,7 @@ body {
     align-items: center;
     gap: 8px;
   }
-  div.stall_creator .cp_type_osanana .divider{
+  .cp_type_osanana .divider{
     flex-grow: 1; /* 關鍵：佔據所有剩餘空間，兩者平均分配 */
     flex-basis: 0; /* 從 0 寬度開始計算 */
     height: 1.5px;
@@ -549,7 +566,102 @@ body {
     background-color: rgba(158, 201, 141, 0.7);
     cursor: pointer;
   }
- 
- 
- 
- 
+  
+  /*以下為JS新增樣式*/
+  
+  div.list_title > div.tab-active { /*選中時的樣式*/
+    color: #404040;
+    background-color: #ffffff;
+  }
+  
+  /*以下調整滾輪樣式*/
+  
+  div.list_content::-webkit-scrollbar {
+  width: 4px; /* 滾輪的寬度 */
+  }
+  div.list_content::-webkit-scrollbar-thumb {
+  background-color: #B6AB99; /* 滑塊顏色 (橘 勝出的主題色) */
+  border: 4px solid #B6AB99; /* 讓滑塊看起來被軌道包住 */
+  }
+  div.list_content {
+  /* For Firefox: 顏色依序為滑塊和軌道 */
+  scrollbar-color: #B6AB99 #ffffff; 
+  /* For Firefox: 讓滾輪變細 */
+  scrollbar-width: thin; 
+  } 
+}
+
+/*------------------手機------------------*/
+
+@media (max-width: 719px){
+  div.mission_map_stall_list{  /*隱藏攤位列表*/
+    display:none;
+  }
+  
+  div.lezi_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    width: 100vw;  /*---------------這裡要確認--------------*/
+    
+  }
+  div.mission_map{
+    width: 100%;
+  }
+  div.mission_map .map{
+    width: 100%;
+    height:360px;
+    background-color: #e0e0e0;
+  }
+  div.map_warning{
+    color: #404040;
+    text-align: right;
+    line-height: 1;
+    padding-right:16px;
+  }
+  div.mission_map_info{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:8px;
+    width: 100%;
+    padding: 0 16px;
+  }
+  div.mission_map_info_stall_card{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px;
+  }
+  div.stall_card_class{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    gap: 16px;
+    
+  }
+  div.stall_card_class div {
+    display:inline-block;
+    padding: 4px 16px;
+    border: 1.5px solid rgba(239, 141, 91);
+    border-radius: 8px;
+    color: #404040;
+    font-size: 16px;
+  }
+  div.stall_card_name { /*攤位名稱*/
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #404040;
+  }
+  div.divider{
+    width: 100%;
+    height: 1.5px;
+    background-color: rgba(239, 141, 91);
+  }
+  
+  
+}

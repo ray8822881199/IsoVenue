@@ -53,10 +53,10 @@
             
             <div class="mission_map_info_stall_card">
                 <div class="stall_card_class">
-                    <div class="cp_type border_color_a"> cp_type </div>
-                    <div class="stall_color border_color_a"> stall_color </div>
+                    <div class="cp_type border_color_a"> -- </div>
+                    <div class="stall_color border_color_a"> -- </div>
                 </div>
-                <div class="stall_card_name"> stall_card_name </div>
+                <div class="stall_card_name"> ---- </div>
                 <div class="divider border_color_a"></div>
                 <table class="stall_info">
                     <tbody>
@@ -72,40 +72,80 @@
                 </table>
             </div>
         
-        <div class="mission_map_stall_list">
-            <div class="list_title">
-                <div>官方任務</div>
-                <div>攤位資訊</div>
-            </div>
-            <div class="list_content">
-                <div class="stall_official">
-                    <div class="stall_official_type">便民服務</div>
-                    <div class="stall_official_evnet">
-                        <div class="evnet_name">主辦攤位</div>
-                        <div class="evnet_name">更衣區</div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="stall_official_type">限時任務①</div>
-                    <div class="stall_official_evnet">
-                        <div class="evnet_name">他們的英雄之路</div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="stall_official_type">限時任務②</div>
-                    <div class="stall_official_evnet">
-                        <div class="evnet_name">旅行小戴拿</div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="stall_official_type">限時任務③</div>
-                    <div class="stall_official_evnet">
-                        <div class="evnet_name">大爆殺神事務所面試審核</div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="stall_official_type">限時任務④</div>
-                    <div class="stall_official_evnet">
-                        <div class="evnet_name">徵稿展示</div>
-                    </div>
+            <div class="mission_map_stall_list">
+                <div class="list_title">
+                    <div id="tab-official" class="tab-active">官方任務</div>
+                    <div id="tab-creator">攤位資訊</div>
                 </div>
-            </div>
+                
+                <div class="list_content">
+                    <!-- 官方任務 -->
+                    <div class="stall_official"  id="content-official">
+                        <div class="stall_official_type">便民服務</div>
+                        <div class="stall_official_evnet">
+                            <div class="evnet_name">主辦攤位</div>
+                            <div class="evnet_name">更衣區</div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="stall_official_type">限時任務①</div>
+                        <div class="stall_official_evnet">
+                            <div class="evnet_name">他們的英雄之路</div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="stall_official_type">限時任務②</div>
+                        <div class="stall_official_evnet">
+                            <div class="evnet_name">旅行小戴拿</div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="stall_official_type">限時任務③</div>
+                        <div class="stall_official_evnet">
+                            <div class="evnet_name">大爆殺神事務所面試審核</div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="stall_official_type">限時任務④</div>
+                        <div class="stall_official_evnet">
+                            <div class="evnet_name">徵稿展示</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 攤位資訊 -->
+                    <div class="stall_creator hidden" id="content-creator">
+                        <div class="cp_type_osanana">
+                            <!--幼馴染-->
+                            <div class="cp_type_name">
+                                <div class="divider"></div>
+                                <span>黃 幼馴染</span>
+                                <div class="divider"></div>
+                            </div>
+                            <table class="stall_osanana">
+                                <!-- 幼馴染 row -->
+                            </table>
+                        </div>
+                        <div class="cp_type_bkdk">
+                            <!--勝出-->
+                            <div class="cp_type_name">
+                                <div class="divider"></div>
+                                <span>橘 勝出</span>
+                                <div class="divider"></div>
+                            </div>
+                            <table class="stall_bkdk">
+                                <!-- 勝出 row -->
+                            </table>
+                        </div>
+                        <div class="cp_type_dkbk">
+                            <!--出勝-->
+                            <div class="cp_type_name">
+                                <div class="divider"></div>
+                                <span>綠 出勝</span>
+                                <div class="divider"></div>
+                            </div>
+                            <table class="stall_dkbk">
+                                <!-- 出勝 row -->
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
