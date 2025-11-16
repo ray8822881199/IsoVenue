@@ -7,9 +7,9 @@ body {
     font-family: sans-serif;
     width: 100vw;
     height: 100vh;
-    background-image: url(img/background_3.jpg); /*調整底圖*/
+    background-image: url(img/background_9.jpg); /*調整底圖*/
     
-    
+    background-size: cover; 
     
     /* 定義子容器置中 */
     display: flex;
