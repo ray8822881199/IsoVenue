@@ -853,12 +853,12 @@ $(document).ready(function() {
         if(!isWide){
             //手機
             $('.mission_map_stall_list').css({display:'none'});
-            $('.map_warning_text').css({fontSize:'14px',margin:'auto 16px auto auto'});
+            $('.map_warning_text').css({fontSize:'9px',margin:'auto 8px auto auto'});
             window.IS_WIDE_SCREEN = false;
         }else{
             //電腦
             $('.mission_map_stall_list').css({display:'inline-flex'});
-            $('.map_warning_text').css({fontSize:'14px',margin:'auto 80px auto auto'});
+            $('.map_warning_text').css({fontSize:'12px',margin:'auto 80px auto auto'});
             window.IS_WIDE_SCREEN = true;
         }
         return isWide;
@@ -973,8 +973,7 @@ $(document).ready(function() {
     // ----------------------------------------------------
     $scene.on('mousedown touchstart', function(event) {
         // 阻止瀏覽器預設行為 (例如圖片拖動或文字選擇)
-        //event.preventDefault(); 
-        
+        event.stopPropagation();
         // 判斷是滑鼠還是觸控
         const clientX = event.originalEvent.touches ? event.originalEvent.touches[0].clientX : event.clientX;
         const clientY = event.originalEvent.touches ? event.originalEvent.touches[0].clientY : event.clientY;
@@ -993,12 +992,14 @@ $(document).ready(function() {
         $mapContainer.css('cursor', 'grabbing'); 
     });
     
+    
     // ----------------------------------------------------
     // 2. 滑鼠移動/觸控移動 (mousemove/touchmove) - 綁定在 document (為了在拖出範圍時仍能監聽)
     // ----------------------------------------------------
     $(document).on('mousemove touchmove', function(event) {
         if (!isDragging) return;
-        //event.preventDefault(); // 確保移動時不滾動頁面
+        event.preventDefault();
+        event.stopPropagation();
 
         // 判斷是滑鼠還是觸控
         const clientX = event.originalEvent.touches ? event.originalEvent.touches[0].clientX : event.clientX;
