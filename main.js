@@ -140,16 +140,16 @@ window.areaInfo = {
     'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 出爆言論duck不必 '}, 
     
     // 任務區域
-    'area-coser'         : {type:'OFFICIAL', cp_type:' 便民服務 ',   stall_color:' 整裝區 ',   stall_card_name:' 整裝區 '},
-    'area-stamp-01'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-02'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-03'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-04'      : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-camera-01'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-02'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-03'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-04'     : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-bkginterview'  : {type:'OFFICIAL', cp_type:' 官方任務 ', stall_color:' 限時任務③ ',   stall_card_name:' 大爆殺神事務所面試審核 '},
+    'area-coser'         : {type:'OFFICIAL_1', cp_type:' 便民服務 ', stall_color:' 整裝區 ',   stall_card_name:' 整裝區 '},
+    'area-stamp-01'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-02'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-03'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-stamp-04'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
+    'area-camera-01'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-02'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-03'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-camera-04'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
+    'area-bkginterview'  : {type:'OFFICIAL_4', cp_type:' 官方任務 ', stall_color:' 限時任務③ ',   stall_card_name:' 大爆殺神事務所面試審核 '},
     
 };
 
@@ -410,7 +410,9 @@ const PAUSE_DURATION = 0;
 const FALL_DURATION = 200;
 const LIFT_HEIGHT = -20;
 
-function handleItemEnter($element, $element_icon) {
+function handleItemEnter($element) {
+    
+    const $element_icon = $(`#${$element.data('icon-id')}`);
     
     const hasIcon = $element_icon.length > 0;
     const is_area = $element.data('is-area');
@@ -434,29 +436,32 @@ function handleItemEnter($element, $element_icon) {
         $tooltip.text(infoObj.stall_card_name).show();
     }
     
-
     if (hasIcon) {
+        
+        $element_icon.addClass('highlight');
+        // 全部半透明
         $('.table-bubbles').css('opacity', '0.5'); 
         // 選中者維持高亮
         $('.loadStoreData').css('opacity', '1');
-        // 當下者維持高亮
+        // 同步多標記者維持高亮
+        $('.highlight').css('opacity', '1');
+        // 當下互動者維持高亮
         $element_icon.css('opacity', '1');
+        // 氣泡彈跳
+        $element_icon.css('transform', `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.3}px, 0px)`);
     }
-    // 僅店鋪彈跳
+    // 店鋪彈跳
     if(!is_area && is_store){
         $element.css('transform', `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`);
     }
-    // 氣泡彈跳高度更高
-    if (hasIcon) {
-        $element_icon.css('transform', `${originalIconTransform} translate3d(0px, ${LIFT_HEIGHT * 1.3}px, 0px)`);
-    }
-    
+
     $element.data('isAnimating', true);
-    
 
 }
 
-function handleItemLeave($element, $element_icon) {
+function handleItemLeave($element) {
+    
+    const $element_icon = $(`#${$element.data('icon-id')}`);
     
     const hasIcon = $element_icon.length > 0;
     const is_area = $element.data('is-area');
@@ -469,6 +474,7 @@ function handleItemLeave($element, $element_icon) {
     const $tooltip = $('#custom-tooltip');
     $tooltip.hide();
     
+    // 沒有被選擇的落回原始高度
     const is_selected = hasIcon && $element_icon.hasClass('loadStoreData');
     if(!is_selected){
         // 落回原始高度
@@ -480,10 +486,84 @@ function handleItemLeave($element, $element_icon) {
         $element.data('isAnimating', false);
     }
     
-    // 清除未選中者高亮
+    $element_icon.removeClass('highlight');
+    // 全部半透明
     $('.table-bubbles').css('opacity', '0.5'); 
     // 選中者維持高亮
     $('.loadStoreData').css('opacity', '1');
+    // 同步多標記者維持高亮
+    $('.highlight').css('opacity', '1');
+}
+
+function handleItemClick($element) {
+    
+    const $element_icon = $(`#${$element.data('icon-id')}`);
+    const hasIcon = $element_icon.length > 0;
+    
+    const is_area = $element.data('is-area');
+    const is_store = $element.data('is-store');
+    
+    let originalTransform = $element.data('oriTrans');
+    let originalIconTransform = hasIcon ? $element_icon.data('oriTrans') : 'none';
+
+    // 載入資訊卡
+    loadStoreData($element);
+    
+    
+    // 未選回落
+    const $selected = $('.loadStoreData');
+    if($selected.attr('id') != $element_icon.attr('id')){
+        $selected.each(function() {
+            const $item = $(`#${$(this).data('item-id')}`);
+            $(this).removeClass('loadStoreData');
+            handleItemLeave($item);
+        });
+        // 切換選中者
+        $element_icon.addClass('loadStoreData');
+        // 全部半透明
+        $('.table-bubbles').css('opacity', '0.5'); 
+        // 選中者維持高亮
+        $('.loadStoreData').css('opacity', '1');
+        // 同步多標記者維持高亮
+        $('.highlight').css('opacity', '1');
+    }
+    
+    // 所有非自身 .highlight 觸發滑鼠離開以回落
+    $('.highlight').filter(`:not([id=${$element_icon.attr('id')}])`).each(function(){
+        const $item = $(`#${$(this).data('item-id')}`);
+        handleItemLeave($item);
+        $item.data('isAnimating', false);
+    });
+    
+    // 只有地圖娃要作動
+    if(!is_area && !is_store){
+        // 避免快速點擊造成動畫混亂
+        if ($element.data('isAnimating')) return;
+        $element.data('isAnimating', true);
+        
+        animateTransform(
+                $element,
+                `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`,
+                LIFT_DURATION
+            )
+            .then(() => {
+                return delay(PAUSE_DURATION);
+            })
+            .then(() => {
+                return Promise.all([
+                    animateTransform(
+                        $element,
+                        originalTransform,
+                        FALL_DURATION
+                    )
+                ]);
+            })
+            .finally(() => {
+                $element.data('isAnimating', false);
+            });
+
+    }
+
 }
 
 // 載入資訊卡
@@ -525,119 +605,115 @@ function loadStoreData($element) {
 
 // 載入菜單
 function loadMenu() {
-
+    
+    const key_list = {};
+    
+    // 取得對照
     for (const key in window.areaInfo) {
         if (areaInfo.hasOwnProperty(key)) {
             const value = areaInfo[key];
-            //const infoType = value.type
-            //const cp_type = value.cp_type
-            const stall_color = value.stall_color
-            const stall_card_name = value.stall_card_name
-            
-            const $row = $(`<tr id="tr-info-${key}">
-                <td class="number">${stall_color}</td>
-                <td class="stall_name">${stall_card_name}</td>
-            </tr>`)
-            
-            
-            // 將資料列與攤位綁定
-            $row.data('ref-item',key);
-            
-            // 同步觸發
-            $row.on('click', function() {
-                const $item = $(`#${$(this).data('ref-item')}`);
-                const $icon = $(`#${$item.data('icon-id')}`);
-                handleItemClick($item, $icon);
-            });
-            $row.on('mouseenter', function() {
-                const $item = $(`#${$(this).data('ref-item')}`);
-                const $icon = $(`#${$item.data('icon-id')}`);
-                handleItemEnter($item, $icon);
-            });
-            $row.on('mouseleave', function() {
-                const $item = $(`#${$(this).data('ref-item')}`);
-                const $icon = $(`#${$item.data('icon-id')}`);
-                handleItemLeave($item, $icon);
-            });
-            
-            
-            // 添加入畫面
-            key.startsWith('table-y') && $('.cp_type_osanana table.stall_osanana').append($row);
-            key.startsWith('table-o') && $('.cp_type_bkdk table.stall_bkdk').append($row);
-            key.startsWith('table-g') && $('.cp_type_dkbk table.stall_dkbk').append($row);
+            key_list[value.type] = key_list[value.type] || [];
+            key_list[value.type].push(key);
         }
     }
     
+    // 透過對照建立菜單
+    for (const menuMapKey in key_list) {
+        
+        if(menuMapKey == 'STORE'){
+            // 店鋪邏輯
+            for(const table of key_list[menuMapKey]){
+                const value = areaInfo[table]
+                const stall_color = value.stall_color
+                const stall_card_name = value.stall_card_name
+                
+                const $row = $(`<tr id="tr-info-${table}">
+                    <td class="number">${stall_color}</td>
+                    <td class="stall_name">${stall_card_name}</td>
+                </tr>`)
+                
+                // 將資料列與攤位綁定
+                $row.data('ref-item',table);
+        
+                // 綁定同步觸發
+                $row.on('click', function() {
+                    const $item = $(`#${$(this).data('ref-item')}`);
+                    handleItemClick($item);
+                });
+                $row.on('mouseenter', function() {
+                    const $item = $(`#${$(this).data('ref-item')}`);
+                    handleItemEnter($item);
+                });
+                $row.on('mouseleave', function() {
+                    const $item = $(`#${$(this).data('ref-item')}`);
+                    handleItemLeave($item);
+                });
+                
+                // 加入畫面
+                table.startsWith('table-y') && $('.cp_type_osanana table.stall_osanana').append($row);
+                table.startsWith('table-o') && $('.cp_type_bkdk table.stall_bkdk').append($row);
+                table.startsWith('table-g') && $('.cp_type_dkbk table.stall_dkbk').append($row);
+            }
+            
+        }else{
+            // 官方邏輯
+            // 取第一筆作為菜單資料 但每一個點都能有自己的資料
+            const value = areaInfo[key_list[menuMapKey][0]];
+            const stall_card_name = value.stall_card_name
+            const $row = $(`<div class="evnet_name">${stall_card_name}</div>`)
+            
+            // 將資料列與攤位綁定
+            $row.data('ref-item',key_list[menuMapKey]);
+            
+            // 綁定同步觸發
+            $row.on('click', function() {
+                const table_list = $(this).data('ref-item');
+                // 觸發第一個當主要代表
+                const $item_0 = $(`#${table_list[0]}`);
+                handleItemClick($item_0);
+                // 其餘物件後觸發進入 顯示高亮
+                for(const table of table_list){
+                    const $item = $(`#${table}`);
+                    const $item_icon = $(`#${$item.data('icon-id')}`);
+                    $item_icon.addClass('loadStoreData');
+                    handleItemEnter($item); 
+                }
+            });
+            $row.on('mouseenter', function() {
+                const table_list = $(this).data('ref-item');
+                // 清單內全部觸發
+                for(const table of table_list){
+                    const $item = $(`#${table}`);
+                    handleItemEnter($item);
+                }
+            });
+            $row.on('mouseleave', function() {
+                const table_list = $(this).data('ref-item');
+                // 清單內全部觸發
+                for(const table of table_list){
+                    const $item = $(`#${table}`);
+                    handleItemLeave($item);
+                }
+            });
+
+            $(`.${menuMapKey}`).append($row);
+
+        }
+
+    }
+
+    //console.log(key_list);
 
 }
 
-loadMenu();
+
 
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
     
-function handleItemClick($element, $element_icon) {
-    const hasIcon = $element_icon.length > 0;
-    
-    const is_area = $element.data('is-area');
-    const is_store = $element.data('is-store');
-    
-    let originalTransform = $element.data('oriTrans');
-    let originalIconTransform = hasIcon ? $element_icon.data('oriTrans') : 'none';
 
-    // 載入資訊卡
-    loadStoreData($element);
-    
-    
-    // 重置未選回落
-    const $selected = $('.loadStoreData');
-    
-    if($selected.attr('id') != $element_icon.attr('id')){
-        $selected.each(function() {
-            const $item = $(`#${$(this).data('item-id')}`);
-            $(this).removeClass('loadStoreData');
-            handleItemLeave($item, $(this));
-        });
-        // 切換選中者
-        $element_icon.addClass('loadStoreData');
-        // 清除未選中者高亮
-        $('.table-bubbles').css('opacity', '0.5'); 
-        // 選中者維持高亮
-        $('.loadStoreData').css('opacity', '1');
-    }
-    
-    // 只有地圖娃要作動
-    if(!is_area && !is_store){
-        // 避免快速點擊造成動畫混亂
-        if ($element.data('isAnimating')) return;
-        $element.data('isAnimating', true);
-        
-        animateTransform(
-                $element,
-                `${originalTransform} translate3d(0px, ${LIFT_HEIGHT}px, 0px)`,
-                LIFT_DURATION
-            )
-            .then(() => {
-                return delay(PAUSE_DURATION);
-            })
-            .then(() => {
-                return Promise.all([
-                    animateTransform(
-                        $element,
-                        originalTransform,
-                        FALL_DURATION
-                    )
-                ]);
-            })
-            .finally(() => {
-                $element.data('isAnimating', false);
-            });
-
-    }
-
-}
 
 // 遍歷 areaItem 陣列並創建元素
 for (let i = 0; i < window.areaItem.length; i++) {
@@ -698,15 +774,14 @@ for (let i = 0; i < window.areaItem.length; i++) {
         $newIcon.data('item-id', item.id); 
     }
 
-    const $iconToBind = $newIcon || $(); 
     $newItem.on('click', function() {
-        handleItemClick($(this), $iconToBind);
+        handleItemClick($(this));
     });
     $newItem.on('mouseenter', function() {
-        handleItemEnter($(this), $iconToBind);
+        handleItemEnter($(this));
     });
     $newItem.on('mouseleave', function() {
-        handleItemLeave($(this), $iconToBind);
+        handleItemLeave($(this));
     });
     
     $mapContainer.append($newItem);
@@ -753,6 +828,9 @@ $(document).ready(function() {
     // 2. 監聽滑桿的 input 事件 (拖曳時即時觸發)
     rotateXInput.on('input', updateRotation);
     rotateZInput.on('input', updateRotation);
+    
+    // 載入菜單
+    loadMenu();
     
     // 設定「當點擊官方任務」時要做什麼
     $('#tab-official').on('click', function() {
