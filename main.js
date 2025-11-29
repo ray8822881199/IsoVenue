@@ -11,7 +11,84 @@ window.rotate_z = 0;
 window.WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
 window.IS_WIDE_SCREEN = false;
 
+window.border_color = {
+    'table-o': '#EF8D5B',
+    'table-g': '#9EC98D',
+    'table-y': '#EABB6A',
+    'area-stamp': '#CC4A75',
+    'area-camera': '#EE879D',
+    'area-coser': '#659B7F',
+    'area-bkginterview': '#E76845',
+};
 
+// 定義地圖物件
+window.areaItem = [
+    // 橘區
+    {id: 'table-o-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_1.png',  x: 274,  y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_2.png',  x: 233,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_3.png',  x: 192,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_4.png',  x: 151,  y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_5.png',  x: 110,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_6.png',  x: 69,   y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_7.png',  x: 28,   y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_8.png',  x: -13,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_9.png',  x: -54,  y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_10.png', x: -95,  y: 22, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-o-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_11.png', x: -136, y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_12.png', x: -177, y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-13', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_13.png', x: -218, y: 22, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-o-14', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_orange_14.png', x: -259, y: 22, w: 51, h: 55, icon_shift: 50}, 
+
+    // 綠區
+    {id: 'table-g-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_1.png',  x: 154,  y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_2.png',  x: 113,  y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_3.png',  x: 72,   y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_4.png',  x: 31,   y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_5.png',  x: -10,  y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_6.png',  x: -51,  y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_7.png',  x: -92,  y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_8.png',  x: -133, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_9.png',  x: -174, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_10.png', x: -215, y: 195, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-g-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_11.png', x: -256, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_12.png', x: -297, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-13', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_13.png', x: -338, y: 195, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-g-14', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_green_14.png', x: -379, y: 195, w: 51, h: 55, icon_shift: 50}, 
+
+    // 黃區
+    {id: 'table-y-01', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_1.png',  x: 642, y: 30,  w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-02', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_2.png',  x: 642, y: 71,  w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-03', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_3.png',  x: 642, y: 112, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-04', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_4.png',  x: 642, y: 153, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-05', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_5.png',  x: 597, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-06', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_6.png',  x: 556, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-07', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_7.png',  x: 515, y: 190, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-08', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_8.png',  x: 474, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-09', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_9.png',  x: 433, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-10', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_10.png', x: 392, y: 190, w: 51, h: 55, icon_shift: 50}, 
+    {id: 'table-y-11', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_11.png', x: 351, y: 190, w: 51, h: 55, icon_shift: 50},
+    {id: 'table-y-12', bg: 'img/mapitem/item_desk.png', icon: 'img/icon/map_icon_icon_yellow_12.png', x: 310, y: 190, w: 51, h: 55, icon_shift: 50}, 
+
+    // 地圖娃
+    {id: 'item_small_dyna_1', bg: 'img/mapitem/item_small_dyna_1.png', x: -310, y: -40, w: 55, h: 55},
+    {id: 'item_small_dyna_2', bg: 'img/mapitem/item_small_dyna_2.png', x: -688, y: 125, w: 47, h: 56},
+    {id: 'item_small_dyna_3', bg: 'img/mapitem/item_small_dyna_3.png', x: 567,  y: -244,w: 53, h: 54},
+    {id: 'item_small_dyna_4', bg: 'img/mapitem/item_small_dyna_4.png', x: -511,  y: 356,w: 45, h: 56},
+    
+    // 區域氣泡
+    {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
+    {id: 'area-bkginterview', icon: 'img/icon/map_icon_icon_bkginterview_0.png', x: -97,  y: 474,  w: 300, h: 200, icon_shift: 50},
+    {id: 'area-stamp-01',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 180,  y: -310, w: 50,  h: 40,  icon_shift: 40},
+    {id: 'area-camera-01',    icon: 'img/icon/map_icon_icon_camera.png',         x: 240,  y: -310, w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-stamp-02',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -440, y: -34,  w: 50,  h: 40,  icon_shift: 40},
+    {id: 'area-camera-02',    icon: 'img/icon/map_icon_icon_camera.png',         x: -370, y: -34,  w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -755, y: -20,  w: 40,  h: 55,  icon_shift: 40},
+    {id: 'area-camera-03',    icon: 'img/icon/map_icon_icon_camera.png',         x: -755, y: 40,   w: 40,  h: 55,  icon_shift: 40}, 
+    {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 120,  y: 320,  w: 40,  h: 55,  icon_shift: 40},
+    {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
+
+
+];
 
 
 // 取得地圖元素
