@@ -359,6 +359,10 @@ body {
     width: auto; /* 移除任何寬度限制，確保它會填滿剩餘的 100% 寬度 */
   }
   
+  .stall_sns {
+    vertical-align: text-top;
+  }
+  
   
   
   

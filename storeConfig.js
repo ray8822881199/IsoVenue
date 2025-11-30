@@ -49,16 +49,19 @@ window.areaInfo = {
     'table-y-11': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃11 ', stall_card_name:' ERQ ', sns_link:' https://lit.link/en/erq ', product_type:' 漫畫、紙類印刷品、立體印刷品 ', sns_type:' Link '},
     'table-y-12': {type:'STORE', cp_type:' 幼馴染 ', stall_color:' 黃12 ', stall_card_name:' 出爆言論duck不必 ', sns_link:' https://www.facebook.com/shu.ni.2847442 ', product_type:' 紙類印刷品、立體印刷品 ', sns_type:' Facebook '},
 
-    // 任務區域
-    'area-coser'         : {type:'OFFICIAL_1', cp_type:' 便民服務 ', stall_color:' 整裝區 ',   stall_card_name:' 整裝區 '},
-    'area-stamp-01'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-02'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-03'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-stamp-04'      : {type:'OFFICIAL_2', cp_type:' 官方任務 ', stall_color:' 限時任務① ', stall_card_name:' 他們的英雄之路 '},
-    'area-camera-01'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-02'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-03'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-camera-04'     : {type:'OFFICIAL_3', cp_type:' 官方任務 ', stall_color:' 限時任務② ', stall_card_name:' 旅行小戴拿 '},
-    'area-bkginterview'  : {type:'OFFICIAL_4', cp_type:' 官方任務 ', stall_color:' 限時任務③ ',   stall_card_name:' 大爆殺神事務所面試審核 '},
+    // 任務區域. 根據 type 分組來同時觸發抬升. 
+    // 根據 menu_type 來分組 menu. 
+    // 取第一個抓到的 cp_type 當 menu 名. 
+    // cp_type 顯示在卡片故都要填. 
+    'area-coser'         : {type:'OFFICIAL_1', menu_type:'M0', cp_type:' 便民服務 ', stall_color:' 整裝區 ',   stall_card_name:' 整裝區 '},
+    'area-stamp-01'      : {type:'OFFICIAL_2-1', menu_type:'M1', cp_type:' 限時任務① ', stall_color:' 他們的英雄之路-01 ', stall_card_name:' 他們的英雄之路(內容1) '},
+    'area-stamp-02'      : {type:'OFFICIAL_2-2', menu_type:'M1', cp_type:' 限時任務① ', stall_color:' 他們的英雄之路-02 ', stall_card_name:' 他們的英雄之路(內容2) '},
+    'area-stamp-03'      : {type:'OFFICIAL_2-3', menu_type:'M1', cp_type:' 限時任務① ', stall_color:' 他們的英雄之路-03 ', stall_card_name:' 他們的英雄之路(內容3) '},
+    'area-stamp-04'      : {type:'OFFICIAL_2-4', menu_type:'M1', cp_type:' 限時任務① ', stall_color:' 他們的英雄之路-04 ', stall_card_name:' 他們的英雄之路(內容4) '},
+    'area-camera-01'     : {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 限時任務② ', stall_color:' 回憶打卡點 ', stall_card_name:' 回憶打卡點(內容1) '},
+    'area-camera-02'     : {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 限時任務② ', stall_color:' 回憶打卡點 ', stall_card_name:' 回憶打卡點(內容2) '},
+    'area-camera-03'     : {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 限時任務② ', stall_color:' 回憶打卡點 ', stall_card_name:' 回憶打卡點(內容3) '},
+    'area-camera-04'     : {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 限時任務② ', stall_color:' 回憶打卡點 ', stall_card_name:' 回憶打卡點(內容4) '},
+    'area-bkginterview'  : {type:'OFFICIAL_4', menu_type:'M3', cp_type:' 限時任務③ ', stall_color:' 大爆殺神事務所 ',   stall_card_name:' 大爆殺神事務所面試審核 '},
 
 };

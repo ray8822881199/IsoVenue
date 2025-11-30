@@ -79,13 +79,13 @@ window.areaItem = [
     {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
     {id: 'area-bkginterview', icon: 'img/icon/map_icon_icon_bkginterview_0.png', x: -97,  y: 474,  w: 300, h: 200, icon_shift: 50},
     {id: 'area-stamp-01',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 180,  y: -310, w: 50,  h: 40,  icon_shift: 40},
-    {id: 'area-camera-01',    icon: 'img/icon/map_icon_icon_camera.png',         x: 240,  y: -310, w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-camera-01',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: 240,  y: -310, w: 50,  h: 40,  icon_shift: 40}, 
     {id: 'area-stamp-02',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -440, y: -34,  w: 50,  h: 40,  icon_shift: 40},
-    {id: 'area-camera-02',    icon: 'img/icon/map_icon_icon_camera.png',         x: -370, y: -34,  w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-camera-02',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: -370, y: -34,  w: 50,  h: 40,  icon_shift: 40}, 
     {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -755, y: -20,  w: 40,  h: 55,  icon_shift: 40},
-    {id: 'area-camera-03',    icon: 'img/icon/map_icon_icon_camera.png',         x: -755, y: 40,   w: 40,  h: 55,  icon_shift: 40}, 
+    {id: 'area-camera-03',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: -755, y: 40,   w: 40,  h: 55,  icon_shift: 40}, 
     {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 120,  y: 320,  w: 40,  h: 55,  icon_shift: 40},
-    {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
+    {id: 'area-camera-04',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
 
 
 ];
@@ -521,7 +521,10 @@ function loadStoreData($element) {
         
         $('.stall_sns_link').html('');
         const $sns_link = $(`<a href="${infoObj.sns_link||''}" target="_blank">${infoObj.sns_type||''}</a>`);
+        const $mark_div = $(`<div>當日販售品項以現場為準</div>`);
+        
         $('.stall_sns_link').append($sns_link);
+        $('.stall_sns_link').append($mark_div);
 
         // 更改資訊卡色彩
         let borderColor = null;
@@ -548,6 +551,7 @@ function loadStoreData($element) {
 }
 
 // 載入菜單
+// 20251129 修改預定標記 拆開同步台升 拆開代表資訊
 function loadMenu() {
     
     const key_list = {};
@@ -601,10 +605,9 @@ function loadMenu() {
             
         }else{
             // 官方邏輯
-            // 取第一筆作為菜單資料 但每一個點都能有自己的資料
+            // 相同 type 只有第一筆作為菜單資料 但每一個點都能有自己的資料
             const value = areaInfo[key_list[menuMapKey][0]];
-            const stall_card_name = value.stall_card_name
-            const $row = $(`<div class="evnet_name">${stall_card_name}</div>`)
+            const $row = $(`<div class="evnet_name">${value.stall_card_name}</div>`)
             
             // 將資料列與攤位綁定
             $row.data('ref-item',key_list[menuMapKey]);
@@ -639,15 +642,25 @@ function loadMenu() {
                     handleItemLeave($item);
                 }
             });
-
+            
+            if($(`.${value.menu_type}`).length == 0) {
+                // 沒有找到該分組菜單 建立菜單
+                $('#static_divider').before($(`<div class="divider"></div>`));
+                $('#static_divider').before($(`<div class="stall_official_type ${value.menu_type}">${value.cp_type}</div>`));
+            }
+            
+            if($(`.${menuMapKey}`).length == 0) {
+                // 沒有找到該菜單 建立菜單
+                $('#static_divider').before($(`<div class="stall_official_evnet ${menuMapKey}">`));
+            }
+            
             $(`.${menuMapKey}`).append($row);
 
         }
 
     }
-
-    //console.log(key_list);
-
+    //清除多餘分隔線 只有第一個子元素是分隔線才移除
+    $('.stall_official > .divider:first-child').remove();
 }
 
 
