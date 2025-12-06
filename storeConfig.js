@@ -56,7 +56,7 @@ window.areaInfo = {
     'area-coser'         : 
     {type:'OFFICIAL_1', menu_type:'M0', cp_type:' 官方任務 ', stall_color:' 便民服務 ',   stall_card_name:' 整裝區 ', 
     official_time:'',
-    official_area:'整裝區',
+    official_area:'',
     official_tips:[
         `<table class="inner_table"><tbody>
         <tr class="inner_tr"><td class="inner_td td_num">1.</td>
@@ -166,7 +166,7 @@ window.areaInfo = {
     
     'area-camera-01'     : 
     {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 官方任務 ', stall_color:' 限時任務 ', stall_card_name:' 回憶點打卡 ',
-    official_time:'上午 10：30 ～ 下午 4：00',
+    official_time:'上午 10：30 ～ 下午 4：30',
     official_area:'',
     official_flow:[],
     stall_card_link:'',
@@ -175,7 +175,7 @@ window.areaInfo = {
     
     'area-camera-02'     : 
     {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 官方任務 ', stall_color:' 限時任務 ', stall_card_name:' 回憶點打卡 ',
-    official_time:'上午 10：30 ～ 下午 4：00',
+    official_time:'上午 10：30 ～ 下午 4：30',
     official_area:'',
     official_flow:[],
     stall_card_link:'',
@@ -184,7 +184,7 @@ window.areaInfo = {
     
     'area-camera-03'     : 
     {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 官方任務 ', stall_color:' 限時任務 ', stall_card_name:' 回憶點打卡 ',
-    official_time:'上午 10：30 ～ 下午 4：00',
+    official_time:'上午 10：30 ～ 下午 4：30',
     official_area:'',
     official_flow:[],
     stall_card_link:'',
@@ -193,7 +193,7 @@ window.areaInfo = {
     
     'area-camera-04'     : 
     {type:'OFFICIAL_3', menu_type:'M2', cp_type:' 官方任務 ', stall_color:' 限時任務 ', stall_card_name:' 回憶點打卡 ',
-    official_time:'上午 10：30 ～ 下午 4：00',
+    official_time:'上午 10：30 ～ 下午 4：30',
     official_area:'',
     official_flow:[],
     stall_card_link:'',
@@ -228,7 +228,7 @@ window.areaInfo = {
     official_flow:[],
     official_tips:[],
     stall_card_link:'',
-    link_border_color:''
+    link_border_color:'#d9d96b'
     },
     
 };

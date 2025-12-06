@@ -19,6 +19,7 @@ window.border_color = {
     'area-camera': '#EE879D',
     'area-coser': '#659B7F',
     'area-bkginterview': '#E76845',
+    'area-exhibit': '#D9D96B',
 };
 
 // 定義地圖物件
@@ -584,6 +585,7 @@ function loadStoreData($element) {
         if (infoObjId.startsWith('area-camera')) { borderColor = window.border_color['area-camera']; }
         if (infoObjId.startsWith('area-coser')) { borderColor = window.border_color['area-coser']; }
         if (infoObjId.startsWith('area-bkginterview')) { borderColor = window.border_color['area-bkginterview']; }
+        if (infoObjId.startsWith('area-exhibit')) { borderColor = window.border_color['area-exhibit']; }
         
         borderColor && $('.border_color_a').css({
             borderColor: borderColor,
