@@ -259,7 +259,7 @@ body {
     flex-wrap: wrap;
     gap: 120px;
     width: auto;
-    padding: 0 16px;
+    padding: 16px 16px 0px 16px;
   }
   
   div.list_content{ /*列表內容*/
@@ -362,7 +362,12 @@ body {
   .stall_sns {
     vertical-align: text-top;
   }
-  
+  .stall_goods {
+    vertical-align: text-top;
+  }
+  .mark_div {
+      font-size: 14px;
+  }
   
   
   
@@ -589,13 +594,66 @@ body {
   /* For Firefox: 讓滾輪變細 */
   scrollbar-width: thin; 
   } 
-}
+  div.official_block::-webkit-scrollbar {
+  width: 4px; /* 滾輪的寬度 */
+  }
+  div.official_block {
+  /* For Firefox: 顏色依序為滑塊和軌道 */
+  scrollbar-color: #B6AB99 #ffffff; 
+  /* For Firefox: 讓滾輪變細 */
+  scrollbar-width: thin; 
+  } 
+  
+  
+  .official_info tr {
+    vertical-align: text-top;
+  }
+  
+  .official_desc {
+    width: 100px;
+      
+  }
+  
+  .inner_tr {
+    vertical-align: text-top;
+  }
+  
+  .official_info > tbody > tr > td:first-child{
+      width: 100px;
+  }
+  
+  .official_block {
+    height: 25vh;
+    overflow-y: auto;
+  }
+  .official_link{
+    margin: 0px auto;
+    padding: 4px 16px;
+    border-radius: 8px;
+    border: 1.5px solid rgb(204, 74, 117);
+    font-size: 14px;
+  }
+  
+  .official_link > a:link, .official_link > a:visited{
+    color: rgb(204, 74, 117);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    font-weight: bold;
+    text-decoration: none;
+  }
 
-/*------------------手機------------------*/
 
-@media (max-width: 719px){
-  div.mission_map_stall_list{  /*隱藏攤位列表*/
+
+@media (max-width: 719px) {
+    
+  div.mission_map_stall_list{ 
     display:none;
+  }
+  
+  .mark_div {
+      font-size: 10px;
   }
   
   div.lezi_wrapper{
@@ -603,7 +661,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
-    width: 100vw;  /*---------------這裡要確認--------------*/
+    width: 100vw;
     
   }
   div.mission_map{
@@ -648,14 +706,21 @@ body {
     border: 1.5px solid rgba(239, 141, 91);
     border-radius: 8px;
     color: #404040;
-    font-size: 16px;
+    font-size: 14px;
   }
-  div.stall_card_name { /*攤位名稱*/
+  div.stall_card_name { 
     width: 100%;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
     color: #404040;
+  }
+  
+  table.stall_info{
+    font-size: 14px ; 
+  }
+  .official_info{
+    font-size: 14px ; 
   }
   div.divider{
     width: 100%;
@@ -663,5 +728,11 @@ body {
     background-color: rgba(239, 141, 91);
   }
   
-  
+  .official_block {
+    width: 90vw;
+  }
+  .official_link{
+    font-size: 12px;
+  }
+
 }

@@ -77,15 +77,18 @@ window.areaItem = [
     
     // 區域氣泡
     {id: 'area-coser',        icon: 'img/icon/map_icon_icon_coser_0.png',        x: -460, y: -85,  w: 170, h: 225, icon_shift: 50},
-    {id: 'area-bkginterview', icon: 'img/icon/map_icon_icon_bkginterview_0.png', x: -97,  y: 474,  w: 300, h: 200, icon_shift: 50},
+    {id: 'area-bkginterview', icon: 'img/icon/map_icon_icon_bkginterview_0.png', x: -97,  y: 424,  w: 300, h: 150, icon_shift: 50},
     {id: 'area-stamp-01',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 180,  y: -310, w: 50,  h: 40,  icon_shift: 40},
-    {id: 'area-camera-01',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: 240,  y: -310, w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-camera-01',    icon: 'img/icon/map_icon_icon_camera.png',         x: 240,  y: -310, w: 50,  h: 40,  icon_shift: 40}, 
     {id: 'area-stamp-02',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -440, y: -34,  w: 50,  h: 40,  icon_shift: 40},
-    {id: 'area-camera-02',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: -370, y: -34,  w: 50,  h: 40,  icon_shift: 40}, 
-    {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -755, y: -20,  w: 40,  h: 55,  icon_shift: 40},
-    {id: 'area-camera-03',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: -755, y: 40,   w: 40,  h: 55,  icon_shift: 40}, 
-    {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 120,  y: 320,  w: 40,  h: 55,  icon_shift: 40},
-    {id: 'area-camera-04',    icon: ''/*'img/icon/map_icon_icon_camera.png'*/,         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
+    {id: 'area-camera-02',    icon: 'img/icon/map_icon_icon_camera.png',         x: -370, y: -34,  w: 50,  h: 40,  icon_shift: 40}, 
+    {id: 'area-stamp-03',     icon: 'img/icon/map_icon_icon_stamp.png',          x: 120,  y: 320,  w: 40,  h: 55,  icon_shift: 40},
+    {id: 'area-camera-03',    icon: 'img/icon/map_icon_icon_camera.png',         x: -755, y: 40,   w: 40,  h: 55,  icon_shift: 40}, 
+    {id: 'area-stamp-04',     icon: 'img/icon/map_icon_icon_stamp.png',          x: -755, y: -20,  w: 40,  h: 55,  icon_shift: 40},
+    {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
+    
+    
+    {id: 'area-exhibit', icon: 'img/icon/map_icon_icon_exhibit.png', x: -97,  y: 474,  w: 300, h: 50, icon_shift: 50},
 
 
 ];
@@ -512,22 +515,68 @@ function loadStoreData($element) {
     
     
     if (infoObj) {
+        let borderColor = null;
+        
         // 更新資訊卡內容
         $('.cp_type').text(infoObj.cp_type);
         $('.stall_color').text(infoObj.stall_color);
         $('.stall_card_name').text(infoObj.stall_card_name);
+        $('.official_link').hide();
+        $('.official_block').hide();
+        $('.stall_info').hide();
+        $('.mark_div').remove();
         
-        $('.stall_good_info').text(infoObj.product_type||'');
+        if(infoObj.type == 'STORE'){
+            // 作者連結 警告文字
+            $('.stall_sns_link').html('');
+            $('.stall_good_info').text(infoObj.product_type||'');
+            
+            
+            for(var index in infoObj.sns_link?.split(',')){
+                const snslink = infoObj.sns_link?.split(',')[index];
+                const snstype = infoObj.sns_type?.split(',')[index];
+                const $sns_link = $(`<a href="${snslink}" target="_blank">${snstype}</a><br>`);
+                $('.stall_sns_link').append($sns_link);
+            }
+            //const $sns_link = $(`<a href="${infoObj.sns_link||''}" target="_blank">${infoObj.sns_type||''}</a>`);
+            //$('.stall_sns_link').append($sns_link);
+            
+            
+            const $mark_div = $(`<div class="mark_div">*當日販售品項以現場為準</div>`);
+            $('.stall_info').after($mark_div);
+            $('.stall_info').show();
+        } else {
+            
+            $('.official_time').text('');
+            $('.official_area').text('');
+            $('.official_tips').text('');
+            $('.official_link').html('');
+            $('.official_flow').html('');
+            
+            $('.official_time').text(infoObj.official_time);
+            $('.official_area').text(infoObj.official_area);
+            infoObj.stall_card_link && $('.official_link').html(infoObj.stall_card_link);
+            infoObj.official_flow && $('.official_flow').html(infoObj.official_flow.join('<br>'));
+            infoObj.official_tips && $('.official_tips').html(infoObj.official_tips.join('<br>'));
+            
+            $('.official_link').css({border: '1.5px solid ' + infoObj.link_border_color});
+            $('.official_link > a').css({color: infoObj.link_border_color});
+            
+            !infoObj.official_time ? $('.tr_time').hide():$('.tr_time').show();
+            !infoObj.stall_card_link ? $('.official_link').hide():$('.official_link').show();
+            
+            !infoObj.official_tips?.length ? $('.tr_tips').hide():$('.tr_tips').show();
+            !infoObj.official_flow?.length ? $('.tr_flow').hide():$('.tr_flow').show();
+            
+            
+            if(!infoObjId.startsWith('area-camera')){
+                $('.official_block').show();
+            }
+        }
         
-        $('.stall_sns_link').html('');
-        const $sns_link = $(`<a href="${infoObj.sns_link||''}" target="_blank">${infoObj.sns_type||''}</a>`);
-        const $mark_div = $(`<div>當日販售品項以現場為準</div>`);
         
-        $('.stall_sns_link').append($sns_link);
-        $('.stall_sns_link').append($mark_div);
-
+        
         // 更改資訊卡色彩
-        let borderColor = null;
         if (infoObjId.startsWith('table-o')) { borderColor = window.border_color['table-o']; }
         if (infoObjId.startsWith('table-g')) { borderColor = window.border_color['table-g']; }
         if (infoObjId.startsWith('table-y')) { borderColor = window.border_color['table-y']; }
@@ -646,7 +695,7 @@ function loadMenu() {
             if($(`.${value.menu_type}`).length == 0) {
                 // 沒有找到該分組菜單 建立菜單
                 $('#static_divider').before($(`<div class="divider"></div>`));
-                $('#static_divider').before($(`<div class="stall_official_type ${value.menu_type}">${value.cp_type}</div>`));
+                $('#static_divider').before($(`<div class="stall_official_type ${value.menu_type}">${value.stall_color}</div>`));
             }
             
             if($(`.${menuMapKey}`).length == 0) {
@@ -750,6 +799,10 @@ for (let i = 0; i < window.areaItem.length; i++) {
 
     
 $(document).ready(function() {
+    // 資訊初始不顯示
+    $('.official_link').hide();
+    $('.official_block').hide();
+    $('.stall_info').hide();
     
     const rotate = {x:0, z:0};
     containerRotate(rotate);
@@ -1012,6 +1065,10 @@ $(document).ready(function() {
     $(document).on('mousemove', function() {
         updateTooltipPosition(event.pageX, event.pageY);
     });
+    
+    
+    
+    loadStoreData($('#area-stamp-01'));
 
 });
 
