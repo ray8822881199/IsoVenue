@@ -21,7 +21,7 @@ window.areaInfo = {
 
     // 綠區 (出勝)
     'table-g-01': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠01 ', stall_card_name:' 出勝大學愛到卡慘系 ', sns_link:' https://dkbk98.webnode.page/ ', product_type:' 紙類印刷品、立體印刷品 ', sns_type:' Link '},
-    'table-g-02': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠02 ', stall_card_name:' 勝己的秘密花園 ', sns_link:'https://www.threads.com/@jru1127,https://www.threads.com/@qqqjj.1234', product_type:' 小說、紙類印刷品、娃衣 ', sns_type:'Threads (Jnu),Threads (Jnu)不行就算了'},
+    'table-g-02': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠02 ', stall_card_name:' 勝己的秘密花園 ', sns_link:'https://www.threads.com/@jru1127,https://www.threads.com/@qqqjj.1234', product_type:' 小說、紙類印刷品、娃衣 ', sns_type:'Threads (Jnu),Threads (Jnu)'},
     'table-g-03': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠03 ', stall_card_name:' 有貓有狗幸福長久 ', sns_link:' https://www.plurk.com/u/su_vita ', product_type:' 立體印刷品、彩色繪本 ', sns_type:' Plurk '},
     'table-g-04': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠04 ', stall_card_name:' 出久戀上勝裝娃娃 ', sns_link:' https://x.com/lycik_98 ', product_type:' 紙類印刷品、立體印刷品、彩色畫冊 ', sns_type:' Twitter (X) '},
     'table-g-05': {type:'STORE', cp_type:' 出勝 ', stall_color:' 綠05 ', stall_card_name:' 出し勝ち! ', sns_link:' https://x.com/lolihcatlol ', product_type:' 漫畫、紙類印刷品、立體印刷品 ', sns_type:' Twitter (X) '},
