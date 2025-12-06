@@ -563,15 +563,14 @@ function loadStoreData($element) {
             $('.official_link > a').css({color: infoObj.link_border_color});
             
             !infoObj.official_time ? $('.tr_time').hide():$('.tr_time').show();
+            !infoObj.official_area ? $('.tr_area').hide():$('.tr_area').show();
             !infoObj.stall_card_link ? $('.official_link').hide():$('.official_link').show();
             
             !infoObj.official_tips?.length ? $('.tr_tips').hide():$('.tr_tips').show();
             !infoObj.official_flow?.length ? $('.tr_flow').hide():$('.tr_flow').show();
             
-            
-            if(!infoObjId.startsWith('area-camera')){
-                $('.official_block').show();
-            }
+            $('.official_block').show();
+
         }
         
         
