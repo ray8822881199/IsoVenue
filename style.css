@@ -193,7 +193,7 @@ body {
 }
 .scene-container {
     width: 100vw;
-    height: 50vh;
+    height: 60vh;
 }
 
 
@@ -697,8 +697,7 @@ body {
     padding: 0 0px;
   }
   div.mission_map_info_stall_card{
-
-    width: 95%;
+    width: 90%;
     gap: 1vh;
   }
   div.stall_card_class{
