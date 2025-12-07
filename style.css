@@ -305,7 +305,7 @@ body {
     gap: 8px;
     height: 45vh;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   
   div.stall_card_class { /**/
