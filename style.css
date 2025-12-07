@@ -713,11 +713,12 @@ body {
     
   }
   div.stall_card_class div {
-    font-size: 2vh;
+    font-size: 1.4vh;
     align-content: center;
   }
   div.stall_card_name { 
     align-content: center;
+    font-size: 2.2vh;
   }
   
   table.stall_info{
@@ -740,7 +741,7 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
-    padding-bottom: 5vh;
+    padding-bottom: 3vh;
   }
   .official_link{
     font-size: 1.6vh;
