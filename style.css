@@ -304,7 +304,7 @@ body {
     width: 500px;
     gap: 8px;
     height: 45vh;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
   }
   
