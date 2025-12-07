@@ -625,7 +625,7 @@ body {
   }
   
   .official_block {
-    height: 25vh;
+    height: 22vh;
     font-size: 1.6vh;
     overflow-y: auto;
   }
@@ -704,7 +704,7 @@ body {
     
   }
   div.stall_card_class div {
-    font-size: 1.8vh;
+    font-size: 2vh;
     align-content: center;
   }
   div.stall_card_name { 
@@ -712,10 +712,10 @@ body {
   }
   
   table.stall_info{
-    font-size: 1.4vh ; 
+    font-size: 1.6vh ; 
   }
   .official_info{
-    font-size: 1.4vh ; 
+    font-size: 1.6vh ; 
   }
   div.divider{
     width: 100%;
@@ -726,9 +726,10 @@ body {
   .official_block {
     width: 90vw;
     margin: auto;
+    max-height: 20vh;
   }
   .official_link{
-    font-size: 1.4vh;
+    font-size: 1.6vh;
   }
 
 }
