@@ -301,6 +301,7 @@ body {
 
   div.mission_map_info_stall_card { /*攤位卡片*/
     height: 45dvh;
+    width: 500px;
   }
   
   div.stall_card_class { /**/
@@ -718,10 +719,10 @@ body {
   }
   
   table.stall_info{
-    font-size: 1.6dvh ; 
+    font-size: 1.8dvh ; 
   }
   .official_info{
-    font-size: 1.6dvh ; 
+    font-size: 1.8dvh ; 
   }
   div.divider{
     width: 100%;
