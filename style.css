@@ -741,7 +741,7 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
-    padding-bottom: 3vh;
+    padding-bottom: 32px;
   }
   .official_link{
     font-size: 1.6vh;
