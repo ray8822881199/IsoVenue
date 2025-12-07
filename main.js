@@ -94,7 +94,7 @@ window.areaItem = [
     {id: 'area-camera-04',    icon: 'img/icon/map_icon_icon_camera.png',         x: 120,  y: 380,  w: 40,  h: 55,  icon_shift: 40}, 
     
     
-    {id: 'area-exhibit', icon: 'img/icon/map_icon_icon_exhibit.png', x: -97,  y: 474,  w: 300, h: 50, icon_shift: 50},
+    {id: 'area-exhibit', icon: 'img/icon/map_icon_icon_exhibit.png', x: -170,  y: 474,  w: 400, h: 50, icon_shift: 30},
 
 
 ];
