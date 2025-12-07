@@ -522,7 +522,7 @@ function loadStoreData($element) {
         $('.cp_type').text(infoObj.cp_type);
         $('.stall_color').text(infoObj.stall_color);
         $('.stall_card_name').text(infoObj.stall_card_name);
-        $('.official_link').hide();
+        $('.official_link_container').hide();
         $('.official_block').hide();
         $('.stall_info').hide();
         $('.mark_div').remove();
@@ -565,7 +565,7 @@ function loadStoreData($element) {
             
             !infoObj.official_time ? $('.tr_time').hide():$('.tr_time').show();
             !infoObj.official_area ? $('.tr_area').hide():$('.tr_area').show();
-            !infoObj.stall_card_link ? $('.official_link').hide():$('.official_link').show();
+            !infoObj.stall_card_link ? $('.official_link_container').hide():$('.official_link_container').show();
             
             !infoObj.official_tips?.length ? $('.tr_tips').hide():$('.tr_tips').show();
             !infoObj.official_flow?.length ? $('.tr_flow').hide():$('.tr_flow').show();
@@ -801,7 +801,7 @@ for (let i = 0; i < window.areaItem.length; i++) {
     
 $(document).ready(function() {
     // 資訊初始不顯示
-    $('.official_link').hide();
+    $('.official_link_container').hide();
     $('.official_block').hide();
     $('.stall_info').hide();
     

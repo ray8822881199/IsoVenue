@@ -635,6 +635,7 @@ body {
     border-radius: 8px;
     border: 1.5px solid rgb(204, 74, 117);
     font-size: 1.6vh;
+    width: fit-content;
   }
   
   .official_link > a:link, .official_link > a:visited{
@@ -646,6 +647,13 @@ body {
     font-weight: bold;
     text-decoration: none;
   }
+  
+  .official_link_container {
+    width: 100%;
+    background-color: #ffffff
+  }
+  
+
 
 
 
@@ -728,8 +736,14 @@ body {
     margin: auto;
     max-height: 20vh;
   }
+  .official_link_container {
+    position: fixed;
+    bottom: 7vh;
+    left: 0;
+  }
   .official_link{
     font-size: 1.6vh;
+    width: fit-content;
   }
 
 }
