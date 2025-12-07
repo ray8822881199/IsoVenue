@@ -734,16 +734,17 @@ body {
   .official_block {
     width: 90vw;
     margin: auto;
-    max-height: 20vh;
+    max-height: 15vh;
   }
   .official_link_container {
     position: fixed;
-    bottom: 7vh;
+    bottom: 0;
     left: 0;
   }
   .official_link{
     font-size: 1.6vh;
     width: fit-content;
+    margin: 4px auto;
   }
 
 }
