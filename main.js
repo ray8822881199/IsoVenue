@@ -8,7 +8,7 @@ window.missionPoints = [];
 window.rotate_x = 0;
 window.rotate_z = 0;
 
-window.WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
+//window.WIDE_SCREEN_THRESHOLD = 720; // 定義寬螢幕的最小寬度
 window.IS_WIDE_SCREEN = false;
 
 window.border_color = {
@@ -860,7 +860,7 @@ $(document).ready(function() {
     });
     
     function isWideScreen() {
-        const isWide = $(window).width() >= window.WIDE_SCREEN_THRESHOLD;
+        const isWide = $(window).width() >= $(window).height();
         if(!isWide){
             //手機
             $('.mission_map_stall_list').css({display:'none'});

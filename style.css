@@ -248,7 +248,7 @@ body {
 .mission_map_info {/*卡片資訊區塊 含攤位卡片 攤位列表*/
     position: relative;
     
-    height: 42vh;
+    height: 45vh;
     z-index: 20;
     background-color: #ffffff;
 
@@ -309,7 +309,7 @@ body {
   }
   
   div.stall_card_class { /**/
-    height: 35px;
+    height: 4vh;
     display: flex;
     gap: 16px;
     justify-content: center;
@@ -319,17 +319,19 @@ body {
     padding:16px 32px;
   }*/
   div.stall_card_class div { /*CP類型 攤位編號*/
-    padding: 4px 16px;
+    padding: 0px 16px;
     border: 1.5px solid rgba(239, 141, 91);
     border-radius: 8px;
     color: #404040;
-    font-size: 16px;
+    font-size: 1.8vh;
+    align-content: center;
   }
   div.stall_card_name { /*攤位名稱*/
     width: 100%;
-    height: 40px;
+    height: 5vh;
     text-align: center;
-    font-size: 24px;
+    align-content: center;
+    font-size: 2.5vh;
     font-weight: bold;
     color: #404040;
   }
@@ -619,11 +621,12 @@ body {
   }
   
   .official_info > tbody > tr > td:first-child{
-      width: 100px;
+      white-space: nowrap;
   }
   
   .official_block {
     height: 25vh;
+    font-size: 1.6vh;
     overflow-y: auto;
   }
   .official_link{
@@ -631,7 +634,7 @@ body {
     padding: 4px 16px;
     border-radius: 8px;
     border: 1.5px solid rgb(204, 74, 117);
-    font-size: 14px;
+    font-size: 1.6vh;
   }
   
   .official_link > a:link, .official_link > a:visited{
@@ -646,7 +649,7 @@ body {
 
 
 
-@media (max-width: 719px) {
+@media (max-aspect-ratio: 1/1) {
     
   div.mission_map_stall_list{ 
     display:none;
@@ -682,15 +685,15 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap:8px;
+    gap:7px;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 0px;
   }
   div.mission_map_info_stall_card{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    gap: 8px;
+    width: 95%;
+    gap: 1.2vh;
   }
   div.stall_card_class{
     display: flex;
@@ -701,26 +704,18 @@ body {
     
   }
   div.stall_card_class div {
-    display:inline-block;
-    padding: 4px 16px;
-    border: 1.5px solid rgba(239, 141, 91);
-    border-radius: 8px;
-    color: #404040;
-    font-size: 14px;
+    font-size: 1.8vh;
+    align-content: center;
   }
   div.stall_card_name { 
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #404040;
+    align-content: center;
   }
   
   table.stall_info{
-    font-size: 14px ; 
+    font-size: 1.4vh ; 
   }
   .official_info{
-    font-size: 14px ; 
+    font-size: 1.4vh ; 
   }
   div.divider{
     width: 100%;
@@ -730,9 +725,10 @@ body {
   
   .official_block {
     width: 90vw;
+    margin: auto;
   }
   .official_link{
-    font-size: 12px;
+    font-size: 1.4vh;
   }
 
 }
