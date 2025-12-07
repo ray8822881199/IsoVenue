@@ -304,8 +304,9 @@ body {
     width: 500px;
     gap: 8px;
     height: 45vh;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
   }
   
   div.stall_card_class { /**/
@@ -625,7 +626,7 @@ body {
   }
   
   .official_block {
-    /*height: 25vh;*/
+    height: 100%;
     font-size: 1.6vh;
     overflow-y: auto;
   }
@@ -699,8 +700,7 @@ body {
     padding: 0 0px;
   }
   div.mission_map_info_stall_card{
-    display: flex;
-    flex-wrap: wrap;
+
     width: 95%;
     gap: 1vh;
   }
