@@ -22,6 +22,11 @@ window.border_color = {
     'area-exhibit': '#D9D96B',
 };
 
+window.heroname = {
+    'Midoriya' : 'Deku',
+    'Bakugo' : '大.爆.殺.神. Dynamight'
+};
+
 // 定義地圖物件
 window.areaItem = [
     // 橘區
@@ -305,7 +310,7 @@ async function missionGo(thisPlayer){
         // 更新角色狀態為「前往任務中」 任務座標改印為相對中心座標
         window.players[playerToMoveId].status = 1;
         window.players[playerToMoveId].mission = missionCoords;
-        console.log(`英雄 ${playerToMoveId} 開始前往任務點 (${missionCoords[0] - mid_x}, ${missionCoords[1] - mid_y})`);
+        console.log(`英雄 ${window.heroname[playerToMoveId]} 開始前往任務點 (${missionCoords[0] - mid_x}, ${missionCoords[1] - mid_y})`);
         
         // 執行任務
         await animateMove(playerToMoveId,missionCoords,1000,null);
@@ -313,7 +318,7 @@ async function missionGo(thisPlayer){
         // 任務完成，將角色狀態更新為「閒置」 任務座標改印為相對中心座標
         window.players[playerToMoveId].status = 0;
         window.players[playerToMoveId].mission = null;
-        console.log(`英雄 ${playerToMoveId} 已完成 (${missionCoords[0] - mid_x}, ${missionCoords[1] - mid_y}) 任務，返回閒置狀態。`);
+        console.log(`英雄 ${window.heroname[playerToMoveId]} 已完成 (${missionCoords[0] - mid_x}, ${missionCoords[1] - mid_y}) 任務，返回閒置狀態。`);
         
         // 移除任務標記
         const [x, y] = missionCoords;
@@ -331,10 +336,10 @@ async function missionGo(thisPlayer){
                 //const missionPlayerElement = $(`#${thisPlayer}`);
                 const mission = window.players[missionPlayers[0]].mission;
                 if(Math.random() > (1 - 0.57)) {
-                    console.log(`英雄 ${thisPlayer} 任務完成，前往新任務地 (${mission}) 支援 ${missionPlayers[0]}`);
+                    console.log(`英雄 ${window.heroname[thisPlayer]} 任務完成，前往新任務地 (${mission}) 支援 ${missionPlayers[0]}`);
                     await animateMove(thisPlayer,window.players[missionPlayers[0]].mission,700,missionPlayers[0]);
                 } else {
-                    console.log(`英雄 ${thisPlayer} 任務繁忙，無法支援 . . .`);
+                    console.log(`英雄 ${window.heroname[thisPlayer]} 任務繁忙，無法支援 . . .`);
                 }
             } else {
                 console.log("所有任務已完成，敵人消失。");
