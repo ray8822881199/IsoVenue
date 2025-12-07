@@ -95,6 +95,18 @@ window.areaInfo = {
             <td class="inner_td td_num">建議按照回憶點的時序進行任務以獲得最佳的蓋章效果喔！</td></tr>
         </tbody></table>`
     ],
+    official_tips:[
+        `<table class="inner_table"><tbody>
+        <tr class="inner_tr"><td class="inner_td td_num">1.</td>
+            <td class="inner_td td_num">若遇蓋章地點排隊，請保持走道暢通。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">2.</td>
+            <td class="inner_td td_num">可尋找工作人員或同好協助解謎，請保持禮貌哦！</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">3.</td>
+            <td class="inner_td td_num">蓋章完畢後請將印章放回寶箱內並上鎖，記得打亂鎖上密碼順序，為其他參加者保持最佳遊戲體驗。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">4.</td>
+            <td class="inner_td td_num">此任務為大爆殺神事務所面試審核之前置任務，如欲參加面試，請於下午1：30前完成任務並回報。</td></tr>
+        </tbody></table>`
+    ],
     stall_card_link:'<a href="https://mhax0377.wixsite.com/mission0377/collecting" target="_blank">詳細任務資訊請由此查看</a>',
     link_border_color:'rgb(204, 74, 117)'
     },
@@ -114,6 +126,18 @@ window.areaInfo = {
             <td class="inner_td td_num">在四處回憶點集章完畢後，卡片上將顯示最後的通關密碼，請前往大會攤會執行回報，成功通報的參加者即可獲得參與大爆殺神事務所面試審核的資格</td></tr>
         <tr class="inner_tr"><td class="inner_td td_num">4.</td>
             <td class="inner_td td_num">建議按照回憶點的時序進行任務以獲得最佳的蓋章效果喔！</td></tr>
+        </tbody></table>`
+    ],
+    official_tips:[
+        `<table class="inner_table"><tbody>
+        <tr class="inner_tr"><td class="inner_td td_num">1.</td>
+            <td class="inner_td td_num">若遇蓋章地點排隊，請保持走道暢通。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">2.</td>
+            <td class="inner_td td_num">可尋找工作人員或同好協助解謎，請保持禮貌哦！</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">3.</td>
+            <td class="inner_td td_num">蓋章完畢後請將印章放回寶箱內並上鎖，記得打亂鎖上密碼順序，為其他參加者保持最佳遊戲體驗。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">4.</td>
+            <td class="inner_td td_num">此任務為大爆殺神事務所面試審核之前置任務，如欲參加面試，請於下午1：30前完成任務並回報。</td></tr>
         </tbody></table>`
     ],
     stall_card_link:'<a href="https://mhax0377.wixsite.com/mission0377/collecting" target="_blank">詳細任務資訊請由此查看</a>',
@@ -138,6 +162,18 @@ window.areaInfo = {
             <td class="inner_td td_num">建議按照回憶點的時序進行任務以獲得最佳的蓋章效果喔！</td></tr>
         </tbody></table>`
     ],
+    official_tips:[
+        `<table class="inner_table"><tbody>
+        <tr class="inner_tr"><td class="inner_td td_num">1.</td>
+            <td class="inner_td td_num">若遇蓋章地點排隊，請保持走道暢通。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">2.</td>
+            <td class="inner_td td_num">可尋找工作人員或同好協助解謎，請保持禮貌哦！</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">3.</td>
+            <td class="inner_td td_num">蓋章完畢後請將印章放回寶箱內並上鎖，記得打亂鎖上密碼順序，為其他參加者保持最佳遊戲體驗。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">4.</td>
+            <td class="inner_td td_num">此任務為大爆殺神事務所面試審核之前置任務，如欲參加面試，請於下午1：30前完成任務並回報。</td></tr>
+        </tbody></table>`
+    ],
     stall_card_link:'<a href="https://mhax0377.wixsite.com/mission0377/collecting" target="_blank">詳細任務資訊請由此查看</a>',
     link_border_color:'rgb(204, 74, 117)'
     },
@@ -158,6 +194,18 @@ window.areaInfo = {
             <td class="inner_td td_num">在四處回憶點集章完畢後，卡片上將顯示最後的通關密碼，請前往大會攤會執行回報，成功通報的參加者即可獲得參與大爆殺神事務所面試審核的資格</td></tr>
         <tr class="inner_tr"><td class="inner_td td_num">4.</td>
             <td class="inner_td td_num">建議按照回憶點的時序進行任務以獲得最佳的蓋章效果喔！</td></tr>
+        </tbody></table>`
+    ],
+    official_tips:[
+        `<table class="inner_table"><tbody>
+        <tr class="inner_tr"><td class="inner_td td_num">1.</td>
+            <td class="inner_td td_num">若遇蓋章地點排隊，請保持走道暢通。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">2.</td>
+            <td class="inner_td td_num">可尋找工作人員或同好協助解謎，請保持禮貌哦！</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">3.</td>
+            <td class="inner_td td_num">蓋章完畢後請將印章放回寶箱內並上鎖，記得打亂鎖上密碼順序，為其他參加者保持最佳遊戲體驗。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">4.</td>
+            <td class="inner_td td_num">此任務為大爆殺神事務所面試審核之前置任務，如欲參加面試，請於下午1：30前完成任務並回報。</td></tr>
         </tbody></table>`
     ],
     stall_card_link:'<a href="https://mhax0377.wixsite.com/mission0377/collecting" target="_blank">詳細任務資訊請由此查看</a>',
@@ -209,11 +257,23 @@ window.areaInfo = {
         <tr class="inner_tr"><td class="inner_td td_num">1.</td>
             <td class="inner_td td_num">請先完成前置任務《他們的英雄之路》並完成任務回報。</td></tr>
         <tr class="inner_tr"><td class="inner_td td_num">2.</td>
-            <td class="inner_td td_num">請攜帶前置任務之通關證明於13:30 ~ 14:30之間，於面試等候區排隊等待審核。</td></tr>
+            <td class="inner_td td_num">請攜帶前置任務之通關證明於下午1：30 ～ 2：30之間，於面試等候區排隊等待審核。</td></tr>
         <tr class="inner_tr"><td class="inner_td td_num">3.</td>
-            <td class="inner_td td_num">審核英雄僅可擇一挑戰，也僅可挑戰一次，請把握機會</td></tr>
+            <td class="inner_td td_num">審核英雄僅可擇一挑戰，也僅可挑戰一次，請把握機會。</td></tr>
         <tr class="inner_tr"><td class="inner_td td_num">4.</td>
-            <td class="inner_td td_num">無論通過與否，請在審核完畢後退出排隊區，切勿重覆排隊</td></tr>
+            <td class="inner_td td_num">無論通過與否，請在審核完畢後退出排隊區，切勿重覆排隊。</td></tr>
+        </tbody></table>`
+    ],
+    official_tips:[
+        `<table class="inner_table"><tbody>
+        <tr class="inner_tr"><td class="inner_td td_num">1.</td>
+            <td class="inner_td td_num">請攜帶〈他們的英雄之路〉集章完成卡（集章版或全彩版皆可）及場刊摺頁排隊，並於面試前主動出示。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">2.</td>
+            <td class="inner_td td_num">如面試人潮過多，將安排工作人員協助排隊，請聽從工作人員指示。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">3.</td>
+            <td class="inner_td td_num">面試機會僅有一次，敬請把握。</td></tr>
+        <tr class="inner_tr"><td class="inner_td td_num">4.</td>
+            <td class="inner_td td_num">面試審核進行中恕不開放合照，但歡迎參加者於環節結束後禮貌詢問COSER合照。</td></tr>
         </tbody></table>`
     ],
     stall_card_link:'<a href="https://mhax0377.wixsite.com/mission0377/interview" target="_blank">詳細任務資訊請由此查看</a>',
